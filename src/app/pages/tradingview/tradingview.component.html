@@ -1,0 +1,48 @@
+<nb-layout class="layout-container">
+
+
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+  <nb-layout-column class="p-0" style="overflow: hidden; margin: 0 1rem">
+  <!--
+  <div class="toggle-theme">
+  	<span id="smileyToggle">Smiley </span>
+	<span id="armyCamoToggle"> ArmyCamo </span>
+	<span id="galaxyToggle"> Galaxy </span>
+	<span id="pirateToggle"> Pirate </span>
+	<span id="matrixToggle"> Matrix </span>
+	<span id="popartToggle"> Popart </span>
+	<span id="moneyToggle"> Money </span>	
+  </div>
+	  -->
+    <div class="p-3 flex col-xl-12">
+    </div>
+	<nb-card class="f-w book-size book-alignment">	
+    <nb-tabset fullWidth="true">	
+      <nb-tab class="tabsetText" tabTitle="BTC" style="margin-left:-8px; margin-right:-8px; margin-bottom: -13px">	   	  
+        <iframe src="/assets/tradingViewBTC.html" frameborder="0" class="tradingViewIframe" style="margin-top: .75rem"></iframe>
+      </nb-tab>
+      <nb-tab class="tabsetText" tabTitle="XRP" style="margin-left:-8px; margin-right:-8px; margin-bottom: -13px">	  
+        <iframe src="/assets/tradingViewXRP.html" frameborder="0" class="tradingViewIframe" style="margin-top: .75rem"></iframe>      
+      </nb-tab>
+      <nb-tab class="tabsetText" tabTitle="ETH" style="margin-left:-8px; margin-right:-8px; margin-bottom: -13px">
+        <iframe src="/assets/tradingViewETH.html" frameborder="0" class="tradingViewIframe" style="margin-top: .75rem"></iframe>      
+      </nb-tab>
+      <nb-tab class="tabsetText" tabTitle="LTC" style="margin-left:-8px; margin-right:-8px; margin-bottom: -13px">
+        <iframe src="/assets/tradingViewLTC.html" frameborder="0" class="tradingViewIframe" style="margin-top: .75rem"></iframe>      
+      </nb-tab>
+    </nb-tabset>
+  </nb-card>
+
+  <!-- <nb-card class="f-w book-size card-alignment">
+    <nb-card-header>Chart Setup Guide</nb-card-header>
+    <nb-card-body>Foo<br>Bar<br>Baz</nb-card-body>
+  </nb-card> -->
+  <div class="maximizeBtn"><i class="fal fa-expand-alt" id="expand"></i></div>
+  <div class="minimizeBtn"><i class="fal fa-compress-alt" id="compress"></i></div>  
+  </nb-layout-column>      
+  <nb-layout-footer class="footer-main">
+    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+</nb-layout>

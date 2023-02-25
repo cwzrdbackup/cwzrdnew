@@ -1,0 +1,77 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/armyCamo';
+// @import '~@nebular/theme/styles/themes/blueCamo';
+
+@include nb-install-component {
+	.trader-text {
+		color: nb-theme(traders-hub-text);
+	}
+	::ng-deep nb-layout {
+		.scrollable-container {
+			.layout {
+				.layout-container {
+					[nbButton].btn-primary {
+						font-size: 16px !important;
+					}
+				}
+			}
+		}
+	}
+	::ng-deep nb-reveal-card {
+		nb-card-front {
+			nb-card {
+				nb-card-body {
+					.selected
+				{
+					
+					text-align: center;
+					
+				}
+				}				
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.f-h {
+  height: calc(100% - 1.5rem);
+}
+.chart {
+  height: 120px;
+}
+
+.row-container-comparison {
+	position: absolute;
+	top: 42px;
+    right: 0px;    
+	@include media-breakpoint-up(md) {
+		top: 60px;
+		right: 0;
+	}
+}
+.button-width {
+	width: 120px;
+}
+.padding-c9 {
+	padding-bottom: 24px;
+	padding-top: 27px;
+	@include media-breakpoint-up(md) {
+		padding-bottom: 19px;
+		padding-top: 21px;
+	}
+}

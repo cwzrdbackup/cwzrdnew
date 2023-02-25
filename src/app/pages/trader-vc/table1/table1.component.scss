@@ -1,0 +1,87 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}		
+	}
+}
+
+.f-h {
+    height: calc(100%)!important;
+  }
+.coinImage {
+	width: 20px;
+}    
+
+.col-2 {
+	font-size: .5rem;
+		@include media-breakpoint-up(md) {
+			font-size: 12px;
+		}
+		@include media-breakpoint-up(lg) {
+			font-size: 14px;
+		}
+}
+.coinImg {
+	width: 15px;
+	margin-right: 10px;
+	@include media-breakpoint-up(md) {
+		width: 20px;
+	}
+}
+.coinImage {
+	margin-right: 10px;
+}
+.button-width {
+	width: 120px;
+}
+.flex-row {
+	align-items: center;
+	padding: 0 1vmin;
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		padding: 0 1vmin;
+		font-size: 1rem;
+	}
+	@include media-breakpoint-up(lg) {
+		padding: 0 2vmin;
+		font-size: 1rem;
+	}
+	@include media-breakpoint-up(xl) {
+		padding: 0 3vmin;
+		font-size: 1rem;
+	}
+}
+.col-33 {
+	width: 33.33%;
+}
+.col-19 {
+	width: 18%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col-24 {
+	width: 28%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row-coin {
+	line-height: 0;
+}

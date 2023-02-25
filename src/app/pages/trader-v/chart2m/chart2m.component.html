@@ -1,0 +1,45 @@
+<nb-reveal-card style="border-radius: 8px;" [nbSpinner]="loading">
+  <nb-card-front>
+	<nb-card class="mb-0">
+	  <nb-card-header class="p-0 p-md-2 flex">
+	    <nb-select selected="BTC" class="first button-width p-0 transparent" (selectedChange)="change($event)">
+	      <nb-option value="BTC">BTC</nb-option>
+	      <nb-option value="XRP">XRP</nb-option>
+	      <nb-option value="ETH">ETH</nb-option>
+	      <nb-option value="LTC">LTC</nb-option>
+		</nb-select>
+		<button nbTooltip="The line chart displays the live price of the selected coin." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+	  </nb-card-header>
+	  <nb-card-body class="p-0 chart-card">
+	    <div class="flex pt-1 pb-3">
+	      <div class="col-9 chart2-date coin-price">
+	          <span class="green exo-font">$</span>
+	  		<span class="white exo-font" id="chart2pricec">{{coinPrice | number: '1.2-2'}}</span>
+	      </div>
+	      <div class="col-3 p-0 move-top">
+	        <div class="chart2-percent" id="btcpc">			  
+			  <span [ngClass]="(percentNumber<0)?'red':'green'" >{{percent}}</span>
+			  <span 
+			  [ngClass]="[((percentNumber<0)?'red':'green'), ((percentNumber<0)?'nb-arrow-dropdown':'nb-arrow-dropup')]"  
+			  ></span>
+	        </div>	        
+	      </div>
+	    </div>
+	    <div echarts [options]="chartOption" [merge]="dataOptions" class="chart"></div>
+	  </nb-card-body>
+	</nb-card>
+  </nb-card-front>
+  <nb-card-back>
+  <nb-card class="mb-0">
+  <nb-card-header>
+    Comparison <button nbTooltip="The chart displays the 24 hour % change during the last 7 days for BTC, XRP, ETH, and LTC. Each day's percent change is calculated using the open price and the close price for the day." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+  </nb-card-header>      
+  <div class="row-container-comparison">
+	  <div class="row-indicator trader-text">24H % Change</div>	  
+  </div>
+	<app-chart9 class="padding-c9"></app-chart9>	
+</nb-card>
+  </nb-card-back>
+</nb-reveal-card>
+
+

@@ -1,0 +1,32 @@
+<nb-reveal-card>
+  <nb-card-front>
+	<nb-card class="f-h">
+	  <nb-card-header>
+	    Profit
+	  </nb-card-header>
+	  <nb-card-body class="p-0 chart-card">
+	    <div class="flex pt-1 pb-3">
+	      <div class="col-6">
+	        <div class="profit-date">Jun 1 - Jun 30</div>
+	        <span class="green exo-font">$</span>
+			<span class="white exo-font">800</span>
+	      </div>
+	      <div class="col-6">
+	        <div class="profit-date">Jul 1 - Jul 31</div>
+	        <span class="green exo-font">$</span>
+			<span class="white exo-font">800</span>
+	      </div>
+	    </div>
+	    <div echarts [options]="chartOption" class="chart"></div>
+	  </nb-card-body>
+	</nb-card>
+  </nb-card-front>
+  <nb-card-back>
+	<nb-card class="f-h">
+    <nb-card-header>
+      Profit
+    </nb-card-header>
+		<app-chart8></app-chart8>
+	</nb-card>
+  </nb-card-back>
+</nb-reveal-card>

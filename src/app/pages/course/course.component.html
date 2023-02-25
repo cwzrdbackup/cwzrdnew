@@ -1,0 +1,87 @@
+<nb-layout class="layout-container">
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column class="p-0">
+	  <div class="chapterInformation">
+		  <div class="gradientBG"></div>
+		  <div class="chapterInfoLeft p-3 p-md-4 p-lg-5">
+			  <div class="title2 mb-2 mb-md-3 mb-lg-4">WZRD COURSE</div>
+			  <div class="title3 mb-2 mb-md-3 mb-lg-4">5 CHAPTERS | 76 Videos | 2019</div>
+			  <div class="title4 mb-3 mb-md-4 mb-lg-5">Do you have what it takes to be a WZRD? With 76 lessons now is your time to learn to trade and set free.</div>
+        <a *ngIf="courseStatus.lessonStart; else isComplete" class="watchContainer" href="course/chapter/{{courseStatus.Chapter}}/lesson/{{courseStatus.Lesson}}">Watch</a>
+        <ng-template #isComplete>
+          <div *ngIf="courseStatus.isCompleted !== undefined; else isWatching" class="watchContainer">Complete</div>
+        </ng-template>
+        <ng-template #isWatching>
+          <a class="watchContainer" href="course/chapter/{{courseStatus.Chapter}}/lesson/{{courseStatus.Lesson}}">Continue</a>
+        </ng-template>
+		  </div>
+		  <div class="chapterInfoRight">
+			  <div class="progressAbsolute">
+			        <nb-progress-bar [value]="percentage" class="progressBar">
+                  <div class="percentageNumber" [ngClass]="{'percentUnderTen' : percentage < 10}">
+                      {{percentage}}%
+                  </div>
+              </nb-progress-bar>
+			  </div>
+		  </div>
+    </div>
+    
+    <div class="px-3 px-md-5 year-header">Legacy Course</div>
+    <div class="px-3 px-md-5">
+
+      <div class="flex" style="margin: 0 -16px 20px -16px">
+
+        <!-- <div *ngFor="let chapter of chapter;let i = index;" class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <i *ngIf="i == 6" class="fa fa-lock overlayLock"></i>
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_{{i+1}}.png" alt="image" class="card-img" [routerLink]="'/course/chapter/'+chapter.id">
+			  <div class="bottomContainer" *ngIf="!chapter?.isPadLock" [routerLink]="'/course/chapter/'+chapter.id"><div class="lessonTitle">{{chapter.title}}</div></div>
+			  <div class="bottomContainer" *ngIf="chapter?.isPadLock"><div class="lessonTitle">{{chapter.title}}</div></div>
+          </nb-card>
+        </div> -->
+
+        <div class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_1.png" alt="image" class="card-img" routerLink="/course/chapter/100001">
+			      <div class="bottomContainer" routerLink="/course/chapter/100001"><div class="lessonTitle">Chapter 1 - Acquiring The Enchanted Knowledge</div></div>
+          </nb-card>
+        </div>        
+
+        <div class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_3.png" alt="image" class="card-img" routerLink="/course/chapter/100003">
+			      <div class="bottomContainer" routerLink="/course/chapter/100003"><div class="lessonTitle">Chapter 2 - Technical Wizardry</div></div>
+          </nb-card>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_4.png" alt="image" class="card-img" routerLink="/course/chapter/100004">
+			      <div class="bottomContainer" routerLink="/course/chapter/100004"><div class="lessonTitle">Chapter 3 - The Reversal Spell</div></div>
+          </nb-card>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_5.png" alt="image" class="card-img" routerLink="/course/chapter/100005">
+			      <div class="bottomContainer" routerLink="/course/chapter/100005"><div class="lessonTitle">Chapter 4 - The WZRD Setup</div></div>
+          </nb-card>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 px-3 pt-3 chapter-card">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/chapter_main/Chapter_6.png" alt="image" class="card-img" routerLink="/course/chapter/100006">
+			      <div class="bottomContainer" routerLink="/course/chapter/100006"><div class="lessonTitle">Chapter 5 - Becoming The Bank</div></div>
+          </nb-card>
+        </div>
+
+      </div>
+    </div>    
+
+  </nb-layout-column>
+  <nb-layout-footer class="footer-main">
+    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+</nb-layout>

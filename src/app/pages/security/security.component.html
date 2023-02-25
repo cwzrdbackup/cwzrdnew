@@ -1,0 +1,296 @@
+<nb-layout class="layout-container">
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+    
+    <nb-layout-column class="flex fix-overflow p-3 px-md-3">
+
+        <!--<div id="cover-spin" style="display: block" [hidden]="is_loader" ></div>-->
+        <div class="row justify-content-center custom-padding">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+                        <div class="setting-width">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div [nbSpinner]="loading" class="ss_profile_box text-center">
+                                            <div *ngIf="profileHeaderImg" class="ss_img">
+                                                <img [src]="profileHeaderImg">
+                                            </div>
+                                            <div *ngIf="profileImg" [ngStyle]="{'margin-top' : profileHeaderImg ?  '-30px' : '2vh'}" class="ss_profile_images">
+                                                <img [src]="profileImg">
+                                            </div>
+                                            <h3>{{userDetails?.firstName}} {{userDetails?.lastName}}</h3>
+                                            <p class="email-address">{{userDetails?.email}}</p>
+                                            <div class="row px-4">
+                                                <div class="col-lg-6 col-sm-12 col-md-12">
+                                                    <ul class="ss_profile_info">
+                                                        <li>
+                                                            <span> Battle of WZRDS ID : </span>
+                                                            <span> {{userDetails?.firstName}} {{userDetails?.lastName}} </span>
+                                                        </li>
+                                                        <li>
+                                                            <span> Gender : </span>
+                                                            <span><a href="javascript:void()" class="SS_input_edit" (click)="changeGender()"> {{(gender==1)?'Female':'Male'}} </a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span> Birthday : </span>
+                                                            <span> {{userDetails?.birthday}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12 col-md-12">
+                                                    <ul class="ss_profile_info">
+                                                        <li>
+                                                            <span> Password :  </span>
+                                                            <span> <a href="javascript:void()" style="" class="SS_input_edit" (click)="changePasswordShow()">Change</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span> Location : </span>
+                                                            <span> <a href="javascript:void()"  class="SS_input_edit" (click)="changeLocationShow()">{{location}}</a> </span>
+                                                        </li>
+                                                        <li>
+                                                            <span> Joined : </span>
+                                                            <span> {{userDetails?.dateCreated}} </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-width">
+                            <div class="">
+                                <div class="px-4 pt-4 pos-relative">
+                                    <div class="new-label-slant">NEW</div>
+                                    <div class="row">                                        
+                                        <div class="col-sm-9 col-9">
+                                            <h5 class="text-light "><span class="new-rel">Two Factor Authentication</span></h5>
+                                        </div>
+                                        <div class="col-sm-3 col-3 ss_mobile_right_left text-sm-right pr-3 pr-md-5 pr-lg-4">
+                                            <label class="switch">
+                                                <input type="checkbox" [(ngModel)]="is_2fa">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger text-center" style="width: 100%">{{errorMsg}}</p>
+                                    <p class="text-success text-center" style="width: 100%">{{successMsg}}</p>
+                                </div>
+                                <div class="setting-content text-light" *ngIf="is_2fa">
+                                    <div class="setting-content-check d-flex">
+                                        <div class="ss_radio_button">
+                                            <input id="radio-1" name="radio" type="radio"
+                                                   [checked]="(twoFAType==='sms')?true:false" value="sms"
+                                                   (change)="onSelectionChange('sms')">
+                                            <label for="radio-1" class="radio-label"></label>
+                                        </div>
+                                        <div class="setting-content-text">
+                                            <h5 class="d-inline-block mb-2 settings-title">Text Message</h5>
+                                            <p>We'll send a code to your phone</p>
+                                            <div class="mt-3 ss_message_text_box" *ngIf="twoFAType==='sms'">
+                                                <select name="country_code" class="contry-code text-light mb-1 col-3 mr-3"
+                                                        [(ngModel)]="countryCode">
+                                                    <option *ngFor="let con of countries" value="{{con.code}}"
+                                                            [selected]="(countryCode==con.code)?true:false">{{con.name.split(' ')[0]}}{{con.code}}</option>
+                                                </select>
+                                                <input id="phone" name="phone" type="number" [(ngModel)]="phoneNumber"
+                                                    placeholder="Phone Number" class="text-light ml-0 col-8">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-content-check d-flex">
+                                        <div class="ss_radio_button">
+                                            <input id="radio-2" name="radio" type="radio"
+                                                   [checked]="(twoFAType==='email')?true:false" value="email"
+                                                   (change)="onSelectionChange('email')">
+                                            <label for="radio-2" class="radio-label"></label>
+                                        </div>
+                                        <div>
+                                            <h5 class="settings-title mb-2">Email</h5>
+                                            <p class="mb-0">We'll send a code to your account's e-mail address:</p>
+                                            <div class="email-address">{{userDetails?.email}}</div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="setting-content-check d-flex">
+                                        <div class="ss_radio_button">
+                                            <input id="radio-3" name="radio" type="radio"
+                                                   [checked]="(twoFAType==='google')?true:false" value="google"
+                                                   (change)="onSelectionChange('google')">
+                                            <label for="radio-3" class="radio-label"></label>
+                                        </div>
+                                        <div>
+                                            <h5 class="settings-title mb-2">Google Auth</h5>
+                                            <p>You can login with your Gmail account through our Authenticator App</p>
+                                        </div>
+                                    </div> -->
+                                    <div style="text-align:right;padding: 20px;">
+                                        <button nbButton type="submit" (click)="updateSettings()" size="small">Update Settings
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- <div style="text-align:right;padding: 20px;">
+                                        <button nbButton type="submit" (click)="updateSettings()" size="small">Update Settings
+                                        </button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 col-sm-12 col-md-6">
+                        <div class="setting-width">
+                            <div class="px-4 pt-4">
+                                <div class="row">
+                                    <div class="col-12 ss_min-height_plateform">
+                                        <h5 class="text-light ">EVOLVE</h5>
+                                        <p>{{evolve?.description}} </p>
+                                        <p> Welcome to Version <b>{{evolve?.version}}</b> </p>
+                                        <div class="col-12 text-right s_group">
+                                            <span>WZRD GROUP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-width">
+                            <div class="px-4 pt-4">
+                                <div class="row">
+                                    <div class="col-12 ss_min-height_plateform">
+                                        <h5 class="text-light ">PLATFORM UPDATES</h5>
+                                        <p>{{platform?.description}}</p>
+                                        <p>New Available Version: <b>{{platform?.version}}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-width">
+                            <div class="px-4 pt-4 pos-relative">
+                                <div class="new-label-slant">NEW</div>
+                                <div class="row">
+                                    <div class="col-12 ss_min-height_plateform pb-4">
+                                        <h5 class="text-light "><span class="new-rel">PLATFORM THEME</span></h5>
+                                        <p>Your current theme : WZRD THEME</p>
+                                       <div class="platform_ss row">
+                                           <div class="col-lg-9">
+                                               <h5>Select your WZRD Platform theme</h5>
+                                               <p class="mb-0">Customize your home by selecting a theme below. Be sure to hit save after selecting one.</p>
+                                           </div>
+                                           <div class="col-lg-3 mt-auto">
+                                               <!--[(ngModel)]="log.position" (selectedChange)="selectedPosition($event)"-->
+                                               <!-- <nb-select placeholder="Select Theme" class="transparent order nb-select-position select_box_ss" [(ngModel)]="theme_id">
+                                                   <nb-option  *ngFor="let theme of themes" [value]="theme.id" (selectionChange)="updateTheme($event)">{{theme.name}}</nb-option>
+                                                   <nb-option  *ngFor="let theme of ['WZRD THEME']" value="WZRD THEME">{{theme}}</nb-option>
+                                               </nb-select> -->
+                                               <div class="select-btn-width"><button nbButton outline status="primary" size="xsmall" class=""  (click)="showThemeSelector()">MORE THEMES</button></div>
+                                           </div>
+                                           <div class="theme-picker-container">
+                                               <div class="gridContainer-library">
+                                                   <div class="grid-library">
+                                                       <div *ngFor="let cast of themeOptions; let i = index;" class="theme-square" [ngClass]="{'hide': !showMoreThemes && i > 4}">
+                                                           <!-- <div style="height: 100px; background: url(../assets/theme_tn/1.jpg)"></div> -->
+                                                           <img src="{{cast.img}}" (click)="changeTheme(cast.theme)">
+                                                           <!-- <img src="{{cast.img}}"/> -->
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="btn-container">
+                                                    <div class="btn-width"><button [disabled]="!themeClicked" nbButton outline status="primary" size="xsmall" class="" >SAVE</button></div>
+                                                    <!-- <div class="btn-width"><button nbButton outline status="danger" size="xsmall" class="" (click)="closeTheme()">CANCEL</button></div> -->
+                                               </div>                                               
+                                           </div>
+                                       </div>
+                                        <!-- <div class="col-12 text-right s_group">
+                                            <span>WZRD GROUP</span>
+                                        </div> -->                                        
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dolce2020! -->
+
+        <nb-card class="card-position" *ngIf="isShowChangePass">
+            <nb-card-header class="d-flex justify-content-between">
+                Change Password
+            </nb-card-header>
+            <nb-card-body>
+                <p class="text-danger" *ngIf="isError">{{isError}}</p>
+                <form [formGroup]="changePassForm">
+                    <div class="p-3">
+                        <input nbInput type="password" formControlName="currentPassword"  placeholder="Current Password"  tabindex="-1">
+                    </div>
+                    <div class="p-3">
+                        <input nbInput type="password" formControlName="newPassword" placeholder="New Password"  tabindex="-1">
+                    </div>
+                    <div class="p-3">
+                        <button nbButton outline status="primary" (click)="changePasswordSubmit()" size="xsmall" class="f-w"  tabindex="1"
+                               >{{isSubmit}}</button>
+                    </div>
+                    <div class="px-3">
+                        <button nbButton outline status="danger" size="xsmall" class="f-w"  (click)="changePasswordCancel()">Cancel</button>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+
+
+        <nb-card class="card-position" *ngIf="isShowGender">
+            <nb-card-header class="d-flex justify-content-between">
+                Gender
+            </nb-card-header>
+            <nb-card-body>
+                <p class="text-danger" *ngIf="isError">{{isError}}</p>
+                <form [formGroup]="changeGenderForm">
+                    <div class="p-3">
+                        <nb-select placeholder="Select gender" [(selected)]="gender" formControlName="gender">
+                            <nb-option [value]="2" > Male </nb-option>
+                            <nb-option [value]="1"> Female </nb-option>
+                        </nb-select>
+                    </div>
+                    <div class="p-3">
+                        <button nbButton outline status="primary" (click)="genderSubmit()" size="xsmall" class="f-w"  tabindex="1"
+                        >Submit</button>
+                    </div>
+                    <div class="px-3">
+                        <button nbButton outline status="danger" size="xsmall" class="f-w"  (click)="genderCancel()">Cancel</button>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+
+        <nb-card class="card-position" *ngIf="isShowLocation">
+            <nb-card-header class="d-flex justify-content-between">
+                Country
+            </nb-card-header>
+            <nb-card-body>
+                <p class="text-danger" *ngIf="isError">{{isError}}</p>
+                <form [formGroup]="changeLocationForm">
+                    <div class="my-0 location-select">
+                        <nb-select  name="country" placeholder="Country" required formControlName="location"  >
+                            <nb-option *ngFor="let location of locations" [value]="location">{{location}}</nb-option>
+                        </nb-select>
+                    </div>
+                    <div class="p-3">
+                        <button nbButton outline status="primary" (click)="changeLocationSubmit()" size="xsmall" class="f-w"  tabindex="1"
+                        >Submit</button>
+                    </div>
+                    <div class="px-3">
+                        <button nbButton outline status="danger" size="xsmall" class="f-w"  (click)="changeLocationCancel()">Cancel</button>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+
+    </nb-layout-column>
+    <nb-layout-footer class="footer-main">
+            &copy; 2020 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+          </nb-layout-footer>
+</nb-layout>
+

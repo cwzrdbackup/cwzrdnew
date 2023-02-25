@@ -1,0 +1,71 @@
+<nb-layout>
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+	<nb-layout-column class="px-3 px-md-5">
+  
+  <div class="d-flex justify-content-md-between" style="flex-wrap: wrap">
+
+    <div>
+      <h1 class="articleDate mt-1 mb-0">{{(today | date:'EEEE d')}}{{( today | date: "d") | dateSuffix}} {{today | date:'MMMM'}}</h1>
+    </div>
+
+  </div>
+
+    <!-- <div class="d-flex justify-content-center justify-content-md-between pt-3 px-3" style="flex-wrap: wrap">
+
+      <div>
+        <h3>Saturday 13th April</h3>
+      </div> 
+
+      <div class="buttons">
+        <button nbButton status="primary" size="xsamll">
+          <img src="../../../assets/time.svg" alt="time" class="icon">
+          Latest
+        </button>
+        <button nbButton status="primary" size="xsamll">
+          <img src="../../../assets/flash.svg" alt="flash" class="icon">
+          Tranding
+        </button>
+        <button nbButton status="primary" size="xsamll">
+          <img src="../../../assets/heart.svg" alt="heart" class="icon">
+          Editor picks
+        </button>
+      </div>
+
+    </div> -->
+
+    <div class="grid ml-n3 mr-n3">
+
+      <div *ngFor="let item of articles; let i = index" class="p-3" [ngClass]="{'bigItem':i === 0}">
+
+        <nb-card [routerLink]="[item.id]">
+          <nb-card-body>
+            <img src="{{item.image.src}}" w
+            alt="article image" class="f-w" *ngIf="i===0" style="cursor: pointer">
+            <img src="{{item.image.src}}"
+            alt="article image" class="f-w" *ngIf="i>0" style="cursor: pointer">
+          </nb-card-body>
+        </nb-card>
+
+        <nb-badge text="Crypto news" class="small"></nb-badge>
+
+        <div class="link pt-3" [routerLink]="[item.id]">
+          <h5>{{ item.title }}</h5>
+          <p class="color-text-4">{{item.published_at | date:'mediumDate'}}</p>
+
+          <span *ngIf="i === 0" class="color-text-3" [innerHTML]="item.body_html  | slice:0:600">
+          </span>
+        </div>
+
+      </div>
+
+    </div>    
+  </nb-layout-column>
+
+  <nb-layout-footer class="footer-main" *ngIf="!loading">
+    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+
+</nb-layout>

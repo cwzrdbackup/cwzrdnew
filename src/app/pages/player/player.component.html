@@ -1,0 +1,50 @@
+<nb-card *ngIf="state?.footerPlaying" [nbSpinner]="!state?.playing && !state?.canplay" class="adjustBg">
+    <nb-card-body class="podcastPlayerBody">
+
+        <div class="podcastInformationContainerLeft flex-vertical space-right">
+            <img class="podcastImg" src="https://i1.sndcdn.com/artworks-000516629397-l73shk-large.jpg"/>
+            <div class="flex-column mx-2 mx-md-3 text-left">
+                <p class="soundCategory">CRYPTOWZRD PODCAST</p>
+                <p class="podcastTitle mb-0">Episode: {{state?.currentFile?.file?.title.split('Episode ')[1]}}</p>
+            </div>
+        </div>
+
+        <div class="timeAndLocationPlayerContainer flex-vertical">
+            <div class="playerControllerButtonsContainer mr-3">
+                <button [disabled]="isFirstPlaying()" (click)="previous()">
+                    <i class="fal fa-backward"></i>
+                </button>
+
+                <!-- <button nbButton status="primary"><nb-icon icon="star"></nb-icon>Primary</button> -->
+                <button class="footer-player" (click)="toggle()" [disabled]="state?.error">
+                    <i class="fal fa-play" aria-hidden="true" *ngIf="!state?.playing" title="play"></i>
+                    <i class="fal fa-pause" *ngIf="state?.playing" title="pause"></i>
+                </button>
+                <button (click)="stop()" [disabled]="state?.error">
+                    <i class="fal fa-stop-circle"></i>
+                </button>
+
+                <button [disabled]="isLastPlaying()" (click)="next()" class="space-right">
+                    <i class="fal fa-forward"></i>
+                </button>
+
+                <span class="mr-1 timeFont">
+			{{ state?.readableCurrentTime }}
+		</span>
+            </div>
+            <input type="range" #playerBar min="0" [max]="state?.duration" step="1"
+                   [value]="state?.currentTime || 0" (input)="onSliderChangeEnd(playerBar.value)" class="playerBar">
+            <!-- [disabled]="state?.error || state?.currentFile.index === undefined" -->
+        </div>
+
+        <div class="playerVolumeControllerContainer ml-2">
+            <button>
+                <i class="fa fa-volume-up"></i>
+            </button>
+            <div class="volumeControlContainer">
+                <input type="range" #volumeBar min="0" max="1" step="0.01" [value]="state?.volume || 0.5"
+                       (input)="onVolumeChange(volumeBar.value)" class="volumeControl"/>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

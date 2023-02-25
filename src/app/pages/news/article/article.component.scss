@@ -1,0 +1,385 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+@import '~@nebular/theme/styles/themes/armyCamo';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	::ng-deep {
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+		}
+		nb-card-header {
+			background-color: nb-theme(notes-header) !important;
+			border-bottom: 1px solid nb-theme(line-color) !important;
+		}
+		nb-card-footer {
+			border-top: 1px solid nb-theme(line-color);
+		}
+		[nbInput], .input {
+			background-color: nb-theme(circle-bg);
+			border: 2px solid nb-theme(line-color);
+		}
+		.nb-badge.nb-badge-primary {
+			background-color: nb-theme(notes-header);
+		}
+		.share {
+			background-color: nb-theme(scrollbar-circle) !important;
+		}
+		.commentBtn {
+			background: nb-theme(notes-header);
+		}
+		[nbButton].btn-primary {
+			background: nb-theme(notes-header);
+		}
+		[nbButton].btn-primary:active, [nbButton].btn-primary.active, [nbButton].btn-primary:active:focus {
+			background: nb-theme(notification-shadow);
+		}
+		nb-list-item {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+		nb-list-item:first-child {
+			border-top: none;
+		}
+		[nbButton].btn-outline.btn-primary {
+			border: 2px solid nb-theme(notes-header);
+		}
+		[nbButton].btn-outline.btn-primary:hover, [nbButton].btn-outline.btn-primary.hover {
+			background: nb-theme(notification-shadow);
+		}
+		[nbButton].btn-primary {
+			background: nb-theme(notes-header);
+		}
+		.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+			border-color: nb-theme(light-text-2);
+		}
+		[nbButton].btn-primary:active, [nbButton].btn-primary.active, [nbButton].btn-primary:active:focus {
+			background: nb-theme(notification-shadow);
+		}
+		nb-card.select.primary {
+			border: 2px solid nb-theme(notes-header);
+		}
+		nb-card.select.primary nb-option:hover, nb-card.select.primary nb-option.selected {
+			background-color: nb-theme(notes-header)
+		}
+		[nbButton]:active, [nbButton].active, [nbButton]:active:focus {
+			background-color: nb-theme(notification-shadow);
+		}
+		.likeReplyRow {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+	}
+	.share {
+		background-color: nb-theme(color-bg-4);
+	}
+	.platformHeader { 
+		background: nb-theme(header-bg);
+	}
+	.commentText::placeholder {
+		color: nb-theme(light-text);
+	}
+	.fa-thumbs-up, .fa-reply {
+		color: nb-theme(light-text);
+	}
+	.mainCommentContainer, .replyBox {
+		border-bottom: 1px solid nb-theme(line-color);
+	}
+	.footer-main {
+		background: nb-theme(header-bg);
+		text-align: left;
+	}
+	.wzrdgroup-link {
+		color: nb-theme(light-text) !important;
+	}
+	.wzrdgroup-link:hover {
+		text-decoration: none;
+	}
+}
+* {
+  color: whitesmoke;
+}
+.share {
+  width: 18px;
+  height: 18px;
+  //background: #554db3;
+  margin-left: 8px;
+  border-radius: 50%;
+  @include media-breakpoint-up(md) {
+	  width: 28px;
+	  height: 28px;
+  }
+  img {
+    width: 12px;
+	@include media-breakpoint-up(md) {
+		width: 18px;
+	}
+  }
+}
+.input {
+  //background: #2f2879!important;
+  caret-color: #3d3780!important;
+  color: #fff !important;
+  border-radius: 8px 0 0 8px!important;
+  border: none!important;
+  font-size: 1rem!important;
+  padding: 8px 16px!important;
+}
+.sub {
+  border-radius: 0 8px 8px 0!important;
+}
+.wizmeIcon {
+    height: 18px;
+    /* line-height: 32px; */
+    margin: 0 auto;
+    text-align: center;
+    /* display: flex; */
+    /* align-items: center; */
+    width: 18px !important;
+	@include media-breakpoint-up(md) {
+		width: 24px !important;
+		height: 24px;
+	}
+}
+
+
+.nextLesson {
+	justify-content: flex-end;
+}
+.cancelBtn {
+	background: transparent;
+}
+.cancelBtn:hover {
+	background: transparent;
+}
+.addCommentBtn {
+	text-align: right;
+}
+.user-title {
+	font-size: 2rem !important;
+}
+.btn-primary {
+	font-weight: 500;
+}
+.leaveComment {
+	font-weight: 500;
+}
+.leaveComment::placeholder {
+	font-weight: 500;
+}
+[nbButton] {
+	font-weight: 500;
+    font-size: .75rem;
+}
+.option {
+	font-weight: 500;
+	font-size: 1rem;
+}
+.addCommentBtn {
+	margin-left: auto;
+//	display: none;
+}
+.commentContainer:first-child {
+//	margin-top: 1rem;
+}
+h5 {
+	margin-bottom: 0;
+}
+.wzrd-Title {
+	text-transform: capitalize;	
+	font-size: 1rem;	
+	@include media-breakpoint-up(md) {
+		font-size: 1.5rem;
+	}
+}
+.wzrd-Title-M {
+	font-size: 1.125rem;
+}
+.newsTitle {
+	margin-right: auto;
+	font-size: 1.15rem;	
+	//margin-bottom: 12px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5rem;
+	}
+}
+.articleP {
+	font-weight: 500;
+	font-size: 1rem;
+	@include media-breakpoint-up(md) {
+		font-size: 1.125rem;
+	}
+}
+
+.leaveReply {
+	font-weight: 500;
+}
+.leaveReply::placeholder {
+	font-weight: 500;
+}
+[nbButton] {
+	font-weight: 500;
+    font-size: .75rem;
+	@include media-breakpoint-up(md) {
+		padding: 8px 22px;
+	}		
+}
+.option {
+	font-weight: 500;
+	font-size: 1rem;
+}
+.fa-thumbs-up, .fa-reply {
+	font-size: 1rem;
+	cursor: pointer;
+}
+.fa-thumbs-up {
+	margin-right: 1rem;
+}
+.likeReplyRow {
+	margin-left: 77px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #2f2879;
+}
+.replyMargin {
+	margin-left: 77px;
+	display: none;
+}
+
+.addReplyBtn {
+	text-align: right;
+	margin-left: auto;
+	display: none;
+}
+.notes-title {
+	font-weight: 500;
+	font-size: .75rem;
+	@include media-breakpoint-up(md) {
+		font-size: 1rem;
+	}
+}
+.postedDate {
+	font-size: .75rem;
+	margin-bottom: 0;
+	margin-top: auto;
+	@include media-breakpoint-up(md) {
+		font-size: 1rem;
+	}
+}
+.flexAlign {
+	align-items: flex-end;
+}
+.flexColumn {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.socials {
+	position: absolute;
+	display: flex;
+	align-items: row;
+	bottom: -5px;
+}
+.wrapArticle {
+	width: 100%;
+}
+
+.mainCommentContainer {
+	margin-top: 5px;
+}
+.mainCommentContainer:first-child {
+	margin-top: 0;
+}
+.replyBtnSpace {
+	margin-bottom: 1rem;
+	display: block;
+	margin-left: auto;
+}
+
+.replyBox {
+	border-bottom: 1px solid #2f2879;
+}
+.replyBox:last-child {
+	border-bottom: none;
+}
+.link {
+	margin-bottom: 5px;
+}
+.link a{
+	color: #fff
+}
+.link a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.min-height {
+	min-height: 40vh;
+}
+.fa-long-arrow-left {
+	font-size: 1.5rem;
+	margin-right: 8px;
+	cursor: pointer;
+	font-weight: 300;
+	@include media-breakpoint-up(md) {
+		margin-right: 15px;
+		font-size: 1.875rem;
+	}
+}
+.fa-long-arrow-left:hover {
+	opacity: .8;
+}
+.newsTitleM {
+	margin-bottom: 12px;
+}
+.mainCommentContainer {
+	::ng-deep nb-user {
+		.user-name {
+			text-align: left;			
+		}
+	}
+}
+.subscription-input {
+    caret-color: white!important;
+}
+.fontWeightBtn {
+	width: 110px;
+}

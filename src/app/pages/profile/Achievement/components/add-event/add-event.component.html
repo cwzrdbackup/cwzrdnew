@@ -1,0 +1,24 @@
+
+  <div class="bookMax book-overlay" style="margin: 0 auto 25px auto;">		
+    <nb-card class="f-w book-size">
+      <nb-card-header class="flex book-header">		            
+	  <div class="book-tableofcontents-container">
+		  <img class="book-icon" src="./assets/tableofcontentspurple.svg" id="tableContentsMax">
+		  <span class="book-arrow-container">
+            <span class="link" (click)="prev()"><i class="nb-arrow-left icon"></i></span>
+			<span class="link" (click)="next()"><i class="nb-arrow-right icon"></i></span>
+          </span>
+	  </div>		  
+	  <div class="col-6 text-center justify-content-center" style="line-height: 40px;">
+		<input id="pageBoxMax" type="number" nbInput placeholder="{{ currentPage + 1 }}" class="input-current-page" #note [(ngModel)]="inputVarMax">
+		<span style="margin: 0 8px">of</span> 175
+        </div>			  
+	  <div class="book-maximize-container">
+		  <img class="book-icon" src="./assets/minimizepurple.svg" id="minimizeMax">
+	  </div>          
+      </nb-card-header>
+      <nb-card-body [innerHtml]="page" style="padding:0 !important; overflow: hidden">
+
+      </nb-card-body>        
+    </nb-card>
+  </div>

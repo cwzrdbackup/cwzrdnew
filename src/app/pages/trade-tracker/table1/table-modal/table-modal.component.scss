@@ -1,0 +1,189 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+
+@include nb-install-component {
+  .test {
+    color: nb-theme(color-bg-3);
+    font-size: 100px;
+    background: nb-theme(notifications-bg);
+  }
+
+  ::ng-deep .cuppa-dropdown {
+
+    background-color: nb-theme(color-bg-5);
+    border: 2px solid nb-theme(separator) !important;
+    color: nb-theme(color-white);
+    margin-bottom: 15px;
+    border-radius: 0.5rem;
+    width: 100%;
+
+    display: inline-block;
+    box-shadow: none;
+
+    .list-filter {
+      border: 1px solid nb-theme(separator);
+
+      input {
+        background-color: nb-theme(card-color) !important;
+        color: nb-theme(color-white);
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .fa {
+        color: nb-theme(background-basic-color-2) !important;
+      }
+
+      .c-clear {
+        top: 5px;
+
+        svg {
+          fill: nb-theme(color-danger);
+        }
+      }
+
+      .c-search {
+        top: 5px;
+        svg {
+          fill: nb-theme(color-white);
+        }
+      }
+
+    }
+
+    .c-btn {
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 0.55rem 1.125rem !important;
+
+      span{
+      }
+
+      .c-angle-down, .c-angle-up {
+        top: 34%
+      }
+
+      svg {
+        fill: white;
+      }
+    }
+
+    .selected-list {
+      box-shadow: none !important;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      font-weight: 400;
+    }
+    
+    .selected-list:hover {
+      border: 2px solid nb-theme(traders-hub-text) !important; 
+      
+    }
+
+    .dropdown-list {
+      position: absolute;
+      padding-top: 0;
+      width: 102%;
+      left: -1%;
+      z-index: 9999;
+
+      ul {
+        li:hover {
+          background-color: nb-theme(color-primary) !important;
+        }
+      }
+
+      .arrow-2, .arrow-up{
+        display: none;
+      }
+
+    }
+
+    .list-area {
+      background-color: nb-theme(card-color) !important;
+      color: nb-theme(color-white) !important;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+      border: none !important;
+      border-radius: 0.7rem;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+
+      .lazyContainer {
+        padding-left: 0;
+
+        .pure-checkbox{
+          label{
+            font-weight: 700 !important;
+          }
+        }
+
+      }
+    }
+
+    .filter-select-all {
+      display: none;
+    }
+  }
+
+}
+
+input {
+    margin-bottom: 16px;
+}
+nb-select.transparent.order.nb-select-position {
+  background-color: #37317a;
+  border: 2px solid #342e73;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+nb-select.transparent.order.nb-select-position button, nb-select.transparent.order.nb-select-position .btn-primary,
+.nb-theme-cosmic nb-select.transparent.order.nb-select-position > button[nbButton].bottom{
+  padding: 0.55rem 1.125rem !important;
+  font-size: 1rem !important;
+}
+
+select{
+  background-color: #37317a;
+  border: 2px solid #342e73;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.55rem 1.125rem !important;
+  font-size: 1rem !important;
+  font-weight: 400;
+
+  option{
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+::ng-deep nb-select button:after{
+  top: 32% !important;
+  border-right: 1px solid white !important;
+  border-bottom: 1px solid white !important;
+  transform: rotate(45deg) !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+ }
+
+ ::ng-deep .modal-backdrop{
+  width: 0;
+  height: 0;
+ }
+
+ .error {
+  margin-left: 1vw;
+ }
+ .calendar {
+    width: 100%
+ }

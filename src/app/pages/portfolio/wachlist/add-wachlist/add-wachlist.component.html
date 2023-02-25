@@ -1,0 +1,13 @@
+<nb-card style="width: 240px;">
+  <nb-card-header class="text-center">
+    Add to watchlist
+  </nb-card-header>
+  <nb-card-body class="d-flex flex-column">
+
+    <nb-select selected="BTC" class="transparent order" [(selected)]="selectedCoin">
+      <!-- <nb-option value="BTC">BTC</nb-option> -->
+      <nb-option *ngFor="let obj of topHundred" [value]="obj.type">{{obj.type}}</nb-option>
+    </nb-select>
+    <button nbButton class="button" (click)="add()" style="border:none;margin-top: 32px;">Add</button>
+  </nb-card-body>
+</nb-card>

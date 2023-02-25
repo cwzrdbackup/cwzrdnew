@@ -1,0 +1,18 @@
+<nb-card>
+  <nb-card-header class="text-center">
+    Add to balance
+  </nb-card-header>
+  <nb-card-body class="d-flex flex-column">
+
+    <nb-select selected="BTC" class="transparent order">
+      <nb-option value="BTC">BTC</nb-option>
+      <nb-option value="ETH">ETH</nb-option>
+      <nb-option value="GAME">GAME</nb-option>
+      <nb-option value="LBC">LBC</nb-option>
+    </nb-select>
+
+    <input type="text" class="input" nbInput #input>
+
+    <button nbButton class="button" (click)="add(input.value)">Add</button>
+  </nb-card-body>
+</nb-card>

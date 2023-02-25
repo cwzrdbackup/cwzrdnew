@@ -1,0 +1,224 @@
+<nb-card class="f-h">
+  <nb-card-header class="d-flex justify-content-space-between align-items-center">
+    <span class="journal-header">Trade Tracker - Closed Trades <button nbTooltip="Displays a table of trades that have been closed." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></span>
+    <!-- <svg fill="#fff" class="link" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" style="margin-left: auto !important" (click)="downloadExcel()">
+            <path
+              d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+            <path fill="none" d="M0 0h24v24H0z" /></svg>
+    <i class="nb-plus link" (click)="add()"></i> -->
+      <!--<nb-action class="whiteColor dropdown short-long-dropdown">
+          <span class="dropbtn"><i class="nb-plus link"></i></span>
+          <div class="dropdown-overlay"></div>
+          <div class="dropdown-arrow-up"></div>
+          <div class="dropdown-content">
+              <nb-action class="link whiteColor" (click)="add('Short')">Short</nb-action>
+              <nb-action class="link whiteColor text-center" (click)="add('Long')">Long</nb-action>
+          </div>
+      </nb-action>-->
+  </nb-card-header>
+  <nb-card-body class="mr-3 mr-md-0">
+
+    <table class="w-100">
+      <thead>
+        <tr>
+          <td class="link" *ngFor="let head of tableHead; let i = index;"
+            [ngStyle]="{'width': i === tableHead.length - 2 ? '180px':''}" (click)="filter(i)">
+            <div class="d-flex justify-content-between">
+              <span class="align-self-center">{{head}}</span>
+              <span class="d-flex flex-column fit align-items-center col-4 p-0">
+                <span class="nb-chevron-up"></span>
+                <span class="nb-chevron-down"></span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <!-- <tbody *ngIf="!tableData">
+        <tr *ngFor="let body of tableData; let i = index" [ngClass]="{'dark-row': i % 2 === 0}">
+          <td>{{ i + 1 }}</td>
+          <td>{{body.tradeId}}</td>
+          <td>{{ body?.pair }}</td>
+          <td>{{ body?.openDate}}</td>
+          <td>{{ body?.closeDate}}</td>
+          <td>{{ body?.position }}</td>
+          <td [ngClass]="{'green': body?.pip > 0, 'red': body?.pip < 0}">{{ body?.pip > 0 && '+' + body?.pip || body?.pip}}</td>
+          <td [ngClass]="{'green': body?.profitLoss > 0, 'red': body?.profitLoss < 0}">
+			      {{ body?.profitLoss > 0 && '+' + body?.profitLoss || body?.profitLoss}}
+          </td>      
+        </tr>
+      </tbody> -->
+      <!-- <tbody *ngIf="!tableData"> -->
+        <tbody *ngIf="!tableData">
+        <tr>
+            <td>1</td>
+            <td>JUNE_00003</td>
+            <td>EURUSD</td>
+            <td>06/16/2020</td>
+            <td>06/16/2020</td>
+            <td>SHORT</td>
+            <td class="green">+90</td>
+            <td>N/A</td>
+          </tr>
+
+        <tr class="dark-row">
+            <td>2</td>
+            <td>JUNE_00004</td>
+            <td>USOIL</td>
+            <td>06/16/2020</td>
+            <td>6/16/2020</td>
+            <td>LONG</td>
+            <td class="green">+120</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>JUNE_00008</td>
+          <td>GBPUSD</td>
+          <td>06/17/2020</td>
+          <td>06/18/2020</td>
+          <td>SHORT</td>
+          <td class="green">+107</td>
+          <td>N/A</td>
+        </tr>
+        <tr class="dark-row">
+          <td>4</td>
+          <td>JUNE_00007</td>
+          <td>AUDUSD</td>
+          <td>06/17/2020</td>
+          <td>06/18/2020</td>
+          <td>SHORT</td>
+          <td class="green">+70</td>
+          <td>N/A</td>
+        </tr>  
+        <tr>
+          <td>5</td>
+          <td>JUNE_00006</td>
+          <td>EURUSD</td>
+          <td>06/17/2020</td>
+          <td>06/18/2020</td>
+          <td>SHORT</td>
+          <td class="green">+33</td>
+          <td>N/A</td>
+        </tr>  
+        <tr class="dark-row">
+          <td>6</td>
+          <td>JUNE_00005</td>
+          <td>XAUUSD</td>
+          <td>06/16/2020</td>
+          <td>06/19/2020</td>
+          <td>LONG</td>
+          <td class="green">+120</td>
+          <td>N/A</td>
+        </tr>   
+        <tr>
+          <td>7</td>
+          <td>JUNE_00009</td>
+          <td>EURUSD</td>
+          <td>06/19/2020</td>
+          <td>06/19/2020</td>
+          <td>SHORT</td>
+          <td class="green">+28</td>
+          <td>N/A</td>
+      </tr>   
+      <tr class="dark-row">
+        <td>8</td>
+        <td>JUNE_00002</td>
+        <td>USDCAD</td>
+        <td>06/16/2020</td>
+        <td>06/19/2020</td>
+        <td>LONG</td>
+        <td class="green">+62</td>
+        <td>N/A</td>
+    </tr>  
+    <tr>
+      <td>9</td>
+      <td>JUNE_00011</td>
+      <td>EURUSD</td>
+      <td>06/22/2020</td>
+      <td>06/22/2020</td>
+      <td>SHORT</td>
+      <td class="red">-47</td>
+      <td>N/A</td>
+  </tr>  
+  <tr class="dark-row">
+    <td>10</td>
+    <td>JUNE_00010</td>
+    <td>AUDUSD</td>
+    <td>06/22/2020</td>
+    <td>06/22/2020</td>
+    <td>SHORT</td>
+    <td class="red">-50</td>
+    <td>N/A</td>
+    </tr> 
+    <tr>
+      <td>11</td>
+      <td>JUNE_00012</td>
+      <td>USDCAD</td>
+      <td>06/22/2020</td>
+      <td>06/22/2020</td>
+      <td>LONG</td>
+      <td class="red">-65</td>
+      <td>N/A</td>
+      </tr> 
+      <tr class="dark-row">
+        <td>12</td>
+        <td>JUNE_00014</td>
+        <td>GBPUSD</td>
+        <td>06/24/2020</td>
+        <td>06/24/2020</td>
+        <td>LONG</td>
+        <td class="red">-55</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>JUNE_00013</td>
+        <td>XAUUSD</td>
+        <td>06/23/2020</td>
+        <td>06/25/2020</td>
+        <td>LONG</td>
+        <td class="green">+110</td>
+        <td>N/A</td>
+      </tr> 
+      <tr class="dark-row">
+        <td>14</td>
+        <td>JUNE_00015</td>
+        <td>CADCHF</td>
+        <td>06/25/2020</td>
+        <td>06/26/2020</td>
+        <td>SELL</td>
+        <td class="green">+39</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>JUNE_00001</td>
+        <td>BTCUSD</td>
+        <td>06/16/2020</td>
+        <td>06/27/2020</td>
+        <td>LONG</td>
+        <td class="red">-557</td>
+        <td>N/A</td>
+        </tr> 
+      </tbody>
+    </table>
+
+  </nb-card-body>
+</nb-card>
+
+<ng-template #deleteDialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header class="d-flex, justify-content-between">Delete Journal Log</nb-card-header>
+    <nb-card-body class="confirm-dialoge">
+      <div class="px-3">
+        <span> Are you sure you want to delete Journal Log</span>
+      </div>
+      <div class="p-6 button-container">
+        <button nbButton outline status="primary" size="xsmall" class="f-w" (click)="ref.close('yes')" tabindex="1"
+          >Delete</button>
+        <button nbButton outline status="danger" size="xsmall" class="f-w" (click)="ref.close('no')">Cancel</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</ng-template>

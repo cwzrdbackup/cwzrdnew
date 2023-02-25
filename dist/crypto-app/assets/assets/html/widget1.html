@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <crypto-widget type="ticker-quotes" template="basic" color="white"
+        assets="BTC~USD,ETH~USD,LTC~USD,DASH~USD,XRP~USD,MIOTA~USD,ETC~USD,BTG~USD,XMR~USD" speed="100" direction="left"
+        pause="true" api="cryptocompare.com" realtime="true" animation="flash"></crypto-widget>
+
+    <script>
+        var premiumCryptocurrencyWidgets = {
+            pluginUrl: '/assets',
+            cryptoCompareApiKey: '9fb652e8-db33-40b8-80fb-866a894d77c4'
+        }
+    </script>
+    <script src="assets/assets/js/dist/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<div>
+  <!-- <div class="summary-container mb-3">
+            <div>
+              <div class="summary-title">Active Trades</div>
+              <div class="summary-subtitle">{{barData.totalInActiveTradesToday}}</div>
+            </div>
+            <div>
+              <div class="summary-title">Trades Last Month</div>
+              <div class="summary-subtitle">{{barData.totalInActiveTradesLastMonth}}</div>
+            </div>
+            <div>
+              <div class="summary-title">Trades Last Week</div>
+              <div class="summary-subtitle">{{barData.totalInActiveTradesLastWeek}}</div>
+            </div>
+            <div>
+              <div class="summary-title">Today</div>
+              <div class="summary-subtitle">{{barData.totalInActiveTradesToday}}</div>
+            </div>
+  </div> -->
+  <div class="summary-container mb-3">
+      <div>
+        <div class="summary-title">Closed Trades</div>
+        <div class="summary-subtitle">15</div>
+      </div>
+      <div>
+        <div class="summary-title">Trades This Month</div>
+        <div class="summary-subtitle">17</div>
+      </div>
+      <div>
+        <div class="summary-title">Trades This Week</div>
+        <div class="summary-subtitle">2</div>
+      </div>
+      <div>
+        <div class="summary-title">Trades Today</div>
+        <div class="summary-subtitle">1</div>
+      </div>
+</div>
+  <button nbTooltip="Displays data on the current trades that have been closed in the group." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+  <!-- <div class="button-wrapper">
+      <nb-select selected="Week" class="first button-width p-0 transparent" (selectedChange)="change($event)">
+              <nb-option value="Week">Week</nb-option>
+              <nb-option value="Month">Month</nb-option>
+              <nb-option value="Year">Year</nb-option>
+      </nb-select>
+  </div> -->
+  <div echarts [options]="chartOption" class="chart"></div>
+  </div>

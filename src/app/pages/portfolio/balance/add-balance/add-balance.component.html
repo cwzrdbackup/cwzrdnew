@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header class="text-center">
+    Add to balance <button nbTooltip="Displays your live portfolio balance. The percent is calculated using the current balance and the closing balance of the last 24 hours." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+  </nb-card-header>
+  <nb-card-body class="d-flex flex-column">
+
+    <nb-select [(selected)]="coinSelection" class="transparent order">
+      <nb-option *ngFor="let obj of marquee" [value]="obj.type">{{obj.type}}</nb-option>
+    </nb-select>
+    <input type="text" placeholder="Purchase Price" class="input mb-3 mt-3" nbInput #PurchasePrice>
+    <input type="text" placeholder="Amount" class="input mb-3 mt-1" nbInput #Amount>
+
+    <button nbButton class="button" (click)="add(PurchasePrice.value, Amount.value)">Add</button>
+  </nb-card-body>
+</nb-card>

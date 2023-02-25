@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+.f-h {
+  height: 100%!important;
+  min-height: 530px;
+}
+.chart {
+	height: 150px;
+	width: 100%;
+	@include media-breakpoint-up(md) {
+		height: 270px;
+	}	
+}
+.second-card-container {
+	height: 250px;
+	@include media-breakpoint-up(md) {
+		height: auto;
+	}	
+}
+
+@media(min-width:320px) and (max-width:480px) {
+
+	.chart {
+		height: 142px !important;
+	}
+}
+
+	@media(min-width:481px) and (max-width:767px) {
+		.chart {
+			height: 190px!important;
+		}
+	}
+
+@media(min-width:768px) and (max-width:1023px) {
+	.chart {
+		height: 251px!important;
+	}
+}
+@media(min-width:637px) and (max-width:767px){
+	.chart {
+		height: 215px!important;
+	}
+}

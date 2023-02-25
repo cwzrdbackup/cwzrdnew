@@ -1,0 +1,51 @@
+<div class="d-flex flex-wrap plus-spacer" style="overflow: auto;" [nbSpinner]="loading">
+
+  <div class="col-12 text-right pb-3">
+    <i class="nb-plus link plus" (click)="addBalance()"></i>
+  </div>
+
+  <div *ngFor="let item of balance.portfolio" class="px-3 col-12 col-md-6">    
+	
+<nb-accordion>
+ <nb-accordion-item class="accordion-row" style="height: fit-content">
+  <nb-accordion-item-header>    
+    <div class="grid">
+      <span class="justify-content-start coin-text">
+        <span class="logo mr-2"><img class="coin-image" src="assets/Coins/{{item.name | lowercase}}.png"
+          appImgFallback="assets/Coins/default.png"
+          /></span>
+        {{ item.name }}                
+      </span> 
+      
+      <span class="justify-content-center">
+        <div class="text-center">
+          <h5 class="m-0 value-text flex-row">
+            <span class="bold-name">${{ item.value | number: '1.2-2'}}</span>
+            <!-- <span class="ml-1">({{item.coin}} {{item.name}})</span>             -->
+          </h5>
+          <p class="m-0 mt-1" style="font-size: 0.7rem;">Holdings value</p>
+        </div>
+      </span>
+
+      <span class="justify-content-end percent-text" 
+      [ngClass]="(item.percent<0)?'red':'green'" 
+      >
+        {{ item.percent}}%
+        <i 
+        [ngClass]="(item.percent<0)?'nb-arrow-dropdown ml-1':'nb-arrow-dropup ml-1'" 
+        ></i>
+      </span>
+    </div>
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>	
+  <div class="balance-accordion">
+    <app-portfolio1m [coin]="item"></app-portfolio1m>
+    <i class="fas fa-trash-alt delete-icon" (click)="deleteCoin(item.name)"></i>
+  </div>
+  </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>	
+	
+  </div>
+
+</div>

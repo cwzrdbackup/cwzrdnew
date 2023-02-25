@@ -1,0 +1,14 @@
+
+	
+	
+	  <div class="p-0 col-12">
+	    <div class="flex">
+	      <div class="col-12 pl-4" id="fc2pc">
+	        <p class="flex-arrow fix-margin" [ngClass]="profitColor" id="pbpc">{{profit | number: '1.2-2'}}% <i [class]="profitArrow"></i></p>
+	      </div>	      
+	    </div>
+	    <div echarts [options]="chartOption" [merge]="dataOptions" class="chart"></div>
+	  </div>
+
+
+ 

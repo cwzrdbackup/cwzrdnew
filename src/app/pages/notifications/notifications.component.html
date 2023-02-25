@@ -1,0 +1,64 @@
+<nb-layout class="layout-container">
+	<nb-layout-header class="flex flexCenter platformHeader">
+		<app-header></app-header>
+	</nb-layout-header>
+
+	<nb-layout-column class="p-0">
+
+		<div class="chapterInformation">
+			<div class="gradientBG"></div>
+			<div class="chapterInfoLeft p-3 p-md-5">
+				<div class="title1 mb-1 mb-md-4">Notifications</div>
+				<div class="title2 mb-2 mb-md-4">Catch up on what you missed</div>
+				<div class="title3 mb-2 mb-md-4">On this page you'll see all the notifications you've received and can visit them at any time to catch up on the activity on the platform.</div>
+				<!-- <div class="title4 mb-3 mb-md-5">Lorem Ipsum</div> -->
+				<!--<div class="watchContainer">Watch</div>-->
+			</div>
+		</div>
+
+		<nb-card class="m-3">
+			<nb-card-header class="notificationsCardHeader">
+				Notifications
+				<div class="checkboxContainer" (click)="readAllNotificationClick()">
+					<a class="header-link">Mark all as read</a>
+				</div>
+			</nb-card-header>
+			<div class="py-3" style="max-width: 100%">
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="flex-vertical mb-2 hover-close" *ngFor="let notification of notifications">
+						<div class="col-11 p-0">
+							<div [className]="'notificationRoundContainer battleofwizards-notification-' + notification.type">
+								<div class="notificationInnerContainer">
+									<div class="flex-vertical">
+										<div class="col-3 text-center padding-right-e">
+											<img class="notificationIcon" src={{notification.image}} />
+										</div>
+										<div class="col-9 padding-left-e">
+											<div class="notificationTitle">
+												{{notification.title}}
+											</div>
+											<div class="notificationDescription">
+												{{notification.message}}
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="notificationTime">
+									{{moment(notification.dateCreated).fromNow()}}
+								</div>
+							</div>
+						</div>
+						<!-- <div class="col-1 closeBtnCenter"><i class="control-icon nb-close"></i></div> -->
+					</div>
+				</div>
+			</div>
+		</nb-card>
+
+
+	</nb-layout-column>
+
+	<nb-layout-footer class="footer-main">
+		&copy; 2021 Powered by&nbsp;<a href="https://wzrdgroup.com/">WZRD Group</a>
+	</nb-layout-footer>
+
+</nb-layout>

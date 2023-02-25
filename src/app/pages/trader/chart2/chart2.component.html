@@ -1,0 +1,40 @@
+<nb-reveal-card>
+  <nb-card-front>
+	<nb-card class="f-h">
+	  <nb-card-header class="p-2 flex">
+	    <nb-select selected="BTC" class="first col-6 col-md-4 p-0 transparent" (selectedChange)="change($event)">
+	      <nb-option value="BTC">BTC</nb-option>
+	      <nb-option value="ETH">ETH</nb-option>
+	      <nb-option value="GAME">GAME</nb-option>
+	      <nb-option value="LBC">LBC</nb-option>
+	    </nb-select>
+	  </nb-card-header>
+	  <nb-card-body class="p-0 chart-card">
+	    <div class="flex pt-1 pb-3">
+	      <div class="col-10 chart2-date coin-price">
+	          <span class="green exo-font">$</span>
+	  		<span class="white exo-font">7,956.90</span>
+	      </div>
+	      <div class="col-12 p-0">
+	        <div class="chart2-percent">
+	          <span class="nb-arrow-dropup green"></span>
+	          <span class="green">4%</span>
+	        </div>	        
+	      </div>
+	    </div>
+	    <div echarts [options]="chartOption" class="chart"></div>
+	  </nb-card-body>
+	</nb-card>
+  </nb-card-front>
+  <nb-card-back>
+  <nb-card class="f-h">
+  <nb-card-header>
+    Comparison
+  </nb-card-header>      
+  <div class="row-container-comparison">
+	  <div class="row-indicator purple">24H % Change</div>	  
+  </div>
+	<app-flipchart2m></app-flipchart2m>	
+</nb-card>
+  </nb-card-back>
+</nb-reveal-card>

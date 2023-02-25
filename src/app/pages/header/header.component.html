@@ -1,0 +1,106 @@
+<div class="flex flexCenter">
+
+	<div routerLink="/dashboard" class="logo-dashboard"></div>
+	<span style="flex: 1 auto;"></span>
+	<nb-actions size="large" *ngIf="isLargeScreen">
+		<nb-action class="header-link whiteColor cap" routerLink="/dashboard"><div class="new-badge">New</div>Dashboard</nb-action>
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/wzrd-contributors"><div class="new-badge">New</div>WZRD Contributors</nb-action> -->
+		<nb-action class="header-link whiteColor cap" routerLink="/course">Course</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/library"><div class="new-badge">New</div>Library</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/examination"><div class="new-badge">New</div>Examinations</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/traders-hub"><div class="new-badge">New</div>Trader's Hub</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/charts">Charts</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/portfolio"><div class="new-badge">New</div>Portfolio</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/trade-tracker"><div class="new-badge">New</div>Trade Tracker</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/journal">Journal</nb-action>
+		<nb-action class="header-link whiteColor cap" routerLink="/position-size-calculator">Calculator</nb-action>
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/trade-tracker"><div class="new-badge" *ngIf="showBadgeTracker">New</div>Trade Tracker</nb-action> -->
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/technicals"><div class="new-badge">New</div>Technicals</nb-action> -->
+		<nb-action class="whiteColor dropdown dropdown-extra" style="cursor: auto !important"><span
+				class="dropbtn pr-0"><div class="new-badge">New</div>Technicals</span>
+			<div class="dropdown-content dropdown-content-extra">
+				<nb-action routerLink="/technicals/cryptocurrency" class="link whiteColor">Cryptocurrency</nb-action>
+				<nb-action routerLink="/technicals/forex" class="link whiteColor">Forex</nb-action>
+			</div>
+			<div class="dropdown-overlay"></div>
+			<div class="dropdown-arrow-up dropdown-arrow-up-extra"></div>
+		</nb-action>
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/WZRD-wednesdays">WZRD Wednesdays</nb-action> -->
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/podcasts">Podcasts</nb-action> -->
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/news">News</nb-action> -->
+		<!--<nb-action class="header-link whiteColor cap">WizMe</nb-action>-->
+		<!-- <nb-action class="header-link whiteColor cap" routerLink="/battle-of-wzrds">Battle of WZRDs</nb-action> -->
+		<!-- <nb-action class="header-link whiteColor cap">WZRD Marketplace</nb-action> -->
+		<!-- <nb-action class="header-link whiteColor cap notification header-link-hover">
+			<app-notifications></app-notifications>
+		</nb-action> -->
+		<nb-action class="whiteColor dropdown" style="cursor: auto !important">
+			<div class="new-badge-name">New</div>
+			<span
+				class="dropbtn">{{name| titlecase}}</span><span><img class="profile-header"
+					src="{{profileImage}}"></span>			
+			<div class="dropdown-content">
+				<nb-action routerLink="/profile" class="link whiteColor">Profile</nb-action>
+				<nb-action routerLink="/settings" class="link whiteColor"><div class="new-badge settings-align">New</div>Settings</nb-action>
+				<nb-action (click)="logout()" class="link whiteColor">Log Out</nb-action>
+			</div>
+			<div class="dropdown-overlay"></div>
+			<div class="dropdown-arrow-up"></div>
+		</nb-action>
+	</nb-actions>
+	<nb-actions size="medium" *ngIf="!isLargeScreen">
+		<nb-action (click)="toogleSidebar()" icon="nb-menu" style="padding: 0;"></nb-action>
+	</nb-actions>
+</div>
+
+<nb-sidebar right fixed tag="right" state="collapsed" *ngIf="!isLargeScreen">
+	<nb-actions size="medium" class="py-2">
+		<nb-action (click)="toogleSidebar()" icon="nb-close" class="p-0"></nb-action>
+	</nb-actions>
+	<nb-list>
+		<nb-list-item class="link whiteColor cap" routerLink="/dashboard"><div class="new-badge">New</div>Dashboard</nb-list-item>
+		
+		<nb-list-item class="link whiteColor cap subMenuHeader" (click)="toggleSubMenu('education')" >Education <span [ngClass]="educationSubMenu ? 'fal fa-angle-up': 'fal fa-angle-down' "></span> </nb-list-item>
+			<!-- <nb-list-item *ngIf="educationSubMenu" class="link whiteColor cap subMenu" routerLink="/wzrd-contributors"><div class="new-badge">New</div>WZRD Contributors</nb-list-item> -->
+			<nb-list-item *ngIf="educationSubMenu" class="link whiteColor cap subMenu" routerLink="/course">Course</nb-list-item>
+			<nb-list-item *ngIf="educationSubMenu" class="link whiteColor cap subMenu" routerLink="/library"><div class="new-badge">New</div>Library</nb-list-item>
+			<nb-list-item *ngIf="educationSubMenu" class="link whiteColor cap subMenu" routerLink="/examination"><div class="new-badge">New</div>Examinations</nb-list-item>
+		
+		<nb-list-item class="link whiteColor cap subMenuHeader" (click)="toggleSubMenu('trader')" >Traders Essentials <span [ngClass]="traderSubMenu ? 'fal fa-angle-up': 'fal fa-angle-down' "></span> </nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/traders-hub"><div class="new-badge">New</div>Trader's Hub</nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/charts">Charts</nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/portfolio"><div class="new-badge">New</div>Portfolio</nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/journal">Journal</nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/trade-tracker"><div class="new-badge">New</div>Trade Tracker</nb-list-item>
+			<nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/position-size-calculator">Calculator</nb-list-item>
+			<!-- <nb-list-item *ngIf="traderSubMenu" class="link whiteColor cap subMenu" routerLink="/trade-tracker"><div class="new-badge" *ngIf="showTradeTracker">New</div>Trade Tracker</nb-list-item> -->
+		
+		<nb-list-item class="link whiteColor cap subMenuHeader" (click)="toggleSubMenu('material')" >Materials <span [ngClass]="materialSubMenu ? 'fal fa-angle-up': 'fal fa-angle-down' "></span> </nb-list-item>
+			<nb-list-item *ngIf="materialSubMenu" class="link whiteColor cap subMenu" routerLink="/technicals"><div class="new-badge">New</div>Technicals</nb-list-item>
+			<!-- <nb-list-item *ngIf="materialSubMenu" class="link whiteColor cap subMenu" routerLink="/WZRD-wednesdays">WZRD Wednesdays</nb-list-item> -->
+			<!-- <nb-list-item *ngIf="materialSubMenu" class="link whiteColor cap subMenu" routerLink="/podcasts">Podcast</nb-list-item> -->
+			<!-- <nb-list-item class="link whiteColor cap" routerLink="/news">News</nb-list-item> -->
+			<!-- <nb-list-item *ngIf="materialSubMenu" class="link whiteColor cap subMenu" routerLink="/news">News</nb-list-item> -->
+
+		<!--<nb-list-item class="link whiteColor cap">WizMe</nb-list-item>-->
+		<!-- <nb-list-item class="link whiteColor cap" routerLink="/battle-of-wzrds">Battle of WZRDs</nb-list-item> -->
+
+		<!-- <nb-list-item class="link whiteColor cap subMenuHeader" (click)="toggleSubMenu('wzrd')" >WZRD Marketplace  <span [ngClass]="wzrdMarketPlaceSubMenu ? 'fal fa-angle-up': 'fal fa-angle-down' "></span> </nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >New</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >Popular</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >Trending</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >News</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >Avatars</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >Headers</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >WizCoins</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >Order History</nb-list-item>
+		<nb-list-item *ngIf="wzrdMarketPlaceSubMenu" class="link whiteColor cap subMenu" >My Account</nb-list-item> -->
+
+		<!-- <nb-list-item class="link whiteColor cap"><a href="https://wzrd.store" target="_blank">WZRD Store</a></nb-list-item> -->
+		<!-- <nb-list-item class="link whiteColor cap"><app-notifications></app-notifications></nb-list-item> -->
+		<nb-list-item class="link whiteColor cap" routerLink="/profile">Profile</nb-list-item>
+		<nb-list-item class="link whiteColor cap" routerLink="/settings"><div class="new-badge">New</div>Settings</nb-list-item>
+		<nb-list-item class="link whiteColor cap" style="margin-bottom: 150px" (click)="logout()">Logout</nb-list-item>
+		<!-- <nb-list-item><span class="usernameBottom">{{name| titlecase}}</span><span><img class="profile-header-bottom" src="./assets/profile/cryptowzrd_logo.png"></span></nb-list-item> -->
+	</nb-list>
+</nb-sidebar>

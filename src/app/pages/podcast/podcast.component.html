@@ -1,0 +1,113 @@
+<nb-layout class="layout-container">
+
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+
+    <nb-layout-column class="p-0">
+
+        <div class="chapterInformation">
+            <div class="gradientBG"></div>
+            <div class="chapterInfoLeft p-3 p-md-5">
+                <div class="title2 mb-2 mb-md-4">WZRD Podcast</div>
+                <div class="title3 mb-2 mb-md-4">{{ tracksCount }} episodes | Podcast | 2020</div>
+                <div class="title4 mb-3 mb-md-5">A weekly podcast series available to stream every Sunday from 8pm. Covering the latest cryptocurrency news,
+                    thought-provoking topics and discussions that challenge the status quo. Bringing the world of crypto and self improvement into every episode.
+                </div>
+                <div class="watchContainer" (click)="playit(0)">Listen</div>
+            </div>
+        </div>
+
+        <div class="grid pt-0">
+
+            <div *ngFor="let cast of state.AllFiles; let i = index" class="px-3" [ngClass]="{'bigItem': i === 0}">
+
+                <span class="podcast-date">{{ formatTime(cast.created_at) }}</span>
+                <nb-card class="mt-2">
+
+                    <nb-card-header>
+                        <div class="flex-vertical">
+                            <div class="podcastHeaderLeft">
+                                <span class="author">Cryptowzrd</span><br>
+                                <span class="music">Episode: {{cast.title.split('Episode ')[1]}}</span>
+                            </div>
+                        </div>
+                    </nb-card-header>
+                    <!-- [id]="'waveform' + i" -->
+                    <!-- <nb-card-body  class="p-0">
+                    </nb-card-body> -->
+
+                    <div class="flex-vertical">
+                        <div class="podcast-left">
+                            <img class="podcast-img" src="./assets/podcast_logo.png"></div>
+                        <nb-card-body class="p-0 waveformcontainer" [id]="'waveform' + i" (click)="configureLoad($event,i)">
+                            <!-- [nbSpinner]="cast.loading" nbSpinnerMessage="" nbSpinnerStatus="success" -->
+                        </nb-card-body>
+                    </div>
+                    <nb-card-footer class="px-3 py-2 d-flex justify-content-between align-items-center">
+                        <div (click)="playit(i)" class="button link">
+                            <i [class]="state?.currentFile?.index===i && state?.playing ? 'nb-square':'nb-play'"></i>
+                        </div>
+                        <span class="text-color-1" style="margin-left: 1.5rem; font-size: 1rem">
+                            {{ state?.currentFile?.index===i && state?.readableCurrentTime ? state?.readableCurrentTime : '00:00:00' }} / {{ millisToMinutesAndSeconds(cast.duration) }}
+                        </span>
+                        <div class="podcastHeaderRight flex-vertical">
+                            <div class="fireEmoji" [id]="'fire' + i" (click)="likePodCast(cast, i)">
+                                <div class="fireEmojiFade" [id]="'fade' + i"></div>
+                            </div>
+                            <span class="podcastLikes">{{cast.likes}}</span>
+                        </div>
+                    </nb-card-footer>
+                    <!-- <nb-card-footer class="px-3 py-2 d-flex justify-content-between align-items-center">
+                      <div (click)="playit(i)" class="button link">
+                        <i [class]="cast?.wave?.isPlaying() ? 'nb-pause':'nb-play'"></i>
+                      </div>
+                      <span>{{ setDuration(cast?.wave?.getDuration()) }}</span>
+                    </nb-card-footer> -->
+
+                </nb-card>
+            </div>
+
+            <!-- <div>
+              <span>Thursday 11 July 2019</span>
+              <nb-card class="mt-2">
+                <nb-card-header>
+                  <span class="author">Author: Author</span><br>
+                  <span class="music">Music: Music</span>
+                </nb-card-header>
+                <nb-card-body class="p-0">
+                  <iframe width="100%" height="128" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;color=0066cc"></iframe>
+                </nb-card-body>
+              </nb-card>
+            </div> -->
+
+        </div>
+
+        <div class="podcastLoadMore-container mt-2" *ngIf="this.state.AllFiles.length < tracksCount">
+            <button class="podcastLoadMore mb-5 mx-auto" status="primary" nbButton (click)="loadMore()">Load More</button>
+        </div>
+
+    </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+
+</nb-layout>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content alert-modal-content">
+            <div class="modal-body text-center">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="pt-5 pb-5">
+                    <div>
+                        {{alertModalMessage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

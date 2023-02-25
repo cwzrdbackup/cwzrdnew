@@ -1,0 +1,36 @@
+.chart {
+    height: 160px;
+  }
+  .card {
+      height: 264px;
+  }
+  
+  .front {
+      font-size: 2rem;
+      color: #d1d1ff;
+  }
+.journal-chart2 {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.caution_images >img{
+  width: 35%;
+  display: inline-block;
+}
+
+.data_box p{
+  width: 80%;
+  display: inline-block;
+}
+.data_box{
+  height: 160px;
+  text-align: center;
+  width: 100%;
+}
+
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}

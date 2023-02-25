@@ -1,0 +1,135 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+  ::ng-deep [nbButton] {
+    padding: 0.75rem 1.75rem;
+    // padding-right: 50px;
+    background-color: #252547;
+  }
+	::ng-deep .primary-tooltip {
+		max-width: 600px;
+	}
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}		
+	}
+	::ng-deep .tab {
+		font-size: 16px;
+		@include media-breakpoint-up(md) {
+			font-size: 1.125rem;
+		}
+	}
+	::ng-deep ul.tabset li{
+		width: 45%;
+		@include media-breakpoint-up(md) {
+			width: 20%;
+		}
+	}
+	::ng-deep nb-tabset .tabset .tab a {
+		padding: 1.25rem 0;
+	}
+}
+
+.f-h {
+  height: 100%!important;
+  min-height: 430px;
+  @include media-breakpoint-up(md) {
+	min-height: 480px;
+  }
+  @include media-breakpoint-up(lg) {
+	min-height: 530px;
+  }
+}
+.button-width {
+  width: 120px;
+  margin-left: auto;
+}
+
+.price-font-size {
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 20px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 20px;
+	}
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+	display: flex;
+    align-items: flex-end;
+	justify-content: flex-end;
+	margin-right: 1.25rem;
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+	width: fit-content;
+    margin-left: auto !important;
+}
+.summary-container {
+	background-color: #252547;
+    border: 1px solid #1b1b38;
+    border-right: none;
+	border-left: none;
+	display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: space-between;
+	padding: 1rem 2rem;
+	@include media-breakpoint-up(md) {
+		padding: 2rem;
+		padding-left: 15% !important;
+		padding-right: 15% !important;
+	}
+	@include media-breakpoint-up(lg) {
+		padding: 2rem;
+		padding-left: 25% !important;
+		padding-right: 25% !important;
+	}
+}
+.summary-title {
+	font-weight: 400;
+	color: #fff;
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		font-size: 1rem;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 12px;
+	}
+}
+.summary-subtitle {
+	font-weight: 900;
+	color: #fff;
+	font-size: 14px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.25rem;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.5rem;
+	}
+}
+
+.message-null {
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+  }

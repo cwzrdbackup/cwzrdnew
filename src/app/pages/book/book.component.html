@@ -1,0 +1,160 @@
+<nb-layout class="layout-container">
+
+
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+    <nb-layout-column class="p-0 bookBg" style="overflow: hidden; display: block">
+        <div class="pt-4 px-3 col-12" *ngIf="!mainLoading && !maximized">
+            <!-- <nb-card *ngIf="bookId===1">
+                <nb-card-body>
+                    <nb-progress-bar [value]="percent" status="success">{{percent}}%</nb-progress-bar>
+                </nb-card-body>
+            </nb-card> -->
+        </div>
+        <!-- <div class="pt-4 px-3 col-12">
+            <nb-card>
+                <nb-card-body *ngIf="isData" style="align-self: center;">
+                    Congratulations you’ve completed this book
+                </nb-card-body>
+            </nb-card>
+        </div> -->
+        <div class="flex mx-auto py-0" [ngClass]="{'col-xl-8 py-3' : !maximized}" style="margin: 0 auto;"
+             *ngIf="!mainLoading">
+            <div [ngClass]="{'maxBookDialog' : maximized}"></div>
+            <nb-card class="f-w book-size book-alignment" [ngClass]="{'maxBook' : maximized}">
+                <nb-card-header class="flex book-header" [ngClass]="{'hideThis' : maximized}">
+                    <div class="col-3 flex-vertical icon-align-first">
+                        <i class="fa fa-list-ul" aria-hidden="true" id="tableContents" (click)="tableView()" *ngIf="bookId === '1'"></i>
+                        <span class="book-arrow-container">
+                            <span class="link mr-2 mr-md-3" (click)="prev()"><i class="nb-arrow-left icon"></i></span>
+                            <span class="link" (click)="goToNext()"><i class="nb-arrow-right icon"></i></span>
+                        </span>
+                    </div>
+                    <div class="col-6 text-center flex-align-center" style="line-height: 40px;">
+                        <input class="input-current-page" nbInput (keydown)="changePage($event)" type="text"
+                               value="{{currentPage}}"/> <span style="margin: 0 8px">of</span> <span>{{totalPages}}</span>
+                    </div>
+                    <div class="col-3 text-right flex-vertical icon-align-last" style="flex-direction: row-reverse;">
+                        <span *ngIf="!maximized" class="link" (click)="maximize()"><i class="fa fa-expand"
+                                                                                      aria-hidden="true"></i></span>
+                        <span *ngIf="maximized" class="link" (click)="maximize()"><i class="fa fa-compress"
+                                                                                     aria-hidden="true"></i></span>
+                    </div>
+                </nb-card-header>
+                <!-- cursor: zoom-in -->
+                <nb-card-body [nbSpinner]="loading && !mainLoading" nbSpinnerMessage="Loading pages. Please wait...."
+                              style="min-height:300px;padding:0;">
+                              <div class="bookContainerLayer"></div>
+                    <div class="tableOfContentsContainer" *ngIf="tableViewed">
+                        <div class="tocInner">
+                            <div class="tocRow" (click)="goToPage(2)">
+                                <p class="left">Introduction...</p>
+                                <p class="right">3</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(6)">
+                                <p class="left">Disclaimer...</p>
+                                <p class="right">7</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(7)">
+                                <p class="left">What is Cryptocurrency...</p>
+                                <p class="right">8</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(13)">
+                                <p class="left">Who Trades the Market...</p>
+                                <p class="right">14</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(16)">
+                                <p class="left">Trading Styles...</p>
+                                <p class="right">17</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(21)">
+                                <p class="left">Trading Routine & Plan...</p>
+                                <p class="right">22</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(33)">
+                                <p class="left">Technical Analysis...</p>
+                                <p class="right">34</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(41)">
+                                <p class="left">Candlestick Formations...</p>
+                                <p class="right">42</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(52)">
+                                <p class="left">Candlestick Patterns...</p>
+                                <p class="right">53</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(58)">
+                                <p class="left">Timeframes...</p>
+                                <p class="right">59</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(66)">
+                                <p class="left">Support & Resistance...</p>
+                                <p class="right">67</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(72)">
+                                <p class="left">Identifying Trends...</p>
+                                <p class="right">73</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(88)">
+                                <p class="left">Fibonacci...</p>
+                                <p class="right">89</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(106)">
+                                <p class="left">Indicators...</p>
+                                <p class="right">107</p>
+                            </div>
+                            <div class="tocRow" (click)="goToPage(121)">
+                                <p class="left">Crypto Graduation...</p>
+                                <p class="right">122</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <img class="col-12 p-0" [ngClass]="{'col-md-6' : !maximized}" id="image1" [src]="images[0]" (load)="doSomething('left')" (error)="doSomething('left')"/>
+                    <img class="col-12 col-md-6 p-0 hideMobilePage" id="image2" [src]="images[1]" (load)="doSomething('right')" (error)="doSomething('right')" />
+
+                </nb-card-body>
+
+                <div class="flex book-header overlayBottom" [ngClass]="{'showThis' : maximized}">
+                    <div class="col-3 flex-vertical pl-0 pl-md-3">
+                        <i class="fa fa-list-ul mr-2 mr-md-3" aria-hidden="true" id="tableContentsM" (click)="tableView()" *ngIf="bookId === '1'"></i>
+                        <span class="book-arrow-container arrow-container-expanded">
+                            <span class="link mr-2 mr-md-3" (click)="prev()"><i class="nb-arrow-left icon"></i></span>
+                            <span class="link" (click)="goToNext()"><i class="nb-arrow-right icon"></i></span>
+                        </span>
+                    </div>
+                    <div class="col-6 text-center" style="line-height: 40px;">
+                        <input class="input-current-page" nbInput (keydown)="changePage($event)" type="text"
+                               value="{{currentPage}}"/> of {{totalPages}}
+                    </div>
+                    <div class="col-3 text-right flex-vertical pr-0 p3-md-3" style="flex-direction: row-reverse;">
+                        <span *ngIf="!maximized" class="link" (click)="maximize()"><i class="fa fa-expand" aria-hidden="true"></i></span>
+                        <span *ngIf="maximized" class="link" (click)="maximize()"><i class="fa fa-compress" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+
+            </nb-card>
+        </div>
+    </nb-layout-column>
+    <nb-layout-footer class="footer-main">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+</nb-layout>
+<div class="modal fade" id="completedBook" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <button (click)="showCertificate()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="pt-5 pb-5">
+                    <h4>Congratulations!</h4>
+                    <div>
+                        You’ve completed this book
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

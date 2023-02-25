@@ -1,0 +1,8 @@
+<div class="p-3" style="height: calc(100vh - 210px)">
+
+    <nb-card class="f-h m-0" [nbSpinner]="loading">      
+        <div class="tooltip-align"><button nbTooltip="The line chart displays the recorded balance of your portfolio at the end of each day for the past 30 days." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+      <div echarts [options]="chartOption" class="chart"></div>
+    </nb-card>
+  
+  </div>

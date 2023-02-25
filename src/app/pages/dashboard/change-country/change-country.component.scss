@@ -1,0 +1,45 @@
+.profile-image {
+  margin: auto;
+  height: 120px;
+  width: 120px;
+  // border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+.profile-image:active {
+  opacity: 0.7;
+  transform: scale(0.8);
+}
+
+.selected {
+  opacity: 0.7;
+  transform: scale(0.8);
+}
+.avatar-spacer {
+	margin-bottom: 30px;
+}
+.avatar-spacer:last-child {
+	margin-bottom: 0;
+}
+.float-btn {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.center-items {
+  align-items: center;
+}
+nb-select button {
+  max-width: unset !important;
+}
+nb-card-body {
+  min-width: 247px;
+}
+.location-select {
+  width: 100%;
+}

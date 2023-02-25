@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <crypto-widget type="table-trades" template="basic" color="default" assets="BTC~USD" fields="name,type,price,market,trade_date_ago" limit="10" api="cryptocompare.com" realtime="true"></crypto-widget>
+
+    <script>
+        var premiumCryptocurrencyWidgets = {
+            pluginUrl: '/assets',
+            cryptoComareApiKey: '9fb652e8-db33-40b8-80fb-866a894d77c4'
+        }
+    </script>
+    <script src="assets/assets/js/dist/app.js"></script>
+</body>
+
+</html>

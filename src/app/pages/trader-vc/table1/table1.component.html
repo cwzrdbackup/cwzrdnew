@@ -1,0 +1,57 @@
+<nb-card class="f-h" style="overflow: hidden;">
+  <nb-card-header class="p-2">
+    <div class="flex" style="justify-content: space-between; align-items: center;">
+
+      <div class="col-6">
+        Live Trades
+      </div>
+
+      <nb-select selected="BTC" class="button-width p-0 text-right transparent">
+        <nb-option value="BTC">BTC</nb-option>
+        <nb-option value="ETH">XRP</nb-option>
+        <nb-option value="GAME">ETH</nb-option>
+        <nb-option value="LBC">LTC</nb-option>
+      </nb-select>
+    </div>
+
+  </nb-card-header>
+  <nb-card-body id="table-live-trades" class="p-1 p-md-3">    
+  
+  <div class="flex py-3 flex-row" *ngFor="let row of data1">
+  <!-- <span class="width-spacer"></span> -->
+	<!-- <span class="col-1 p-1 p-md-2"></span> -->
+  <!-- <span class="col-2 p-1 p-md-2 flex-vertical"><span class="coinImage"><img class="coinImg" src="../../../assets/Bitcoin.svg"/></span>{{ row.coin }}</span>
+  <span class="col-2 p-1 p-md-2" [ngClass]="{'green': row.bs === 'Buy', 'red': row.bs !== 'Buy' }">
+    <span [ngClass]="{'nb-arrow-dropup': row.bs === 'Buy', 'nb-arrow-dropdown': row.bs !== 'Buy' }"></span>
+    <span>{{ row.bs }}</span>
+  </span>	
+    <span class="col-2 p-1 p-md-2">${{ row.value }}</span>
+	<span class="col-2 p-1 p-md-2">{{ row.market }}</span>
+    <span class="col-33">a few seconds ago</span> -->
+  <!-- <span class="col-1 p-1 p-md-2"></span> -->
+  <!-- <span class="width-spacer"></span> -->
+
+  <span class="col-19 flex-vertical" style="line-height: 0;"><span class="coinImage"><img class="coinImg" src="../../../assets/Bitcoin.svg"/></span><span class="row-coin">{{ row.coin }}</span></span>
+  <span class="col-19" [ngClass]="{'green': row.bs === 'Buy', 'red': row.bs !== 'Buy' }">
+    <span [ngClass]="{'nb-arrow-dropup': row.bs === 'Buy', 'nb-arrow-dropdown': row.bs !== 'Buy' }"></span>
+    <span>{{ row.bs }}</span>
+  </span>	
+    <span class="col-19">${{ row.value }}</span>
+	<span class="col-19">{{ row.market }}</span>
+    <span class="col-24">a few seconds ago</span>
+  </div>
+  <!-- 
+    <div class="flex py-3" *ngFor="let row of btcP">
+      <span class="col-3">{{ row.coin }}</span>
+      <span class="col-3" [ngClass]="{'green': row.bs === 'Buy', 'red': row.bs !== 'Buy' }">
+        <span [ngClass]="{'nb-arrow-dropup': row.bs === 'Buy', 'nb-arrow-dropdown': row.bs !== 'Buy' }"></span>
+        <span>{{ row.bs }}</span>
+      </span>
+      <span class="col-3">${{ row.value }}</span>
+      <span class="col-3">a few seconds ago</span>
+    </div>
+	-->
+    
+
+  </nb-card-body>
+</nb-card>

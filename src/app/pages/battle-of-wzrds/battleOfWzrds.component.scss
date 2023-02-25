@@ -1,0 +1,227 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	::ng-deep nb-layout {
+		.scrollable-container {
+		  .layout {       
+			  background: #0d0b23;			
+		  }
+		}
+	}
+	::ng-deep .flexCenter {
+		background: transparent !important;
+	}
+	::ng-deep nb-sidebar {
+		box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.6) !important;
+	}
+	::ng-deep nb-sidebar .main-container {
+		background-color: #020209 !important;
+	}
+	::ng-deep nb-list-item {
+		border-bottom: 1px solid #342e73 !important;
+	}
+	::ng-deep .dropdown-content {
+		background-color: #020209 !important;
+		border: 2px solid #342e73 !important;
+	}
+	::ng-deep .logo-dashboard {
+		background: url(https://cdn.shopify.com/s/files/1/0270/7842/6702/files/battle_of_wzrds_logo_homepage.png?5704) !important;
+		background-size: contain !important;
+    	background-repeat: no-repeat !important;
+    	background-position: center !important;
+	}
+	::ng-deep .dropdown-content .link {
+		border-bottom: 1px solid #342e73 !important;
+	}
+	::ng-deep nb-actions nb-action {
+		border-left: 1px solid #342e73 !important 
+	}
+	::ng-deep .dropdown-arrow-up {
+		border-bottom: 10px solid #342e73 !important;
+	}
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: fit-content;
+  grid-auto-flow: dense;
+  //   div {
+  //     min-height: fit-content;
+  //   }
+}
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+  .bigItem {
+    grid-column: span 3; /* Spans two columns */
+  }
+}
+
+@media (min-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+	max-width: 80%;
+	margin: 0 auto;
+  }
+  .bigItem {
+    grid-column: span 3; /* Spans two columns */
+  }
+}
+.author {
+  font-size: 1.2rem;
+}
+.music {
+  font-size: 1rem;
+}
+.button {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2f296a;
+}
+.waveformcontainer {
+	//border-left: 2px solid #74ff91;
+	//margin-left: 40px;
+}
+.podcast-img {
+	height: 128px;
+}
+.podcast-left {
+	width: 160px;
+	text-align: center;
+}
+.img-resource {
+	width: 100%;
+	padding: 1.5rem;
+}
+.bg .large-header {
+	background-image: url('https://d308fakbqebk7c.cloudfront.net/bg.svg');
+	background-position: center bottom;
+}
+
+
+
+.containerBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.BgInner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.content {
+	width: 100%;
+	height: 100%;	
+}
+.large-header {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+.transparentHeader {
+	background: transparent !important;
+	z-index: 999999;
+}
+.layout nb-layout-header nav {
+	background: transparent !important;
+}
+.titleImg {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 300px;
+	z-index: 999999;
+	@include media-breakpoint-up(md) {
+		width: 450px;
+	}
+}
+.comingSoon {
+	width: 300px;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 999999;
+	position: absolute;
+}
+.comingSoon img {
+	width: 100%;
+}
+.battleVideoContainer {
+	width: 100%;
+	z-index: 99999;
+	/* centering */
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);  
+}
+.battleVideo {
+	width: 320px;
+	height: 180px;
+	@include media-breakpoint-up(md) {
+		width: 640px;
+		height: 360px;
+	}
+}

@@ -1,0 +1,12 @@
+.chart {
+    height: calc(100% - 120px) !important;
+  }
+  .chart > div,
+  .chart canvas {
+    height: 100% !important;
+  }
+  .info {
+    padding: 16px 16px 8px;
+    border-radius: 8px;
+    background: #914fef;
+  }

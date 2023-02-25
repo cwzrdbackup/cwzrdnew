@@ -1,0 +1,103 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	thead td {
+		background-color: nb-theme(notes-header);	  
+	}
+	.dark-row {
+	  background-color: nb-theme(page-bg);
+	}
+	td {
+	  border-right: 2px solid nb-theme(card-color);
+	  color: nb-theme(shade-white-1);
+	}
+	.nb-chevron-up,
+	.nb-chevron-down {
+		color: nb-theme(card-color);
+	}
+	.default-view-pie {
+		background-color: nb-theme(trader-chart-side);
+	}
+	::ng-deep nb-card {
+			nb-select {
+				.btn-primary {
+					font-size: 12px;
+					@include media-breakpoint-up(lg) {
+						font-size: 14px;
+					}
+				}
+			}
+	}
+}
+
+.f-h {
+  height: calc(100%);
+}
+table {
+  min-width: 100%;
+  min-height: 100%;
+  td {
+    padding: 8px;
+    padding-left: 16px;
+    min-width: fit-content;
+  }
+}
+.fit {
+  max-width: fit-content;
+}
+.table2-img {
+	width: 25px;
+	display: inline-block;
+}
+.table-coin-name {
+	font-weight: 900;
+}
+.table-coin-symbol {
+	display: block;
+}
+.table2-img {
+	margin-right: 10px;
+}
+.link:first-child {
+	border-top-left-radius: 8px;	
+}
+.link:nth-child(8n + 0) {
+	border-top-right-radius: 8px;	
+}
+.table-overflow {
+	width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.min-120 {
+	min-width: 120px !important;
+}
+.min-100 {
+	min-width: 100px !important;
+}
+.link:last-child {
+	border-top-right-radius: 8px;
+}
+.table-content {
+	font-size: 12px;
+	@include media-breakpoint-up(lg) {
+		font-size: 14px;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 16px;
+	}
+}
+.font-p-select {
+	font-size: 12px;
+}
+.min-100 p {
+	margin-bottom: 0;
+}

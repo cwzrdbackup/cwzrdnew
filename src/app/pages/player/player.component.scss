@@ -1,0 +1,275 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+@import '~@nebular/theme/styles/themes/armyCamo';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	.volumeControllerPlayer {
+		background: nb-theme(bg-color-tabset);
+	}
+	.podcastPlayerBody {
+		background: nb-theme(card-color);
+	}
+	input[type="range"] {
+		background: nb-theme(circle-bg);
+	}
+	input[type="range"]::-webkit-slider-thumb {
+		background: nb-theme(bg-color-tabset);
+	}
+	.volumeControlContainer {
+		background: nb-theme(card-color);
+		border: 1px solid nb-theme(circle-bg);
+	}
+	.podcastPlayerBody {
+		background-color: nb-theme(notification-header);
+	}
+
+}
+
+input[type="range"] {
+//    display: block;
+    -webkit-appearance: none;
+//    width: 100px;
+    height: 2px;
+    margin: 0 auto;
+    outline: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  ​ input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #e74c3c;
+  }
+  input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.25);
+  }
+
+  .podcastImg {
+	  width: 40px;
+  }
+.podcastPlayerBody {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow: visible;
+	justify-content: center;
+    margin-bottom: -1px;
+    padding: 0;
+}
+.soundCategory {
+	//margin-bottom: 2px;
+	margin-bottom: 0 !important;
+	font-size: 8px;
+	color: nb-theme(light-text-2);
+	font-weight: 500;
+	display: none;
+	@include media-breakpoint-up(md) {
+		font-size: 12px;
+		display: block;
+	}
+}
+.timeAndLocationPlayerContainer {
+	width: 960px;
+	@include media-breakpoint-up(md) {
+		//width: 750px;
+		width: 50%;
+	}
+	@include media-breakpoint-up(lg) {
+		//width: 960px;
+		width: 50%;
+	}
+}
+.podcastTitle {
+	font-weight: 500;
+	font-size: 8px;
+	color: #fff;
+	@include media-breakpoint-up(md) {
+		font-size: 12px;
+	}
+}
+.timeFont {
+	color: #fff;
+}
+.playerVolumeControllerContainer {
+	position: relative;
+}
+.playerControllerButtonsContainer button fa{
+	color: #fff;
+	background: transparent;
+}
+.playerControllerButtonsContainer {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	width: 195px;
+	text-align: center;
+	@include media-breakpoint-up(md) {
+		font-size: 12px;
+		width: 195px;
+	}
+}
+.playerBar {
+	width: 100%;
+	//min-width: 500px;
+	@include media-breakpoint-up(md) {
+		width: calc(100% - 195px);
+	}
+}
+.volumeControl {
+	    height: 5px;
+		width: 100px;
+}
+.playerVolumeControllerContainer:hover ~ .volumeControlContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.playerVolumeControllerContainer:hover > .volumeControlContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.volumeControlContainer {
+	width: 110px;
+	height: 20px;
+
+	transform: rotate(270deg);
+	display: none;
+	position: absolute;
+	/* right: 0; */
+	/* bottom: 78px; */
+	left: -42px;
+	bottom: 85px;
+	z-index: 9999999;
+	@include media-breakpoint-up(md) {
+		left: -37px;
+	}
+
+}
+.fa-pause, .fa-backward, .fa-forward, .fa-volume-up, .fa-stop {
+	font-size: 12px;
+	color: #fff;
+}
+.timeFont {
+	font-size: 12px;
+	font-weight: 500;
+}
+.playerControllerButtonsContainer button, .playerVolumeControllerContainer button {
+	background: transparent !important;
+	border: none !important;
+}
+.fa-volume-up {
+	padding: 20px 0;
+}
+.volumeControlContainer:hover {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.fa-backward, .fa-play, .fa-pause-circle, .fa-forward, .fa-volume-up, .fa-mute, .fa-stop-circle {
+	color: #fff;
+	font-weight: 300;
+	font-size: 12px;
+}
+.fa-backward, .fa-stop-circle, .fa-forward, .fa-volume-up, .fa-pause, {
+	font-size: 12px;
+	line-height: 0;
+	@include media-breakpoint-up(md) {
+		font-size: 24px;
+	}
+}
+.fa-play {
+	font-size: 11px;
+	line-height: 0;
+	@include media-breakpoint-up(md) {
+		font-size: 22px;
+	}
+}	
+.playerControllerButtonsContainer button {
+	line-height: 0;
+	height: 30px;
+}
+.adjustBg {
+	background: transparent;
+	height: 50px;
+}
+.podcastPlayerBody {
+	border-radius: 0px;
+//	background: rgba(61,55,128,.6);
+}
+// .footer-player i.fal.fa-play, .footer-player i.fal.fa-pause {
+//   background-color: #2f2879;
+//   font-size: 18px;
+//   vertical-align: middle;
+//   border-color: #fff;
+//   color: #fff;
+//   display: inline-block;
+//   border-radius: 60px;
+//   box-shadow: 0 0 2px #2fff8d;
+//   padding: 0.5em 0.5em 0.5em 0.6em;
+// }
+/*.footer-player i.fal.fa-play {
+  font-size: 30px;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0 0 2px #888;
+  padding: 0.5em 0.6em;
+}
+.footer-player i.fal.fa-pause-circle {
+  font-size: 30px;
+  vertical-align: middle;
+}*/
+
+.space-right {
+	margin-right: 5px;	
+	@include media-breakpoint-up(md) {
+		margin-right: 20px;
+	}
+}

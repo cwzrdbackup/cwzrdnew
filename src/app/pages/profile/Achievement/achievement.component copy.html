@@ -1,0 +1,133 @@
+<nb-layout class="layout-container battleBookBg">
+
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header-achievement></app-header-achievement>
+  </nb-layout-header>
+  <nb-layout-column class="p-0" style="overflow: hidden;">
+    <!-- <div class="pt-4 px-3 col-12">
+      <nb-card>
+        <nb-card-body>
+          <nb-progress-bar [value]="totalAchievements" status="success">{{totalAchievements}}%</nb-progress-bar>
+        </nb-card-body>
+      </nb-card>
+    </div> -->
+    <div class="flex mx-auto py-0" [ngClass]="{'col-xl-8 py-3' : !maximized}" style="margin: 0 auto;">
+      <nb-card class="f-w book-size book-alignment" [ngClass]="{'maxBook' : maximized}" style="box-shadow: none; background: transparent;">
+        <nb-card-header class="flex book-header achievementHeaderBg" [ngClass]="{'hideThis' : maximized}">
+                    <div class="col-2 flex-vertical icon-align-first">                        
+                        <span class="book-arrow-container">
+                            <span class="link" (click)="navigationPrev()" *ngIf="pageNo !== -1"><i
+                              class="nb-arrow-left icon"></i></span>
+                            <span class="link" (click)="navigationNext()" *ngIf="pageNo !== achievementsArr.length -1"><i
+                              class="nb-arrow-right icon"></i></span>
+                        </span>
+                    </div>
+                    <div class="col-8 p-0 text-center flex-align-center rank-header-text">
+                        CURRENT RANK: <img class="achievement-rank" src="{{ rankImg.rankTitle }}"/>
+                    </div>
+                    <div class="col-2 text-right flex-vertical icon-align-last" style="flex-direction: row-reverse;">
+                        <span *ngIf="!maximized" class="link" (click)="maximize()"><i class="fa fa-expand"
+                                                                                      aria-hidden="true"></i></span>
+                        <span *ngIf="maximized" class="link" (click)="maximize()"><i class="fa fa-compress"
+                                                                                     aria-hidden="true"></i></span>
+                    </div>
+          </nb-card-header>
+          <nb-card-body style="min-height:300px;padding:0;">
+          <div *ngIf="pageNo == -1">
+            <div class="row no-gutters">
+              <div class="col-6 bdr book-page">
+                <img src="https://d308fakbqebk7c.cloudfront.net/battle_book/pages/cover.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="col-6 bdr book-page">
+                <img src="https://d308fakbqebk7c.cloudfront.net/battle_book/pages/intro.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let achievementsPage of achievementsArr; let i = index">
+            <div class="row no-gutters" *ngIf="pageNo == i" style="overflow: hidden;">
+              <div class="col-6 bdr book-page" *ngFor="let singlePage of achievementsPage"
+                [ngStyle]="{'background-image':'url(https://d308fakbqebk7c.cloudfront.net/battle_book/pages/achievements_'+singlePage.bgImage+')'}">
+                <div class="row text-center">
+                  <div class="col-6" *ngFor="let achievement of singlePage; let position=index">
+                   <div [ngStyle]="setRandomStyle(position)">
+                      <img [src]="'https://d308fakbqebk7c.cloudfront.net/battle_book/stickers/'+achievement.image" data-toggle="modal"
+                      data-target="#exampleModal" (click)="achievementDetail(achievement)"
+                      [class.uncomplete]="achievement.isDone === 0" class="img-fluid stickerImg" alt="">
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+
+        <div class="flex book-header overlayBottom" [ngClass]="{'showThis' : maximized}">
+                    <div class="col-3 flex-vertical">                        
+                        <span class="book-arrow-container">
+                            <span class="link" (click)="navigationPrev()"><i class="nb-arrow-left icon"></i></span>
+                            <span class="link" (click)="navigationNext()"><i class="nb-arrow-right icon"></i></span>
+                        </span>
+                    </div>
+                    <div class="col-6 text-center" style="line-height: 40px;">                        
+                    </div>
+                    <div class="col-3 text-right flex-vertical" style="flex-direction: row-reverse;">
+                        <span *ngIf="!maximized" class="link" (click)="maximize()"><i class="fa fa-expand" aria-hidden="true"></i></span>
+                        <span *ngIf="maximized" class="link" (click)="maximize()"><i class="fa fa-compress" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+
+      </nb-card>
+    </div>
+  </nb-layout-column>
+  <nb-layout-footer class="footer-main">
+    &copy; 2020 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+</nb-layout>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <span aria-hidden="true" data-dismiss="modal" class="modal-close-btn">&times;</span>
+        <div class="d-flex justify-content-between align-items-center w-100 pt-2">
+          <div class="col-2 text-left">
+            <span class="link text-white" *ngIf="achievementDetailId !==1" (click)="achievementDetailnavigate('prev')"><i
+                class="nb-arrow-left icon"></i></span>
+          </div>
+          <div class="col">
+            <h5 class="modal-title" id="exampleModalLabel">Battle Point {{achievementDetailObj?.id+'/100'}}</h5>
+          </div>
+          <div class="col-2 text-right">
+            <span class="link text-white" *ngIf="achievementDetailId !==100"
+              (click)="achievementDetailnavigate('next')"><i class="nb-arrow-right icon"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="text-center text-white mt-4">
+          <span class="d-block text-green text-uppercase" style="font-weight: 700">{{achievementDetailObj?.achievement}}</span>
+          <span class="d-block text-uppercase" style="font-weight: 400;">{{achievementDetailObj?.requirement}}</span>
+          <span
+            class="d-block text-green mt-4">{{achievementDetailObj?.isDone == 1 ? "Completed" : "Incomplete"}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content alert-modal-content">
+          <div class="modal-body text-center">
+              <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="pt-5 pb-5">
+                  <div>
+                      {{alertModalMessage}}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

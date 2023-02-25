@@ -1,0 +1,139 @@
+<nb-layout class="layout-container">
+
+	<nb-layout-header class="flex flexCenter platformHeader">
+		<app-header></app-header>
+	</nb-layout-header>
+
+	<nb-layout-column  class="p-0">
+
+		<div class="chapterInformation">
+			<div class="gradientBG"></div>
+			<div class="chapterInfoLeft p-3 p-md-5">
+				<div class="title2 mb-2 mb-md-4">Technical Articles</div>
+				<div *ngIf="!loading" class="title3 mb-2 mb-md-4">{{data.length}} Articles | Cryptocurrency Reports | 2021</div>
+				<div class="title4 mb-3 mb-md-5">Technical articles provide another source of daily information in an
+					easily-digestible manner. The articles consist of annotated charts with the trade setups and
+					structure to accompany them. Focusing on these write-ups will massively aid your intra-day trading
+					and trend recognition.</div>
+				<!--<div class="watchContainer img-resource0">Read</div>-->
+			</div>
+		</div>
+
+		<div class="gridContainer-library pt-0">
+			<div class="buttonSelectContainer py-3 py-md-2 py-lg-0">
+				<nb-select selected="ALL" class="button-width p-0 text-right transparent" (selectedChange)="changeShowing($event)">
+					<nb-option class="text-center" value="ALL">ALL</nb-option>
+					<nb-option class="text-center" value="BTC">BTC</nb-option>
+					<nb-option class="text-center" value="XRP">XRP</nb-option>
+					<nb-option class="text-center" value="ETH">ETH</nb-option>
+					<nb-option class="text-center" value="LTC">LTC</nb-option>
+				</nb-select>
+			</div>
+			<div class="grid-library">
+			  <div *ngFor="let cast of showCurrentCoin; let i = index">
+				  <div class="flex-vertical pos-relative">
+					<nb-card-body class="p-0 new-badge">
+					<!-- <nb-card-body class="p-0" [ngClass]="{'new-badge' : cast.isNew}"> -->
+						<a href="https://d308fakbqebk7c.cloudfront.net/{{cast.cover_page}}"
+						(click)="previewImage($event,'https://d308fakbqebk7c.cloudfront.net/'+cast.cover_page)"
+						target="_blank">
+						<img class="img-resource img-responsive" src="https://d308fakbqebk7c.cloudfront.net/{{cast.cover_page}}" />
+						<!-- <a href="{{baseURL}}/{{cast.cover_page}}"
+						(click)="previewImage($event,baseURL+'/'+cast.cover_page)"
+						target="_blank">
+						<img class="img-resource img-responsive" src="{{baseURL}}/{{cast.thumbnail}}" /> -->
+						</a>
+					</nb-card-body>
+					</div>          
+			  </div>
+			</div>
+		</div>
+
+		<!-- <div class="container slider-pw adjustWidthCarousel hideMobile">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
+				<ol class="carousel-indicators">
+					
+					<li *ngFor="let slideData of chunkedData, let i = index"  data-target="#carousel-example-generic" [attr.data-slide-to]="i" [ngClass]="{active: i == 0}"></li>					
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					<div class="carousel-item" *ngFor="let slideData of chunkedData, let i = index" [ngClass]="{active: i == 0, 'first-c': i == 0, 'last-c': i == chunkedData.length - 1}">
+						<div class="gridContainer pt-5">
+							<div class="grid">
+
+								<div *ngFor="let cast of slideData; let j = index" class="px-3" >
+									<div class="flex-vertical" [ngClass]="{'d-none': slideData[j].hidden }">
+										<nb-card-body class="p-0" >
+											<a href="{{baseURL}}/{{cast.cover_page}}"
+											(click)="previewImage($event,baseURL+'/'+cast.cover_page)"
+											target="_blank">
+											<img class="img-resource img-responsive" src="{{baseURL}}/{{cast.thumbnail}}" />
+											</a>
+										</nb-card-body>
+									</div>
+								</div>
+								
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev d-none" href="#carousel-example-generic" role="button"
+					data-slide="prev">
+					<i class="nb-arrow-left"></i>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next d-none" href="#carousel-example-generic" role="button"
+					data-slide="next">
+					<i class="nb-arrow-right"></i>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div> -->
+
+		
+		<!-- <div class="container slider-pw adjustWidthCarousel hideDesktop">
+				<div id="carousel-example-generic-m" class="carousel slide" data-ride="carousel" >
+					<ol class="carousel-indicators">
+						<li *ngFor="let slideData of chunkedData, let i = index"  data-target="#carousel-example-generic-m" [attr.data-slide-to]="i" [ngClass]="{active: i == 0}"></li>
+					</ol>				
+				<div class="carousel-inner" role="listbox">
+						<div class="carousel-item" *ngFor="let slideData of chunkedData, let i = index" [ngClass]="{active: i == 0, 'first-c': i == 0}">
+							<div class="gridContainer pt-5">
+								<div class="grid">
+	
+									<div *ngFor="let cast of slideData; let j = index" class="px-3" >
+										<div class="flex-vertical" [ngClass]="{'d-none': slideData[j].hidden }">
+											<nb-card-body class="p-0" >
+												<a href="{{baseURL}}/{{cast.cover_page}}"
+												(click)="previewImage($event,baseURL+'/'+cast.cover_page)"
+												target="_blank">
+												<img class="img-resource img-responsive" src="{{baseURL}}/{{cast.thumbnail}}" />
+												</a>
+											</nb-card-body>
+										</div>
+									</div>								
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<a class="carousel-control-prev d-none" href="#carousel-example-generic-m" role="button"
+						data-slide="prev">
+						<i class="nb-arrow-left"></i>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next d-none" href="#carousel-example-generic-m" role="button"
+						data-slide="next">
+						<i class="nb-arrow-right"></i>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div> -->
+	
+	</nb-layout-column>
+
+	<nb-layout-footer class="footer-main">
+		&copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+	</nb-layout-footer>
+
+</nb-layout>

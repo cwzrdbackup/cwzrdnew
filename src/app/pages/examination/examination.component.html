@@ -1,0 +1,52 @@
+<nb-layout class="layout-container">
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+    <nb-layout-column class="p-0">
+
+        <div class="chapterInformation">
+            <div class="gradientBG"></div>
+            <div class="chapterInfoLeft p-3 p-md-4 p-lg-5">
+                <div class="title2 mb-2 mb-md-3 mb-lg-4">Examinations</div>
+                <div class="title3 mb-2 mb-md-3 mb-lg-4">{{ examTotal }} exams</div>
+                <div class="title4 mb-3 mb-md-4 mb-lg-5">Squeeze in some extra-curricular activities with 450+ exam questions on everything related to crypto. The questions cover
+                    a large variety of topics that you’ll find within the book and video segments of the course, allowing a fun combination of examinations between your
+                    periods of learning.
+                </div>
+                <div *ngIf="_lastExamId" class="watchContainer" [routerLink]="'/examination/' + _lastExamId">Complete now</div>
+                <div *ngIf="!_lastExamId" class="watchContainer">Complete now</div>
+            </div>
+            <div class="chapterInfoRight">
+                <div class="progressAbsolute">
+                    <nb-progress-bar [value]="_percent" class="progressBar">
+                        <div class="percentageNumber" [ngClass]="{'percentUnderTen' : _percent < 10}">
+                            {{_percent | number:'1.0-0'}}%
+                        </div>
+                    </nb-progress-bar>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-3 px-md-5">
+            <div class="flex" style="margin: 0 -16px 20px -16px">
+                <div *ngFor="let exam of _exams" class="col-12 col-md-4 col-lg-3 px-3 pt-3">
+                    <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+                        <i *ngIf="exam?.isPadLock" class="fa fa-lock overlayLock"></i>
+                        <div class="Completed" *ngIf="exam.status==='Completed';">Complete</div>
+                        <div class="Partial" *ngIf="exam.status!='Completed';">Incomplete</div>
+                        <img *ngIf="!exam?.isPadLock" src="https://d308fakbqebk7c.cloudfront.net/examinations/Exam{{exam.id}}.png" alt="image" class="card-img" [routerLink]="'/examination/' + exam.id">
+                        <img *ngIf="exam?.isPadLock" src="https://d308fakbqebk7c.cloudfront.net/examinations/Exam{{exam.id}}.png" alt="image" class="card-img">
+                        <div class="bottomContainer">
+                            <div class="lessonTitle">{{exam.name}}</div>
+                        </div>
+                    </nb-card>
+                </div>
+            </div>
+        </div>
+    </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+
+</nb-layout>

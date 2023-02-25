@@ -1,0 +1,184 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	::ng-deep {
+		nb-tabset .tabset {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+		.primary-tooltip {
+			max-width: 600px;
+		}
+		nb-select button {
+			max-width: unset !important;
+			text-align: center;
+		}
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+		}
+		nb-card-header {
+			border-bottom: 1px solid nb-theme(line-color);	
+		}
+		nb-accordion nb-accordion-item-header, nb-accordion-item-body {
+			background: nb-theme(card-color);
+		}
+		nb-accordion nb-accordion-item-header {
+			border-bottom-color: nb-theme(line-color);
+		}
+		nb-accordion nb-accordion-item-header .delete-icon {
+			position: absolute;
+			top: 0;
+			right: 20px;
+			margin-left: 20px;
+		}
+	}
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: inline-block; 
+}
+.coin-image {
+	width: 40px;
+	height: 40px;
+}
+.grid {
+    display: grid;
+	width: calc(100% - 30px);
+    grid-template-columns: 25% 50% 25%;
+    span {
+        display: flex;
+        align-items: center;
+    }
+}
+.plus {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.nb-arrow-dropup, .nb-arrow-dropdown {
+	position: relative !important;
+	right: 0 !important;
+}
+.accordion-row {
+	margin-bottom: 1.5rem;
+}
+.nb-theme-cosmic nb-accordion nb-accordion-item-header, .item-body, .ng-tns-c11-1.ng-trigger.ng-trigger-accordionItemBody {
+	padding: 1.25rem 0 0 0;
+}
+[nb-accordion-item-body] .item-body {
+	padding: 0;
+}
+.nb-theme-cosmic nb-tabset .tabset .tab a::before {
+	background: #00d977 !important;
+}
+[_nghost-c18] .tabset[_ngcontent-c18] .tab[_ngcontent-c18] a[_ngcontent-c18]::before {
+	max-width: 300px;
+}
+[_nghost-c21] .tabset[_ngcontent-c21] .tab.active[_ngcontent-c21] a[_ngcontent-c21]::before {
+	max-width: 300px;
+}
+ul.tabset li {
+	max-width: 300px !important;	
+}
+.tabset li {
+	max-width: 200px;
+}
+.value-text  {
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 18px;							
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 16px;							
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 18px;							
+	}
+}
+.percent-text {
+    font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 18px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 16px;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 18px;
+	}
+}
+.coin-text {
+    font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 18px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 16px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 18px;
+	}
+}
+.bold-name {
+	font-weight: 700;
+}
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+.plus-spacer {
+	@include media-breakpoint-up(lg) {
+		margin-top: 15px;
+	}
+}
+.delete-icon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+.balance-accordion {
+	position: relative;
+}

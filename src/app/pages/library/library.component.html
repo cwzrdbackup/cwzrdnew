@@ -1,0 +1,43 @@
+<nb-layout class="layout-container">
+
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="p-0">
+		
+    <div class="chapterInformation">
+  	  <div class="gradientBG"></div>
+  	  <div class="chapterInfoLeft p-3 p-md-4 p-lg-4">
+  		  <div class="title2 mb-2 mb-md-3 mb-lg-4">WZRD Library</div>
+  		  <div class="title3 mb-2 mb-md-3 mb-lg-4">{{testData.length}} books</div>
+  		  <div class="title4 mb-3 mb-md-4 mb-lg-5">Welcome to the WZRD Library. Home to a collection of {{testData.length}} books that will guide you through every stage of the process to becoming a WZRD. At your disposal you’ll find the main course book the ‘Enchanted Spells & Secrets’, the largest of the collection, exceeding 31,500 words expanding into the inner workings of the subconscious mind and then working you up towards mastering the Cryptocurrency Market in its entirety. Your main course book is complimented with a collection of a checklist, cheat sheet, glossary and write-ups decoding psychology and trading.</div>
+  		  <!--<div class="watchContainer">Read</div>-->
+	  </div>
+	  <!--<div class="chapterInfoRight">
+		  <div class="progressAbsolute">
+		        <nb-progress-bar [value]="_percent" class="progressBar">{{_percent}}</nb-progress-bar>
+		  </div>
+	  </div>-->
+  </div>		
+
+		<div class="gridContainer-library pt-0">
+			<div class="grid-library">
+			  <div *ngFor="let cast of testData; let i = index">
+				  <div class="flex-vertical pos-relative">
+					<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}" [ngClass]="{'new-badge' : cast.new}">
+					<img class="img-resource" src="{{cast.resource}}"/>
+					</nb-card-body>
+					</div>          
+			  </div>
+			</div>
+		</div>
+
+
+		  </nb-layout-column>
+
+		  <nb-layout-footer class="footer-main">
+		    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+		  </nb-layout-footer>
+
+		</nb-layout>

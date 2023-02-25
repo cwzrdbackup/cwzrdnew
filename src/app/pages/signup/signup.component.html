@@ -1,0 +1,415 @@
+<nb-layout class="layout-container">
+    <nb-layout-column class="flex flexCenter p-0">
+       
+                            
+
+
+    <nb-card class="wholeScreen">
+      <nb-card-body class="flex-vertical p-0">
+	  <div class="login-left">
+	  <div class="login-left-inner">
+	  <img class="login-logo" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/CryptoWzrd_black.png?5771"/>
+        <div class="login-header">SIGNUP NOW</div>    
+        <div *ngIf="errorMessage" style="color:red;">
+          {{errorMessage}}
+        </div>
+    <div style="font-size:20;color:green;" *ngIf="success">
+      Your account has been created successfully. Please navigate to the <a href="/login">login</a> page.
+    </div>
+    
+		<div class="enterUsername" *ngIf="!success">  
+        
+        <form [nbSpinner]="sending" (ngSubmit)="signup()" [formGroup]="signupForm" class="loginForm">
+          <div class="mb-0">
+      <div class="login-subheader">Please provide valid info to signup to the platform.</div>
+          <div id="profile-image" class="mb-3" [ngStyle]="{'background-image': 'url('+ profileImg +')'}">
+            <div id="edit-profile-image" class="align-items-center justify-content-center" (click)="chooseProfileImg()">
+              <i class="nb-edit" size="large"></i>
+            </div>
+        </div>
+            <input type="email" name="email" placeholder="Enter your email..." nbInput required formControlName="email" class="formWidth loginInput"
+            autocomplete="new-password"
+            >
+            
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid" class="errorMessage">{{showError(signupForm.controls.email)}}</span>
+            </p>
+          </div>
+          
+          <div class="my-0">
+            <input type="text" name="firstName" placeholder="First Name..." nbInput required
+              formControlName="firstName" class="formWidth loginInput">
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.firstName.touched && signupForm.controls.firstName.invalid" class="errorMessage">{{showError(signupForm.controls.firstName)}}</span>
+            </p>
+          </div>
+          <div class="my-0">
+            <input type="text" name="lastName" placeholder="Last Name..." nbInput required
+              formControlName="lastName" class="formWidth loginInput">
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.lastName.touched && signupForm.controls.lastName.invalid" class="errorMessage">{{showError(signupForm.controls.lastName)}}</span>
+            </p>
+          </div>
+          <div class="my-0">
+            <input type="text" name="username" placeholder="Choose a Battle of WZRDs ID..." nbInput required
+              formControlName="username" class="formWidth loginInput"
+              autocomplete="new-password"
+              >
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid" class="errorMessage">{{showError(signupForm.controls.password)}}</span>
+            </p>
+          </div>
+
+          <div class="my-0">
+            <input type="password" name="password" placeholder="Enter your password..." nbInput required
+              formControlName="password" class="formWidth loginInput"
+              autocomplete="new-password"
+              >
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid" class="errorMessage">{{showError(signupForm.controls.password)}}</span>
+            </p>
+          </div>
+          <div class="my-0">
+            <input type="password" name="confirmpassword" placeholder="Confirm password..." nbInput required
+              formControlName="confirmpassword" class="formWidth loginInput">
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.confirmpassword.touched && signupForm.controls.confirmpassword.invalid" class="errorMessage">{{showError(signupForm.controls.confirmpassword)}}</span>
+            </p>
+          </div>          
+          <div class="my-0">
+            <input type="date" name="birthDay" placeholder="Birthday mm/dd/yyyy" nbInput required
+              formControlName="birthDay" class="formWidth loginInput">
+              <!-- <nb-datepicker format="dd/MM/yyyy" #datepicker></nb-datepicker> -->
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.birthDay.touched && signupForm.controls.birthDay.invalid" class="errorMessage">{{showError(signupForm.controls.birthDay)}}</span>
+            </p>
+          </div>
+          <div class="my-0 customSelect">
+            <nb-select  name="country" placeholder="Country" required 
+              formControlName="country" >
+            <nb-option *ngFor="let c of countries" [value]="c">{{c.name}}</nb-option>
+            </nb-select>
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.country.touched && signupForm.controls.country.invalid" class="errorMessage">{{showError(signupForm.controls.country)}}</span>
+            </p>
+          </div>
+          <div class="my-0">
+            <input type="text" name="licenseKey" placeholder="WZRD Activation Key..." nbInput required
+              formControlName="licenseKey" class="formWidth loginInput">
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.licenseKey.touched && signupForm.controls.licenseKey.invalid" class="errorMessage">{{showError(signupForm.controls.licenseKey)}}</span>
+            </p>
+          </div>
+          <div class="my-0 customSelect" style="margin-bottom: 15px !important">
+            <nb-select  name="gender" placeholder="Gender" required
+              formControlName="gender" >
+              <nb-option [value]="'male'">Male</nb-option>
+              <nb-option [value]="'female'">Female</nb-option>
+            </nb-select>
+            <p class="error">&nbsp;
+              <span *ngIf="signupForm.controls.gender.touched && signupForm.controls.gender.invalid" class="errorMessage">{{showError(signupForm.controls.gender)}}</span>
+            </p>
+          </div>
+          <!-- <div class="my-0" style="margin-bottom:  15px !important">
+              <nb-checkbox checkbox-checked-bg [value]="termsAndConditionChecked"  (change)="toggle($event)"><a href="https://www.google.com" target="_blank"> Terms And Conditions</a></nb-checkbox>
+            </div> -->
+<!--             
+            <p class="error">&nbsp;
+                <span class="purple-font" data-toggle="modal" data-target="#privacyPolicyModal" (click)="showPrivacyPolicy()" id="PrivacyPolicy"> Privacy Policy</span>
+                <span class="purple-font" data-toggle="modal" data-target="#TermsConditionsModal" (click)="TermsConditions()" id="TermsConditions"> Terms and Conditions</span>
+                <span class="purple-font" data-toggle="modal" data-target="#TermsUseModal" (click)="TermsUse()" id="TermsUse"> Terms of Use</span>
+            </p> -->
+          <button nbButton fullWidth type="submit" size="small" status="success"
+            [disabled]="signupForm.disabled" class="signin-btn mb-3">Signup</button>
+        </form>
+
+                            <!--<div class="mt-2 unauthorized f-w text-center">
+                              <ng-container *ngIf="error; else unauthorized">
+                                You entered wrong data.
+                              </ng-container>
+                              <ng-template #unauthorized>
+                                <div class="spinner" *ngIf="sending"></div>
+                              </ng-template>
+                            </div>-->
+                            
+                            <div class="text-center">
+                                <p class="login-labels mb-2">Already a user?<span class="purple-font" (click)="login()" id="RecoverPassword"> Login Now</span></p>
+                                <p class="login-labels">
+                                    Don't have an account? <a class="purple-font" href="https://cryptowzrd.com/products/membership">Become a member</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="forgotPasswordWrapper">
+                            <div class="loginForm">
+                                <div class="login-subheader">We will send you an email to reset your password.</div>
+                                <input type="email" name="email" placeholder="Enter your email..." nbInput required formControlName="email" class="formWidth my-1 loginInput">
+                                <button nbButton fullWidth type="submit" size="small" status="success"
+                                  [disabled]="loginForm.disabled" class="signin-btn submit-top">Submit</button>
+                                  <p class="cancelLink" id="cancelLink">Cancel</p>
+                            </div>
+                        </div> -->
+
+                    </div>
+                </div>
+
+                <div class="login-right">
+                    <div class="login-right-inner">
+                        <div class="container slider-pw adjustWidthCarousel hideDesktop">
+                            <div id="carousel-example-generic-m" class="carousel carousel-m slide" data-ride="carousel">
+                              
+                              <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic-m" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic-m" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic-m" data-slide-to="2"></li>
+                                </ol>
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner" role="listbox">								
+                                <div class="carousel-item carousel-item-m first-c active">       
+                                  
+                                    <div>
+                                      <div class="flex-vertical">			  
+                                        <nb-card-body class="p-0">
+                                        <img class="carouselImg" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/Dashboard-_-Traders-Hub.png?19882"/>
+                                        </nb-card-body>
+                                        </div>
+                                    </div>
+                                  
+                                  
+                                </div>
+            
+                                <div class="carousel-item carousel-item-m">       
+                                  
+                                      <div>					  
+                                        <div class="flex-vertical">			  
+                                          <nb-card-body class="p-0"><img class="carouselImg" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/Course-Page-_-Library.png?19882"/></nb-card-body>
+                                        </div>          
+                                      </div>
+                                      
+                                </div>
+                                <div class="carousel-item carousel-item-m">       
+                                    
+                                      <div>
+                                        <div class="flex-vertical">			  
+                                        <nb-card-body class="p-0">
+                                          <img class="carouselImg" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/Traders-Hub-_-Portfolio.png?19882"/>
+                                        </nb-card-body>
+                                        </div>
+                                      </div>
+                                      
+                                </div>                                
+                                </div>
+            
+                                <a class="carousel-control-prev carousel-control-prev-m d-none" href="#carousel-example-generic-m" role="button" data-slide="prev">				    
+                                  <i class="nb-arrow-left"></i>
+                                  <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control-next carousel-control-next-m d-none" href="#carousel-example-generic-m" role="button" data-slide="next">
+                                  <i class="nb-arrow-right"></i>
+                                  <span class="sr-only">Next</span>
+                                  </a>
+                              </div>        
+                        </div>
+                        <img class="login-map" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/wolrd-map-t.png?5941"/>
+                    </div>
+                </div>
+
+            </nb-card-body>
+        </nb-card>
+    </nb-layout-column>
+</nb-layout>
+
+<!-- <div class="modal fade" id="privacyPolicyModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 21px; color: #a361ff; font-weight: 600;">Privacy Policy</h4>
+                <button type="button" class="close" (click)="hideModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh
+                    tellus molestie nunc non blandit massa. Lacus viverra vitae congue eu. Quis viverra nibh cras pulvinar mattis . Nisl tincidunt eget nullam non nisi.
+                    Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Id interdum velit laoreet id. Volutpat blandit aliquam etiam erat velit
+                    scelerisque in. Risus viverra adipiscing at in tellus. Id aliquet lectus proin nibh. Consequat id porta nibh venenatis cras sed felis eget. Fermentum
+                    leo vel orci porta non.
+                </p>
+                <p>
+
+                    Orci porta non pulvinar neque laoreet suspendisse interdum. Imperdiet proin fermentum leo vel. Dapibus ultrices in iaculis nunc sed augue lacus. Purus
+                    non enim praesent elementum facilisis leo vel fringilla est. Vulputate ut pharetra sit amet aliquam. In nulla posuere sollicitudin aliquam ultrices
+                    sagittis orci a scelerisque. At elementum eu facilisis sed. Commodo odio aenean sed adipiscing. Eu turpis egestas pretium aenean. Urna nec tincidunt
+                    praesent semper feugiat nibh sed pulvinar. Cras ornare arcu dui vivamus arcu felis. Iaculis urna id volutpat lacus laoreet non. In massa tempor nec
+                    feugiat nisl pretium fusce. Diam phasellus vestibulum lorem sed risus ultricies.
+                </p>
+                <p>
+
+                    A iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Sagittis purus sit amet volutpat consequat mauris nunc congue. Dictumst
+                    vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Quisque egestas diam in arcu cursus euismod quis viverra. Auctor elit sed vulputate mi
+                    sit amet. Facilisis magna etiam tempor orci eu lobortis elementum nibh tellus. Turpis egestas integer eget aliquet nibh praesent tristique. Duis
+                    ultricies lacus sed turpis tincidunt id aliquet risus. Convallis aenean et tortor at risus viverra adipiscing. Sagittis id consectetur purus ut
+                    faucibus pulvinar elementum integer enim. Amet risus nullam eget felis eget. Ipsum dolor sit amet consectetur adipiscing elit duis tristique
+                    sollicitudin. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Ut etiam sit amet nisl purus in mollis. In nisl nisi scelerisque eu
+                    ultrices vitae auctor. Quisque id diam vel quam. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie.
+                </p>
+                <p>
+                  
+                    Quisque non tellus orci ac auctor augue. Et tortor consequat id porta nibh venenatis. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et.
+                    Ante metus dictum at tempor commodo ullamcorper a. Netus et malesuada fames ac turpis egestas integer eget aliquet. Tristique senectus et netus et
+                    malesuada fames. Mattis vulputate enim nulla aliquet. Etiam sit amet nisl purus. Nunc sed augue lacus viverra vitae congue eu consequat ac. Integer
+                    eget aliquet nibh praesent tristique magna sit. Etiam dignissim diam quis enim lobortis. Tincidunt arcu non sodales neque. Praesent semper feugiat
+                    nibh sed pulvinar proin gravida hendrerit. Scelerisque in dictum non consectetur a erat nam at lectus.
+                </p>
+                <p>
+                    In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Egestas sed tempus urna et. Bibendum arcu vitae elementum curabitur vitae
+                    nunc. Tortor id aliquet lectus proin nibh nisl condimentum. Lectus urna duis convallis convallis tellus. Vivamus arcu felis bibendum ut tristique et
+                    egestas quis. Egestas erat imperdiet sed euismod nisi porta lorem mollis. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Donec pretium
+                    vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Aliquet sagittis id consectetur purus. Arcu cursus euismod quis viverra nibh. Egestas
+                    erat imperdiet sed euismod nisi porta lorem. Purus faucibus ornare suspendisse sed nisi lacus sed. Ac placerat vestibulum lectus mauris ultrices eros
+                    in cursus. Ac turpis egestas sed tempus urna et pharetra pharetra massa.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="signin-btn mb-0" (click)="hideModalAgree()" style="padding: 5px 20px!important; color: #FFFFFF!important;">Agree</button>
+                <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>                
+            </div>
+        </div>
+
+	</div>
+</div>
+
+
+<div class="modal fade" id="TermsConditions">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 21px; color: #a361ff; font-weight: 600;">Privacy Policy</h4>
+                <button type="button" class="close" (click)="hideModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh
+                    tellus molestie nunc non blandit massa. Lacus viverra vitae congue eu. Quis viverra nibh cras pulvinar mattis . Nisl tincidunt eget nullam non nisi.
+                    Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Id interdum velit laoreet id. Volutpat blandit aliquam etiam erat velit
+                    scelerisque in. Risus viverra adipiscing at in tellus. Id aliquet lectus proin nibh. Consequat id porta nibh venenatis cras sed felis eget. Fermentum
+                    leo vel orci porta non.
+                </p>
+                <p>
+
+                    Orci porta non pulvinar neque laoreet suspendisse interdum. Imperdiet proin fermentum leo vel. Dapibus ultrices in iaculis nunc sed augue lacus. Purus
+                    non enim praesent elementum facilisis leo vel fringilla est. Vulputate ut pharetra sit amet aliquam. In nulla posuere sollicitudin aliquam ultrices
+                    sagittis orci a scelerisque. At elementum eu facilisis sed. Commodo odio aenean sed adipiscing. Eu turpis egestas pretium aenean. Urna nec tincidunt
+                    praesent semper feugiat nibh sed pulvinar. Cras ornare arcu dui vivamus arcu felis. Iaculis urna id volutpat lacus laoreet non. In massa tempor nec
+                    feugiat nisl pretium fusce. Diam phasellus vestibulum lorem sed risus ultricies.
+                </p>
+                <p>
+
+                    A iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Sagittis purus sit amet volutpat consequat mauris nunc congue. Dictumst
+                    vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Quisque egestas diam in arcu cursus euismod quis viverra. Auctor elit sed vulputate mi
+                    sit amet. Facilisis magna etiam tempor orci eu lobortis elementum nibh tellus. Turpis egestas integer eget aliquet nibh praesent tristique. Duis
+                    ultricies lacus sed turpis tincidunt id aliquet risus. Convallis aenean et tortor at risus viverra adipiscing. Sagittis id consectetur purus ut
+                    faucibus pulvinar elementum integer enim. Amet risus nullam eget felis eget. Ipsum dolor sit amet consectetur adipiscing elit duis tristique
+                    sollicitudin. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Ut etiam sit amet nisl purus in mollis. In nisl nisi scelerisque eu
+                    ultrices vitae auctor. Quisque id diam vel quam. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie.
+                </p>
+                <p>
+                  
+                    Quisque non tellus orci ac auctor augue. Et tortor consequat id porta nibh venenatis. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et.
+                    Ante metus dictum at tempor commodo ullamcorper a. Netus et malesuada fames ac turpis egestas integer eget aliquet. Tristique senectus et netus et
+                    malesuada fames. Mattis vulputate enim nulla aliquet. Etiam sit amet nisl purus. Nunc sed augue lacus viverra vitae congue eu consequat ac. Integer
+                    eget aliquet nibh praesent tristique magna sit. Etiam dignissim diam quis enim lobortis. Tincidunt arcu non sodales neque. Praesent semper feugiat
+                    nibh sed pulvinar proin gravida hendrerit. Scelerisque in dictum non consectetur a erat nam at lectus.
+                </p>
+                <p>
+                    In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Egestas sed tempus urna et. Bibendum arcu vitae elementum curabitur vitae
+                    nunc. Tortor id aliquet lectus proin nibh nisl condimentum. Lectus urna duis convallis convallis tellus. Vivamus arcu felis bibendum ut tristique et
+                    egestas quis. Egestas erat imperdiet sed euismod nisi porta lorem mollis. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Donec pretium
+                    vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Aliquet sagittis id consectetur purus. Arcu cursus euismod quis viverra nibh. Egestas
+                    erat imperdiet sed euismod nisi porta lorem. Purus faucibus ornare suspendisse sed nisi lacus sed. Ac placerat vestibulum lectus mauris ultrices eros
+                    in cursus. Ac turpis egestas sed tempus urna et pharetra pharetra massa.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="signin-btn mb-0" (click)="hideModalAgree()" style="padding: 5px 20px!important; color: #FFFFFF!important;">Agree</button>
+                <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>                
+            </div>
+        </div>
+
+	</div>
+</div>
+
+<div class="modal fade" id="TermsUse">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 21px; color: #a361ff; font-weight: 600;">Privacy Policy</h4>
+                <button type="button" class="close" (click)="hideModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis elementum nibh
+                    tellus molestie nunc non blandit massa. Lacus viverra vitae congue eu. Quis viverra nibh cras pulvinar mattis . Nisl tincidunt eget nullam non nisi.
+                    Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Id interdum velit laoreet id. Volutpat blandit aliquam etiam erat velit
+                    scelerisque in. Risus viverra adipiscing at in tellus. Id aliquet lectus proin nibh. Consequat id porta nibh venenatis cras sed felis eget. Fermentum
+                    leo vel orci porta non.
+                </p>
+                <p>
+
+                    Orci porta non pulvinar neque laoreet suspendisse interdum. Imperdiet proin fermentum leo vel. Dapibus ultrices in iaculis nunc sed augue lacus. Purus
+                    non enim praesent elementum facilisis leo vel fringilla est. Vulputate ut pharetra sit amet aliquam. In nulla posuere sollicitudin aliquam ultrices
+                    sagittis orci a scelerisque. At elementum eu facilisis sed. Commodo odio aenean sed adipiscing. Eu turpis egestas pretium aenean. Urna nec tincidunt
+                    praesent semper feugiat nibh sed pulvinar. Cras ornare arcu dui vivamus arcu felis. Iaculis urna id volutpat lacus laoreet non. In massa tempor nec
+                    feugiat nisl pretium fusce. Diam phasellus vestibulum lorem sed risus ultricies.
+                </p>
+                <p>
+
+                    A iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Sagittis purus sit amet volutpat consequat mauris nunc congue. Dictumst
+                    vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Quisque egestas diam in arcu cursus euismod quis viverra. Auctor elit sed vulputate mi
+                    sit amet. Facilisis magna etiam tempor orci eu lobortis elementum nibh tellus. Turpis egestas integer eget aliquet nibh praesent tristique. Duis
+                    ultricies lacus sed turpis tincidunt id aliquet risus. Convallis aenean et tortor at risus viverra adipiscing. Sagittis id consectetur purus ut
+                    faucibus pulvinar elementum integer enim. Amet risus nullam eget felis eget. Ipsum dolor sit amet consectetur adipiscing elit duis tristique
+                    sollicitudin. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Ut etiam sit amet nisl purus in mollis. In nisl nisi scelerisque eu
+                    ultrices vitae auctor. Quisque id diam vel quam. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie.
+                </p>
+                <p>
+                  
+                    Quisque non tellus orci ac auctor augue. Et tortor consequat id porta nibh venenatis. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et.
+                    Ante metus dictum at tempor commodo ullamcorper a. Netus et malesuada fames ac turpis egestas integer eget aliquet. Tristique senectus et netus et
+                    malesuada fames. Mattis vulputate enim nulla aliquet. Etiam sit amet nisl purus. Nunc sed augue lacus viverra vitae congue eu consequat ac. Integer
+                    eget aliquet nibh praesent tristique magna sit. Etiam dignissim diam quis enim lobortis. Tincidunt arcu non sodales neque. Praesent semper feugiat
+                    nibh sed pulvinar proin gravida hendrerit. Scelerisque in dictum non consectetur a erat nam at lectus.
+                </p>
+                <p>
+                    In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Egestas sed tempus urna et. Bibendum arcu vitae elementum curabitur vitae
+                    nunc. Tortor id aliquet lectus proin nibh nisl condimentum. Lectus urna duis convallis convallis tellus. Vivamus arcu felis bibendum ut tristique et
+                    egestas quis. Egestas erat imperdiet sed euismod nisi porta lorem mollis. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Donec pretium
+                    vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Aliquet sagittis id consectetur purus. Arcu cursus euismod quis viverra nibh. Egestas
+                    erat imperdiet sed euismod nisi porta lorem. Purus faucibus ornare suspendisse sed nisi lacus sed. Ac placerat vestibulum lectus mauris ultrices eros
+                    in cursus. Ac turpis egestas sed tempus urna et pharetra pharetra massa.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="signin-btn mb-0" (click)="hideModalAgree()" style="padding: 5px 20px!important; color: #FFFFFF!important;">Agree</button>
+                <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>                
+            </div>
+        </div>
+
+	</div>
+</div> -->
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content alert-modal-content">
+          <div class="modal-body text-center">
+              <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="pt-5 pb-5">
+                  <div>
+                      {{alertModalMessage}}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

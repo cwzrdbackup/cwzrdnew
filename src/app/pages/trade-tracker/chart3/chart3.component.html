@@ -1,0 +1,21 @@
+<!-- <div echarts [options]="chartOption" class="chart"></div> -->
+<div class="market-dominance-bar" *ngIf="isLoaded">
+        <div class="md-bar-outer flex">
+            <div *ngIf=" (_success > 0 ) && ( _loss > 0 ) " class="md-bar-triangle" [style.left.%]="_success"></div>
+            <div class="md-bar md-bar-left" [ngClass]="{'complete-border': !(_loss > 0)}" [style.width.%]="_success">
+                <div *ngIf="_success > 0" class="md-bar-text left-text">
+                   
+                </div>
+            </div>
+            <div class="md-bar md-bar-right" [ngClass]="{'complete-border': !(_success > 0)}" [style.width.%]="_loss">
+                <div  *ngIf="_loss > 0" class="md-bar-text  right-text" id="right-percent-inner">
+                   
+                </div>
+            </div>
+            <div class="text-container">
+               <span *ngIf="_success > 0" > {{_success}}%</span>
+
+                <span class="right-text" *ngIf="_loss > 0" > {{_loss}}% </span>
+            </div>
+        </div>
+    </div>

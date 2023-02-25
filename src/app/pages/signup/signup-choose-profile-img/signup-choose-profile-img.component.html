@@ -1,0 +1,19 @@
+<nb-card style="max-height: 75vh;max-width: 75vw;">
+  <nb-card-header class="text-center">
+    Choose profile image
+  </nb-card-header>
+  <nb-card-body class="d-flex flex-wrap">
+    <div *ngFor="let img of images" class="col-12 col-md-6 col-lg-4 avatar-spacer">
+      <div class="mb-3 profile-image" [ngStyle]="{'background-image': 'url(' + img + ')'}"
+        [ngClass]="{'selected': selected === img}" (click)="selected = img">
+        	
+
+			
+        </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<div class="text-center">
+  <button nbButton status="success" (click)="apply()">Apply</button>
+</div>

@@ -1,0 +1,341 @@
+:root {
+    --lightning-color: rgba(233, 65, 65, 1);
+}
+
+@keyframes card{
+0%, 100%{transform: initial;}
+25%{transform: translate(6px, 6px);}
+50%{transform: translate(0px, 12px)}
+75%{transform: translate(-6px, 6px);}
+}
+
+.rankCardImg{
+animation: card 4s linear infinite;
+}
+
+.flash-1{
+opacity: 0;
+animation: flash 1.5s infinite;
+height: 100%;
+}
+
+.flash-2{
+opacity: 0;
+animation: flash 2.5s infinite;
+height: 100%;
+}
+
+@keyframes flash{
+0%, 8%, 14%, 100%{opacity: 0;}
+4%, 12%{opacity: 0.7;}
+}
+
+.clouds-container {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.clouds-container img {
+    height: 100%;
+}
+
+.clouds-image-1,
+.clouds-image-2 {
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0;
+}
+
+.clouds-image-1 {
+    animation-name: clouds-1;
+    transform: translateX(0);
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes clouds-1 {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    30%,
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+}
+
+
+.clouds-image-2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    animation-name: clouds-2;
+    animation-delay: 2s;
+    transform: translateX(200px);
+    z-index: 4;
+}
+
+@keyframes clouds-2 {
+    0% {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    30%,
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+
+.lightning {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.bottom-light {
+    filter: url(#filter);
+    -webkit-filter: url(#filter);
+    position: absolute;
+    border-radius: 100%;
+}
+
+.top-light {
+    filter: url(#filter_2);
+    -webkit-filter: url(#filter_2);
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 100%;
+    box-shadow: 0 0 60px 25px #fff;
+}
+
+.light-1-bottom {
+    width: 600px;
+    height: 300px;
+    left: -700px;
+    top: -400px;
+    box-shadow: 600px 400px 120px 20px var(--lightning-color);
+}
+
+.light-1-top {
+    width: 150px;
+    height: 50px;
+    left: 150px;
+    top: 100px;
+}
+
+.light-2-bottom {
+    width: 400px;
+    height: 300px;
+    left: -500px;
+    top: 300px;
+    box-shadow: 800px -100px 120px 20px var(--lightning-color);
+}
+
+.light-2-top {
+    width: 250px;
+    height: 50px;
+    left: 400px;
+    top: 250px;
+}
+
+.light-3-bottom {
+    width: 600px;
+    height: 300px;
+    right: -700px;
+    bottom: -400px;
+    box-shadow: -700px -400px 120px 20px var(--lightning-color);
+}
+
+.light-3-top {
+    width: 50px;
+    height: 20px;
+    right: 350px;
+    bottom: 200px;
+}
+
+.light-4-bottom {
+    width: 400px;
+    height: 300px;
+    right: -500px;
+    bottom: -300px;
+    box-shadow: -400px -500px 120px 20px var(--lightning-color);
+}
+
+.light-4-top {
+    width: 10%;
+    height: 5%;
+    right: 5%;
+    bottom: 25%;
+}
+
+.light-1,
+.light-2,
+.light-3,
+.light-4 {
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    opacity: 0;
+}
+
+.light-1 {
+    animation-name: light-1;
+}
+
+@keyframes light-1 {
+
+    0%,
+    10%,
+    20%,
+    100% {
+        opacity: 0;
+    }
+
+    5%,
+    15% {
+        opacity: 0.8;
+    }
+}
+
+.light-2 {
+    animation-name: light-2;
+}
+
+@keyframes light-2 {
+
+    0%,
+    10%,
+    30%,
+    100% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+}
+
+.light-3 {
+    animation-name: light-3;
+}
+
+@keyframes light-3 {
+
+    0%,
+    30%,
+    40%,
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+    35%,
+    45% {
+        opacity: 0.8;
+    }
+}
+
+.light-4 {
+    animation-name: light-4;
+}
+
+.svgContainer {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+.rankUp {
+    font-size: 36px;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+    color: #d4b648;
+    font-weight: 700;
+    font-family: 'Exo';
+    position: absolute;
+    // bottom: 0;        
+    text-transform: uppercase;            
+    left: 50%;
+    top: 0;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+.rankCard {
+    z-index: 99999;            
+    position: absolute;        
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 51vh;
+    height: 75%;
+    background: none;
+    // max-width: 317px;
+}
+.rankCard img {
+    width: 100%;
+}
+
+.close {
+    z-index: 99999;
+    top: 2vh;
+    right: 2vh;
+    position: absolute;
+}
+
+@keyframes light-4 {
+
+    0%,
+    40%,
+    60%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}

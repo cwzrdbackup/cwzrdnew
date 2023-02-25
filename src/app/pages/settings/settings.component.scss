@@ -1,0 +1,178 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/arctic';
+
+@include nb-install-component {
+	.platformHeader { 
+		background: nb-theme(header-bg);
+	}
+	.footer-main {
+		background: nb-theme(header-bg);
+		text-align: left;
+		font-weight: 500;
+	}
+}
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: fit-content;
+  grid-auto-flow: dense;
+  //   div {
+  //     min-height: fit-content;
+  //   }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
+  }
+  .bigItem {
+    grid-column: span 3; /* Spans two columns */
+  }
+}
+.author {
+  font-size: 1.2rem;
+}
+.music {
+  font-size: 1rem;
+}
+.button {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2f296a;
+}
+.waveformcontainer {
+	//border-left: 2px solid #74ff91;
+	//margin-left: 40px;
+}
+.podcast-img {
+	height: 128px;
+}
+.podcast-left {
+	width: 160px;
+	text-align: center;
+}
+.lessonTimeContainer {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.chapterInformation {
+	width: 100%;
+	background-color: #000;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: #fff;
+	overflow: hidden;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 100;
+//declare this in typescript    background-image: url("../../../../assets/1_2.jpg"); /* The image used */	
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+	@include media-breakpoint-up(md) {
+		height: 550px;
+		margin-bottom: 35px;
+	}
+}
+.progressAbsolute {
+	position: absolute;
+	    bottom: 15px;
+		width: 100px;
+		    bottom: 15px;
+		    width: 150px;
+			right: 12px;
+		@include media-breakpoint-up(md) {
+			width: 250px;
+			right: 30px;
+			bottom: 25px;
+		}
+}
+.chapterInfoLeft {
+	width: 80%;
+	z-index: 100;
+	@include media-breakpoint-up(md) {
+		width: 50%;
+	}
+}
+.chapterInfoRight {
+	width: 50%;
+	height: 100%;
+	margin-top: auto;
+	margin: auto auto 0 auto;
+	position: relative;
+}
+.chapterImg {
+	width: 100%;
+}
+.title1 {
+	font-size: 10px;
+	text-transform: uppercase;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+}
+.title2 {
+	font-size: 14px;
+	text-transform: uppercase;	
+	@include media-breakpoint-up(md) {
+		font-size: 3vmin;
+	}
+}
+.title3 {
+	font-size: 10px;
+	text-transform: uppercase;	
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+}
+.title4 {
+	font-size: 8px;
+//	text-transform: uppercase;	
+	width: 80%;
+	text-align: left;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+}
+.watchContainer {	
+    border: 2px solid #fff;
+    padding: 6px 8px;
+    margin-top: auto;
+    display: block;
+    position: absolute;
+    width: 150px;
+    bottom: 15px;
+    text-align: center;
+	cursor: pointer;
+    font-size: .75rem;
+	@include media-breakpoint-up(md) {
+		width: 20%;
+		bottom: 25px;
+		max-width: 200px;
+		font-size: 18px;
+		padding: 20px 24px;
+		
+		border: 2px solid #fff;
+		padding: 10px 12px;
+	//	width: 100%;
+	//	text-align: center;
+	//	text-transform: uppercase;
+	//	font-weight: 700;		
+	//	font-size: 10px;
+		text-align: center;
+	}
+}

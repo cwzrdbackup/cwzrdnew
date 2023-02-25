@@ -1,0 +1,42 @@
+<nb-layout class="layout-container">
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column class="p-0">
+	  <div class="chapterInformation" [ngStyle]="{'background-image':'url(' + currChapterInfo.hero + ')'}">
+		  <div class="gradientBG"></div>
+		  <div class="chapterInfoLeft p-3 p-md-5">
+			  <div class="title1 mb-1 mb-md-4">Chapter {{currChapterInfo.number}}</div>
+			  <div class="title2 mb-2 mb-md-4">
+          <div class="flex-vertical"><i class="fal fa-long-arrow-left" routerLink="/course/"></i>{{currChapterInfo.title2}}</div>
+        </div>
+			  <div class="title3 mb-2 mb-md-4">{{currChapterInfo.title3}}</div>
+			  <div class="title4 mb-3 mb-md-5">{{currChapterInfo.title4}}</div>
+			  <!--<div class="watchContainer">Watch</div>-->
+		  </div>
+	  </div>
+    <div class="px-3 px-md-5">
+
+      <div class="flex" style="margin: 0 -16px 20px -16px">
+      <div *ngFor="let lesson of chapterLessons; let i = index" class="col-12 col-md-4 col-lg-3 px-3 pt-3" [routerLink]="'lesson/' + lesson.id">
+          <nb-card style="position:relative; overflow: hidden" class="cardShadow mb-2 mb-md-3">
+            <i *ngIf="lesson?.isPadLock" class="fa fa-lock overlayLock"></i>
+            <img src="https://d308fakbqebk7c.cloudfront.net/course/Chapter{{chapter}}/Lesson{{i+1}}.png" alt="image" class="card-img" [routerLink]="'lesson/' + lesson.id">
+			<div class="bottomContainer" *ngIf="!lesson?.isPadLock" [routerLink]="'lesson/' + lesson.id"><div class="lessonTitle">Lesson {{i+1}} - {{lesson.title}}</div></div>
+			<div class="bottomContainer" *ngIf="lesson?.isPadLock"><div class="lessonTitle">Lesson {{i+1}} - {{lesson.title}}</div></div>
+          </nb-card>
+        </div>
+
+      </div>
+    </div>
+
+<!--
+    <div style="text-align:center; margin:10px auto;" *ngIf="showButton">
+      <button (click)="loadData()" class="btn btn-success">Load More</button>
+    </div>
+-->
+  </nb-layout-column>
+  <nb-layout-footer class="footer-main">
+    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+</nb-layout>

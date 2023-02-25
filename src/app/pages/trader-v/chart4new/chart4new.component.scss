@@ -1,0 +1,188 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/armyCamo';
+// @import '~@nebular/theme/styles/themes/blueCamo';
+
+@include nb-install-component {	
+	.card-body-bar {
+			padding-left: 10px;
+			padding-right: 10px;
+		@include media-breakpoint-up(md) {
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+		}
+		@include media-breakpoint-up(lg) {
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+		}
+	}
+	.nb-arrow-dropup, .nb-arrow-dropdown {
+		padding: 1px !important;
+		@include media-breakpoint-up(md) {
+			padding: 2px !important;
+		}
+		@include media-breakpoint-up(lg) {
+			padding: 4px !important;
+		}
+	}
+
+	.default-view-pie {
+		//background-color: nb-theme(trader-chart-side);
+		background-color: nb-theme(card-color);
+	}
+	.headerBg {
+		//background-color: nb-theme(card-color);
+		background-color: nb-theme(card-color);
+	}
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}		
+	}
+	::ng-deep nb-card {
+		nb-reveal-card {
+			.second-card-container {
+				width: 50%;
+			}
+		}
+	}
+}
+.crd {
+	overflow: hidden;
+}
+.f-h {
+    height: calc(100% - 1rem)!important;
+    min-height: 550px;
+    .crd {
+        height: 100%;
+    }
+}
+.f-h-c {
+	min-height: 300px;
+	height: calc(100% - 1rem)!important;
+	@include media-breakpoint-up(md) {
+		height: calc(100% - 1rem)!important;
+		min-height: 550px;
+		.crd {
+			height: 100%;
+		}
+	}
+}
+.card-half, .market-half-card {	
+	background-color: #2a265d;
+}
+.second-card-container {
+	width: 50% !important;
+}
+.chart4selector > .revealed > .second-card-container {
+	background-color: #2a265d;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	height: 100%;	
+}
+.market-info-header {
+	text-align: center;
+	padding-top: 1.125rem;
+	margin-top: 10px;
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		margin-top: 12px;
+		font-size: 1rem;
+	}
+}
+.default-view-pie {
+	color: #fff;
+}
+.arrow-padding {
+	@include media-breakpoint-up(md) {
+		padding: 0 1px;
+	}
+	@include media-breakpoint-up(lg) {
+		padding: 0 2px;
+	}
+	@include media-breakpoint-up(xl) {
+		padding: 0 4px;
+	}	
+}
+.descriptoritem {
+    font-weight: 700;
+    font-size: 9px;
+	text-transform: uppercase;
+	@include media-breakpoint-up(md) {
+		font-size: 2.1vmin
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.35vmin
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.4vmin
+	}
+}
+.valuesUnder {
+	font-size: 12px;
+	@include media-breakpoint-up(md) {
+		font-size: 2.85vmin
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.85vmin
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.9vmin
+	}
+}
+.mpGreen {
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		font-size: 2.1vmin
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.35vmin
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.4vmin
+	}
+}
+.descriptor-pie {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	@include media-breakpoint-up(md) {
+		padding: 8px 16px;
+	}
+}
+.button-width {
+	width: 108px;
+	@include media-breakpoint-up(md) {
+		width: 120px;
+	}
+}
+.align-flex-end {
+	align-items: flex-end;
+}
+.price-percent-space {
+	padding-right: .5rem;
+	padding-top: 1rem;
+	@include media-breakpoint-up(md) {
+		padding-right: 1.125rem;
+		padding-top: 1.125rem;
+	}
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}

@@ -1,0 +1,11 @@
+
+	
+	
+	  <div class="p-0 col-12">
+	    <div class="flex">
+	      <div class="col-6 pl-4" id="fc3tvpc">
+	        <p class="flex-arrow" [ngStyle]="{'color': getData(0, 'color')}" id="pbpc">{{getData(0, 'percent') | number: '1.2-2'}}% <i [class]="getData(0, 'arrow')"></i></p>
+	      </div>	      
+	    </div>
+	    <div echarts [options]="chartOption" class="chart"></div>
+	  </div>

@@ -1,0 +1,40 @@
+<nb-reveal-card style="width: 100%" [showToggleButton]="toogle" [revealed]="revealed">
+  <nb-card-front class="crd">
+    <nb-card class="pie-card">      
+      <nb-card-body class="p-0 flex-vertical" style="overflow-x: hidden; overflow: visible;">
+        <div class="default-view-balance col-6 px-0" style="padding-left: 6px !important">
+          <div class="portfolio-inner-back-labels">
+          <div class="pibl-coin">Balance</div>
+          <div class="pibl-title color-light-2">${{getData(0, 'value') | number: '1.2-2'}}</div>
+          <p class="flex-arrow" [ngStyle]="{'color': getData(0, 'color')}" id="pbpc">{{getData(0, 'percent') | number: '1.2-2'}}% PAST 24H<i [class]="getData(0, 'arrow')"></i></p>
+        </div>
+        </div>
+        <div echarts [options]="chartOption1" class="chart col-7 col-xl-6" (chartClick)="clicked($event)" style="height: 80px"></div>
+        <div class="col-0 col-xl-3"></div>
+      </nb-card-body>
+	  	  
+    </nb-card>
+  </nb-card-front>
+  
+  
+  <nb-card-back class="crd card-half-balance" style="background: transparent">
+    <nb-card style="border-radius: 0;box-shadow: none; background: transparent" class="pie-card" >
+      <nb-card-header class="d-flex justify-content-between align-items-center" style="padding: .38rem 0;padding-left: 5px; border-bottom: none; height: 58px; overflow: hidden; font-size: 10px; margin-top: 1px;">
+        <div>
+          <span class="selectedCoin">{{selectedCoin}}</span>
+        </div>
+		<div>
+		</div>
+        <i class="nb-close link p-0" size="large" (click)="revealed = false"></i>
+      </nb-card-header>
+      <nb-card-body class="p-0" style="overflow-x: visible; overflow: visible; height: 90px">
+	  <div class="balance-items-container">
+        <!-- <div class="purple balance-item-price">${{selectedPrice}}</div> -->
+    <!-- <div class="green balance-item-percent">{{selectedPercent}}%<span class="nb-arrow-dropup green"></span></div> -->
+    <div class="purple balance-item-price">${{getData(1, 'value') | number: '1.2-2'}}</div>
+    <div class="balance-item-percent" [ngStyle]="{'color': getData(0, 'color')}" id="pbpc">{{getData(1, 'percent') | number: '1.2-2'}}% PAST 24H<i [class]="getData(0, 'arrow')"></i></div>
+	</div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

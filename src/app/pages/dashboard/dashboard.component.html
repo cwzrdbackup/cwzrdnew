@@ -1,0 +1,520 @@
+<div *ngIf="showWelcome" class="wizardOverlay" style="z-index: 999999;"  #welcomePage>
+  <div class="wzrdOverlayTitle">
+    WELCOME TO THE WZRD PLATFORM
+  </div>         
+  <div class="wzrdOverlayTitleSpan">
+    Your new home for everything Crypto</div>
+  <div class="welcome-text">    
+  <div>
+    Congratulations on becoming a WZRD, your journey starts here.
+  </div>  
+  <br/>
+  <div>
+    The WZRD Platform contains over 100 features and has taken 8 months to build.. however it does not stop here. 
+  </div> 
+  <br/> 
+  <div>
+    Introducing Evolve by WZRD Group, the WZRD Platform has been designed to never age, it’ll be forever upgrading with new educational content, strategies and features. 
+  </div> 
+  <br/> 
+  <div>
+    In order to fully utilise your Platform you must enter required information within the Journal 	&amp; Portfolio
+  </div> 
+  <br/> 
+  <div>
+    Thank you &amp; don’t forget to get your WZRD Hoodie!
+  </div> 
+  <br/>     
+  <div>WZRD GROUP</div>
+</div>
+  <img class="wzrdIcon" src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/wzrd_introduction.png"/>
+  <button nbButton class="nextButton" (click)="closeWelcome()">Close</button>
+</div>
+<nb-layout class="layout-container">
+
+    <nb-layout-header class="flex flexCenter platformHeader">
+      <app-header></app-header>
+    </nb-layout-header>
+  
+    <nb-layout-column class="flex fix-overflow p-0 p-md-3" [nbSpinner]="userEventLoading" nbSpinnerMessage="" nbSpinnerStatus="success">
+      <!-- <div class="wizardOverlay" style="z-index: 999999;">
+        <div class="wzrdOverlayTitle">
+          WELCOME TO YOUR DASHBOARD
+        </div>                    
+        <img class="wzrdIcon" src="./assets/wzrd_introduction.png"/> 
+        <button nbButton class="nextButton">Next</button>
+      </div> -->
+  
+      <div class="col-12 col-xl-9 p-0">
+  
+        <div class="flex">
+  
+          <ng-template [ngIf]="!isXsScreen" [ngIfElse]="slider">
+  
+              <div class="col-12 col-md-4 col-xl-4">
+                <nb-card class="relativeContainer">
+                  <!-- <div class="weatherContainer" *ngIf="userLocation">
+                    <weather-widget [settings]="settings"></weather-widget>
+                  </div>                 -->
+                  <div class="weatherContainer">
+                    <img *ngIf="todaysQuote" [src]="'https://d308fakbqebk7c.cloudfront.net/quote_image/' + todaysQuote.imageNumber + '.jpg'" class="card-img backgroundCard1">
+                    <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/Continue.png" alt="summer" class="card-img sizingImage">
+                    <div class="padding80"></div>
+                    <div class="dateContainer">
+                      <div class="card1Day">{{(today | date:'EEEE d')}}{{( today | date: "d") | dateSuffix}}</div>
+                      <div class="card1Month">{{today | date:'MMMM'}}</div>
+                    </div>
+                    <div class="timeContainer">{{realTime | date:'hh:mm:ss a'}}</div>
+                    <div class="motivationalQuote" *ngIf="todaysQuote">
+                      "{{ todaysQuote.quote }}"
+                    </div>
+                  </div>
+                </nb-card>
+              </div>
+      
+              <div class="col-12 col-md-4 col-xl-4">
+                <nb-card>
+                  <a *ngIf="nextUncompleteLesson" class="color-text-2" href="course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}"><img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/Continue.png" alt="continue lesson" class="card-img"></a>
+                  <div class="card-bottom flex flexCenter">
+                    
+      
+                    <a *ngIf="nextUncompleteLesson" class="color-text-2" href="course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}">
+                      {{nextUncompleteLesson.ChapterName}}
+                    </a>
+                  </div>
+                </nb-card>
+            </div>
+  
+            <div class="col-12 col-md-4 col-xl-4">
+              <nb-card>
+                <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/statictv.png" alt="static" class="card-img" routerLink="./livepage"
+                  style="cursor: pointer">
+                <div class="card-bottom flex flexCenter">
+                  <ng-container *ngIf="vimeoBroadcastInfo.isLive; else vimeoNotLive">
+                      <span class="live-status"></span>
+                      <div class="statusText color-text-2" routerLink="./livepage" style="cursor: pointer">STATUS: LIVE
+                      </div>
+                  </ng-container>
+                  <ng-template #vimeoNotLive>
+                      <span class="not-live-status"></span>
+                      <div class="statusText color-text-2" routerLink="./livepage" style="cursor: pointer">STATUS: NOT LIVE
+                      </div>
+                  </ng-template>
+                </div>
+              </nb-card>
+            </div>
+  
+          </ng-template>
+          <!-- start el carousel -->
+          <ng-template #slider>
+            <div class="slider-pw adjustWidthCarousel mt-3  mb-2">
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <div class="col-12 col-xl-4">
+                      <nb-card class="relativeContainer">
+                        <!-- <div class="weatherContainer" *ngIf="userLocation">
+                          <weather-widget [settings]="settings"></weather-widget>
+                        </div>                 -->
+                        <div class="weatherContainer" ngClass="{'hide-opacity': todoLoading}" [nbSpinner]="todoLoading">
+                          <img [src]="'https://d308fakbqebk7c.cloudfront.net/quote_image/' + todaysQuote.imageNumber + '.jpg'" class="card-img backgroundCard1">
+                          <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/Continue.png" alt="summer" class="card-img sizingImage">
+                          <div class="padding80"></div>
+                          <div class="dateContainer">
+                            <div class="card1Day">{{(today | date:'EEEE d')}}{{( today | date: "d") | dateSuffix}}</div>
+                            <div class="card1Month">{{today | date:'MMMM'}}</div>
+                          </div>
+                          <div class="timeContainer">{{realTime | date:'hh:mm:ss a'}}</div>
+                          <div class="motivationalQuote">
+                            "{{ todaysQuote.quote }}"
+                          </div>
+                        </div>
+                      </nb-card>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-12 col-md-6 col-xl-4">
+                      <nb-card>
+                        <a class="color-text-2" href="course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}"><img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/Continue.png" alt="continue lesson" class="card-img"></a>
+                        <div class="card-bottom flex flexCenter">
+                          
+            
+                          <a class="color-text-2" href="course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}">
+                            {{nextUncompleteLesson.ChapterName}}
+                          </a>
+                        </div>
+                      </nb-card>
+                    </div>
+                  </div>
+  
+                  <div class="carousel-item">
+                    <div class="col-12 col-md-6 col-xl-4">
+                      <nb-card>
+                        <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/statictv.png" alt="static" class="card-img" routerLink="./livepage"
+                          style="cursor: pointer">
+                        <div class="card-bottom flex flexCenter">
+                            <ng-container *ngIf="vimeoBroadcastInfo.isLive; else vimeoNotLive">
+                                <span class="live-status"></span>
+                                <div class="statusText color-text-2" routerLink="./livepage" style="cursor: pointer">STATUS: LIVE
+                                </div>
+                            </ng-container>
+                            <ng-template #vimeoNotLive>
+                                <span class="not-live-status"></span>
+                                <div class="statusText color-text-2" routerLink="./livepage" style="cursor: pointer">STATUS: NOT LIVE
+                                </div>
+                            </ng-template>
+                        </div>
+                      </nb-card>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev"> <span
+                    class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-example-generic"
+                  role="button" data-slide="next"> <span class="sr-only">Next</span></a>
+              </div>
+            </div>
+          </ng-template>
+  
+          <!-- end el carousel -->
+        </div>
+  
+        <nb-reveal-card class="mx-3" style="margin-bottom: 25px">
+          <nb-card-front>
+            <nb-card>
+              <nb-card-header>
+                Your progress <button nbTooltip="Displays your overall lifetime progress as a percent in the 3 educational areas on the platform." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+              </nb-card-header>
+              <!-- *ngFor="let sec of ['Course', 'WZRD Book', 'Exams']" -->
+              <div *ngIf="loadingProgress === 0" class="flex p-1 p-md-6 color-text-3">
+                <div class="col-4 col-md-4">
+                  <div>
+                    <svg viewBox="0 0 36 36" class="circular-chart" routerLink="/course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}">
+                      
+                      <linearGradient id="green-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#37ffe7" />
+                        <stop offset="100%" stop-color="#a2ffb4" />
+                      </linearGradient>
+                      <path class="circle-bg" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="circle" [attr.stroke]="getCircularChartStroke('green-stroke')"
+                        [ngStyle]="{'stroke-dasharray': coursePercentage + ' 100'}" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <text x="18" y="20.35" class="percentage">{{coursePercentage}}%</text>
+              </svg>
+            </div>
+            <div class="text-center p-1 p-md-2">
+              <span style="cursor: pointer" class="font-size-1" routerLink="/course/chapter/{{nextUncompleteLesson.ChapterId}}/lesson/{{nextUncompleteLesson.LessonId}}">Course</span>
+            </div>
+          </div>
+  
+                <div class="col-4 col-md-4">
+                  <div>
+                    <svg viewBox="0 0 36 36" class="circular-chart" routerLink="/library">
+                      <linearGradient id="blue-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#fb8097" />
+                        <stop offset="100%" stop-color="#f627b9" />
+                      </linearGradient>
+                      <path class="circle-bg" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="circle" [attr.stroke]="getCircularChartStroke('blue-stroke')"
+                        [ngStyle]="{'stroke-dasharray': bookPercent + ' 100'}" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <text x="18" y="20.35" class="percentage">{{bookPercent}}%</text>
+                    </svg>
+                  </div>
+                  <div class="text-center p-1 p-md-2">
+                    <span style="cursor: pointer" class="font-size-1" routerLink="/library">WZRD Book</span>
+                  </div>
+                </div>
+  
+                <div class="col-4 col-md-4">
+                  <div>
+                    <svg viewBox="0 0 36 36" class="circular-chart" (click) = "routeToCurrentExamination()">
+                      <linearGradient id="orange-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#f8a327" />
+                        <stop offset="100%" stop-color="#f86327" />
+                      </linearGradient>
+                      <path class="circle-bg" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="circle" [ngStyle]="{'stroke-dasharray': examPercentage + ' 100'}"
+                        [attr.stroke]="getCircularChartStroke('orange-stroke')" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <text x="18" y="20.35" class="percentage">{{examPercentage | number:'1.0-0'}}%</text>
+                    </svg>
+                  </div>
+                  <div class="text-center p-1 p-md-2">
+                    <span style="cursor: pointer" class="font-size-1" (click) = "routeToCurrentExamination()">Examinations</span>
+                  </div>
+                </div>
+              </div>
+  
+            </nb-card>
+          </nb-card-front>
+          <nb-card-back>
+  
+            <nb-card class="learningReport-H">
+              <nb-card-header>
+                Learning Report <button nbTooltip="Displays your progress as a percent in each of the 3 sections that you've completed in the last 7 days." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+              </nb-card-header>
+              <nb-card-body class="p-0 chart-card">
+                <app-learningReport style="width: 100%" class="learningReport" [usefulProgress]="progress">
+                </app-learningReport>
+              </nb-card-body>
+            </nb-card>
+  
+          </nb-card-back>
+        </nb-reveal-card>
+  
+        <div class="flex">
+  
+          <div class="col-12 col-md-6">
+            <nb-card class="text-center p-2 pb-3 p-md-3 twitter-container">
+              <nb-card-body class="p-3 p-md-3">
+                <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/twitter.svg" alt="twitter logo" class="m-3 twitter-icon">
+                <br>
+                <span [innerHTML]="transform(twitter_feed)" class="white font-size-1"></span>
+                <br>
+              </nb-card-body>
+              <div class="tweet-time light-color-2 font-size-1"><a class="time-twitter" target="_blank"
+                  href="https://twitter.com/cryptoWZRD_/status/{{twitter_link}}">{{formatTime(time)}}</a></div>
+            </nb-card>
+          </div>
+  
+          <div class="col-12 col-md-6">
+            <nb-card class="text-center p-2 pb-3 p-md-3 twitter-container">
+              <nb-card-body class="p-3 p-md-3">
+                <img src="https://d308fakbqebk7c.cloudfront.net/dashboard_images/news.svg" alt="article logo" class="m-3 news-icon">
+                <br>
+                <span *ngIf="article" [innerHTML]="transform(article.title)" class="white font-size-1"></span>
+                <br>
+              </nb-card-body>
+              <a *ngIf="article" href="/news/{{article.id}}"><i class="arrow-news nb-arrow-right"></i></a>
+            </nb-card>
+          </div>
+        </div>
+  
+        <ng-template [ngIf]="!isXsScreen">
+          <div class="mx-3 mb-4 desktopHide" style="position: relative;" [nbSpinner]="userEventLoading" *ngIf="!(userEventLoading || upcomingLoading); else spinner">
+            <span class="add">
+              <button nbButton outline size="xsmall" status="primary" class="to-do-plus" (click)="addEvent()">+</button>
+            </span>
+            <nb-calendar [nbSpinner]="userEventLoading" nbSpinnerMessage="" nbSpinnerStatus="success" [(date)]="date"
+              [dayCellComponent]="dayCellComponent" size="large" (dateChange)="dateSelected($event)"></nb-calendar>
+  
+          </div>
+          <!-- <ng-template #spinner>
+            <nb-spinner></nb-spinner>
+          </ng-template> -->
+        </ng-template>
+  
+      </div>
+  
+      <div class="col-12 col-xl-3 flex p-0" style="align-content: start;">
+  
+        <div class="col-12 col-md-6 col-xl-12">
+          <nb-card>
+            <nb-card-header>
+              Cryptowzrd New Beginning
+            </nb-card-header>
+            <!--<nb-card-body [nbSpinner]="upcomingLoading" nbSpinnerMessage="" nbSpinnerStatus="success" class="p-0">-->
+  
+                <nb-list class="px-2">
+                  <nb-list-item>
+                    Take a look around we have an abundance of new features. Head over to the WZRD chat to begin seeing new calls and analysis.
+                  </nb-list-item>
+                </nb-list>
+            <nb-list>
+              <!-- <nb-list-item *ngIf="upcomingLoading" class="spinnerHolder" style="text-align:center;">
+                    <div class="spinner" ></div>
+                  </nb-list-item> -->
+              <nb-list-item *ngFor="let item of upcomingEvents; let i = index" class="flex" [ngClass]="{'hidden':i > 2}">
+                <div class="w-25">
+                  <div class="small-cal">
+                    <div class="text-center flex flexCenter small-cal-month">
+                      {{getMonth(item.eventDate)}}
+                      <!-- {{item.eventDate}} -->
+                    </div>
+                    <div class="text-center flex flexCenter small-cal-bg">
+                      <div class="color-text-2">
+                        <p class="small-cal-date">
+                          {{getDayNumber(item.eventDate)}}
+                        </p>
+                        <p class="small-cal-day">{{getDayName(item.eventDate)}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pl-3 small-cal-data" style="width: 70%">
+                  <p class="upcomingTime">{{item.startTime}}-{{item.endTime}}</p>
+                  <!-- <p>10:30AM - 12:00PM</p> -->
+                  <p class="upcomingEvent">{{item.location}}</p>
+                  <p class="upcomingDescription">{{item.title}}</p>
+                </div>
+              </nb-list-item>
+            </nb-list>
+            <!--</nb-card-body>-->
+          </nb-card>
+        </div>
+  
+        <div class="col-12 col-md-6 col-xl-12">
+  
+          <nb-card>
+            <nb-card-header>
+              To do list            
+            </nb-card-header>
+            
+            <nb-card-body [nbSpinner]="todoLoading" nbSpinnerMessage="" nbSpinnerStatus="success" style="padding: 0">
+  
+  
+              <div class="p-2 flex-vertical">
+                <input type="text" id="todo-input" nbInput placeholder="Task to do..."
+                  class="col-10 input-bg-3 light-color-2 input-md input-rectangle" #note
+                  (keydown.enter)="onKeydown($event, note.value); note.value = '';">
+                <div class="col-2" style="display: inline-flex; justify-content: center;">
+                  <button nbButton outline size="xsmall" status="primary" class="to-do-plus" style="font-size: large;"
+                    (click)="addNote(note.value); note.value = '';">+</button>
+                </div>
+              </div>
+  
+              <nb-list style="max-height: 80vh;" class="pt-2 px-2">
+                <!-- <nb-list-item *ngIf="todoLoading" class="spinnerHolder" style="text-align:center;">
+                    <div class="spinner" ></div>
+                  </nb-list-item> -->
+                <nb-list-item *ngFor="let note of todolist; let i = index;" class="flex flex-vertical listitemContainer p-0 pt-2 pb-2 color-text-3">
+                  <div class="col-10 flex-vertical" style="2px solid transparent">
+                      <nb-checkbox [value]="note.isDone===1?true:false" (change)="toggle($event, note)" status="success" class="col-1 p-0"></nb-checkbox>
+                      <div class="col-11 font-size-1">{{note.description}}</div>
+                  </div>                                                
+                    <div class="col-2 x-button p-0">
+                        <div *ngIf="!note.selected" class='to-do-delete-outer-circle'
+                          (click) = "note.selected =!note.selected; checkAllTodosSelected()" 
+                          >
+                        </div>    
+                        <div *ngIf="note.selected" class="to-do-delete-inner-circle" (click) = "note.selected =!note.selected; checkAllTodosSelected()" ></div>
+                      
+                    </div>                
+                
+              </nb-list-item>
+            </nb-list>
+            
+          </nb-card-body>
+            <nb-card-footer>
+              <div class='to-do-bottom'>
+                  <button *ngIf="(todoSelected || allTodosSelected) && this.todolist && this.todolist.length > 0" nbButton outline size="xsmall" status="primary" class="col-5 col-md-5 "
+                      (click)="deselectAllSelectedNotes(todolist);"
+                      
+                      >Delete Selected </button>
+                  <button *ngIf="!allTodosSelected && this.todolist && this.todolist.length > 0" nbButton outline size="xsmall" status="primary" class="col-5 col-md-5 "
+                      (click)="selectAllNotes();"
+                      
+                      >Select All </button>
+                    
+                    <button *ngIf="allTodosSelected && this.todolist && this.todolist.length > 0" nbButton outline size="xsmall" status="primary" class="col-5 col-md-5 "
+                      (click)="deselectAllNotes();"
+                      
+                      >Deselect All </button>
+                    </div>
+            </nb-card-footer>
+          </nb-card>
+
+          <nb-card>
+              <nb-card-header class="d-flex">
+                <span class="new-rel">Quick Access</span>
+                <i class="fal fa-external-link-square align-right" routerLink="/profile"></i>
+                <div class="new-label-slant">NEW</div>
+              </nb-card-header>
+              <nb-card-body>
+                <div (click)="isXsScreen ? chooseHeaderImg():null" [ngStyle]="{'background-image': 'url(' + headerImg + ')'}"  class="d-flex justify-content-end align-items-end" id="header">
+                    <i (click)="!isXsScreen ? chooseHeaderImg():null" class="nb-edit" size="large"></i>
+                </div>
+                <div [ngStyle]="{'background-image': 'url('+ profileImg +')'}" id="profile-image">
+                    <div (click)="chooseProfileImg()" class="align-items-center justify-content-center" id="edit-profile-image">
+                        <i class="nb-edit" size="large"></i>
+                    </div>
+                </div>
+                <div class="name text-center">
+                  {{name| titlecase}}
+                </div>
+                <div class="name text-center email-address">
+                  {{userEmail}}
+                </div>
+                <div class="name text-center mb-4 country-text">
+                  {{userCountry}}
+                </div>
+                <!-- <div class="d-flex mb-4">
+                  <button size="xsmall" nbButton (click)="changePassword()" class="mx-auto">Change Password</button>
+                  <button size="xsmall" nbButton (click)="changeCountry()" class="mx-auto">Change Country</button>
+                </div> -->
+                <button size="xsmall" nbButton (click)="changePassword()" class="mx-auto mb-3">Change Password</button>
+                <button size="xsmall" nbButton (click)="chooseProfileTheme()" class="mx-auto">Change Theme</button>
+                <div class="theme-name text-center mt-3">
+                  <!-- <span>Current theme: </span> <span>{{}}</span> -->
+                </div>
+              </nb-card-body>
+          </nb-card>
+          <ng-template [ngIf]="isXsScreen">
+            <div class="mb-3 desktopHide" style="position: relative;" [nbSpinner]="userEventLoading" *ngIf="!(userEventLoading || upcomingLoading)">
+              <span class="add">
+                <button nbButton outline size="xsmall" status="primary" class="to-do-plus" (click)="addEvent()">+</button>
+              </span>
+              <nb-calendar [nbSpinner]="userEventLoading" nbSpinnerMessage="" nbSpinnerStatus="success" [(date)]="date"
+                [dayCellComponent]="dayCellComponent" size="large" (dateChange)="dateSelected($event)"></nb-calendar>
+  
+            </div>
+          </ng-template>
+        </div>
+  
+  
+      </div>
+  
+    </nb-layout-column>
+  
+    <nb-layout-footer class="footer-main" [ngClass]="{'hide': userEventLoading || upcomingLoading}">
+      &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+  
+  </nb-layout>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content alert-modal-content">
+            <div class="modal-body text-center">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="pt-5 pb-5">
+                    <div>
+                        {{alertModalMessage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #deleteDialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header class="d-flex, justify-content-between">Delete Journal Log</nb-card-header>
+    <nb-card-body class="confirm-dialoge">
+      <div class="px-3">
+        <span> Are you sure you want to delete all selected todos</span>
+      </div>
+      <div class="p-6 button-container">
+        <button nbButton outline status="primary" size="xsmall" class="f-w" (click)="ref.close('yes')" tabindex="1"
+          >Delete</button>
+        <button nbButton outline status="danger" size="xsmall" class="f-w" (click)="ref.close('no')">Cancel</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</ng-template>

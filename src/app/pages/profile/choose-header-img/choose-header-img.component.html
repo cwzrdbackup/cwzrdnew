@@ -1,0 +1,38 @@
+<nb-card style="max-height: 75vh;width: 75vw;">
+  <nb-card-header class="text-center">
+    CHOOSE HEADER IMAGE
+  </nb-card-header>
+  <nb-card-body class="d-flex flex-wrap p-0 py-3">
+    <div *ngFor="let img of images" class="col-12 col-lg-6">
+      <div class="mb-3 image w-100" [ngStyle]="{'background-image': 'url(' + img.name + ')'}"
+        [class.selected]="selected === img.name" (click)="selected = img.name">
+        <div class="w-100 h-100 locked d-flex justify-content-center align-items-center" *ngIf="level < img.level">
+          <i class="nb-locked"></i>
+        </div>
+      </div>
+
+    </div>	
+  </nb-card-body>
+<nb-card-footer>
+<div class="text-center">
+  <button nbButton status="success" (click)="apply()">Apply</button>
+</div>
+</nb-card-footer>
+</nb-card>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content alert-modal-content">
+          <div class="modal-body text-center">
+              <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="pt-5 pb-5">
+                  <div>
+                      {{alertModalMessage}}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

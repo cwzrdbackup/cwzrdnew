@@ -1,0 +1,42 @@
+<div class="d-flex flex-wrap" style="overflow: auto;">
+
+  <div class="col-12 text-right p-3">
+    <i class="nb-plus link plus" (click)="addWachlist()"></i>
+  </div>
+
+<div *ngFor="let item of watchList.watchList" class="px-3 col-12 col-md-6">
+	
+<nb-accordion>
+ <nb-accordion-item class="accordion-row" style="height: fit-content">
+  <nb-accordion-item-header>
+    <div class="grid">
+
+      <span class="justify-content-start">
+        <span class="logo mr-2 coin-text bold-name"><img class="coin-image" src="./../../../../assets/Coins/{{ item.CoinName | lowercase }}.png"/></span>
+        {{ item.CoinName }}
+      </span>
+
+      <span class="justify-content-center">
+		  <div class="text-center">
+        <h5 [class]="item.color + ' ' + 'm-0 value-text'">
+          ${{ item.value | number: '1.2-2'}}
+        </h5>
+	</div>
+      </span>
+
+      <span class="justify-content-end">
+        <div class="text-center percent-text" [ngClass]="(item.percentVal<0)?'red':'green'">
+          {{ item.percent }}<i [ngClass]="(item.percentVal<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" ></i>
+        </div>
+      </span>
+    </div>
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>
+  <app-watchlist1m [coin]="item"></app-watchlist1m>	
+  </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>	
+	
+  </div>
+
+</div>

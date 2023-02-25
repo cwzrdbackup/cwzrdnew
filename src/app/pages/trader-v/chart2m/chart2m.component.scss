@@ -1,0 +1,116 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/armyCamo';
+// @import '~@nebular/theme/styles/themes/blueCamo';
+
+@include nb-install-component {
+	.trader-text {
+		color: nb-theme(traders-hub-text);
+	}
+	::ng-deep nb-layout {
+		.scrollable-container {
+			.layout {
+				.layout-container {
+					[nbButton].btn-primary {
+						font-size: 16px !important;
+					}
+				}
+			}
+		}
+	}
+	::ng-deep nb-reveal-card {
+		nb-card-front {
+			nb-card {
+				nb-card-body {
+					.selected
+				{
+					
+					text-align: center;
+					
+				}
+				}				
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.f-h {
+  height: calc(100% - 1.5rem);
+}
+.chart {
+  height: 140px;
+}
+
+.row-container-comparison {
+	position: absolute;
+	top: 42px;
+    right: 0px;    
+	@include media-breakpoint-up(md) {
+		top: 60px;
+		right: 0;
+	}
+}
+.button-width {
+	width: 120px;
+}
+.padding-c9 {
+	// padding-bottom: 24px;
+	// padding-top: 27px;
+	// @include media-breakpoint-up(md) {
+	// 	padding-bottom: 19px;
+	// 	padding-top: 21px;
+	// }
+	height: 100%;
+	padding-top: 30px;
+}
+.chart-card, .trader-text {
+	font-size: 13px;
+    @include media-breakpoint-up(md) {
+        font-size: .75rem;
+    }  
+    @include media-breakpoint-up(lg) {
+        font-size: .75rem;
+    }    
+    @include media-breakpoint-up(xl) {
+        font-size: .88vw;
+	}    
+	@media screen and (min-width: 1500px) {
+		font-size: 14px;
+	}
+}
+nb-reveal-card {
+    height: 255px;
+}
+nb-card-front, nb-card-back {
+    //display: flex;
+    height: 100%;
+}
+nb-card {
+    height: 100%
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}
+.chart2-percent, .coin-price, .move-top {
+	@include media-breakpoint-down(sm) {
+		margin-top: 0;
+		top: -15px;
+	}
+}

@@ -1,0 +1,61 @@
+<div class="flex flexCenter">	
+  
+		<img routerLink="/dashboard" src="https://cdn.shopify.com/s/files/1/0049/3102/7015/files/cryptowzrd_v2_allwhite.png" class="logo-dashboard">  
+		<span style="flex: 1 auto;"></span>
+		<nb-actions size="large" *ngIf="isLargeScreen">
+		  <nb-action class="header-link whiteColor cap" routerLink="/dashboard" style="border: none">Dashboard</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/course" style="border: none">Course</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/library" style="border: none">Library</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/examination" style="border: none">Examinations</nb-action>
+		  <nb-action class="header-link whiteColor cap" style="border: none" routerLink="traders-hub">Trader's Hub</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/charts" style="border: none">Charts</nb-action>
+		  <nb-action class="header-link whiteColor cap" style="border: none" routerLink="/portfolio">Portfolio</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/journal" style="border: none">Journal</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/position-size-calculator" style="border: none">Calculator</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/technicals" style="border: none">Technicals</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/WZRD-wednesdays" style="border: none">WZRD Wednesdays</nb-action>
+		  <nb-action class="header-link whiteColor cap" routerLink="/podcasts" style="border: none">Podcasts</nb-action>
+		  <nb-action class="header-link whiteColor cap" style="border: none" routerLink="/news">News</nb-action>
+		  <!--<nb-action class="header-link whiteColor cap">WizMe</nb-action>-->
+		  <nb-action class="header-link whiteColor cap" routerLink="/battle-of-wzrds" style="border: none">Battle of WZRDs</nb-action>
+		  <nb-action class="header-link whiteColor cap" style="border: none"><a class="header-link" href="https://wzrd.store" target="_blank">WZRD Store</a></nb-action>		  
+		  <nb-action class="whiteColor dropdown" routerLink="/profile" style="border: none"><span class="dropbtn">{{name| titlecase}}</span><span><img class="profile-header" src="./assets/profile/cryptowzrd_logo.png"></span>
+			<div class="dropdown-overlay"></div>
+			<div class="dropdown-arrow-up"></div>
+			  <div class="dropdown-content">
+				<nb-action routerLink="/profile" class="link whiteColor">Profile</nb-action> 				
+				<nb-action routerLink="/" class="link whiteColor text-center">Log Out</nb-action>	  
+			  </div>
+			</nb-action>
+		</nb-actions>
+		<nb-actions size="medium" *ngIf="!isLargeScreen">
+		  <nb-action (click)="toogleSidebar()" icon="nb-menu" style="padding: 0;"></nb-action>
+		</nb-actions>
+	  </div>
+	  
+	  <nb-sidebar right fixed tag="right" state="collapsed" *ngIf="!isLargeScreen">
+		<nb-actions size="medium" class="py-2">
+		  <nb-action (click)="toogleSidebar()" icon="nb-close" class="p-0"></nb-action>
+		</nb-actions>
+		<nb-list>
+		<nb-list-item class="link whiteColor cap" routerLink="/dashboard">Dashboard</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/course">Course</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/library">Library</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/examination">Examinations</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/traders-hub">Trader's Hub</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/charts">Charts</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/portfolio">Portfolio</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/journal">Journal</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/position-size-calculator">Calculator</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/technicals">Technicals</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/WZRD-wednesdays">WZRD Wednesdays</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/podcasts">Podcasts</nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/news">News</nb-list-item>
+	  <!--<nb-list-item class="link whiteColor cap">WizMe</nb-list-item>-->
+	  <nb-list-item class="link whiteColor cap" routerLink="/battle-of-wzrds">Battle of WZRDs</nb-list-item>
+	  <nb-list-item class="link whiteColor cap"><a href="https://wzrd.store" target="_blank">WZRD Store</a></nb-list-item>
+	  <nb-list-item class="link whiteColor cap" routerLink="/profile">Profile</nb-list-item>	  
+	  <nb-list-item class="link whiteColor cap" style="margin-bottom: 150px" routerLink="/">Logout</nb-list-item>
+	  <span class="usernameBottom">{{name| titlecase}}</span><span><img class="profile-header-bottom" src="./assets/profile/cryptowzrd_logo.png"></span>
+		</nb-list>
+	  </nb-sidebar>

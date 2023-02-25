@@ -1,0 +1,96 @@
+
+
+
+<nb-card class="f-h">
+  <!-- <nb-card-header class="p-2" >
+    <div class="flex">
+      <nb-select selected="BTC" class="button-width p-0 transparent" (selectedChange)="change($event)">
+        <nb-option value="BTC">BTC</nb-option>
+        <nb-option value="XRP">XRP</nb-option>
+        <nb-option value="ETH">ETH</nb-option>
+        <nb-option value="LTC">LTC</nb-option>
+      </nb-select>
+      <button nbTooltip="The multi-line chart displays the selected coin's market cap value (in purple) and the coin's price (in green). The candlestick chart is a one minute candlestick chart of the selected coin." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+    </div>
+  </nb-card-header> -->  
+  <nb-tabset fullWidth="true" *ngIf="tabbedData">
+    <nb-tab tabTitle="Active Trades">
+        <div class="summary-container mb-3">
+          <div>
+            <div class="summary-title">Active Trades</div>
+            <div class="summary-subtitle">
+              2
+
+            </div>
+          </div>
+          <div>
+            <div class="summary-title">Trades This Month</div>
+            <div class="summary-subtitle">17</div>
+          </div>
+          <div>
+            <div class="summary-title">Trades This Week</div>
+            <div class="summary-subtitle">2</div>
+          </div>
+          <div>
+            <div class="summary-title">Trades Today</div>
+            <div class="summary-subtitle">1</div>
+          </div>
+        </div>
+        <button nbTooltip="Displays data on the current trades that are active in the group." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+    <nb-card-body class="p-0 chart-card">
+      <!-- <div class="d-flex justify-content-center price-font-size" style="margin-top:35px">
+        <span class="green">$</span><span class="mr-3 white" id="btcplc">{{coinPrice | number:'.2'}}</span>
+        <span [ngClass]="(percentNumber<0)?'red':'green'"  id="btcPerc">{{percent}}
+          <i [ngClass]="(percentNumber<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" ></i>
+        </span>
+      </div>     -->
+      <div echarts [options]="chartOption" [merge]="dataOptions" class="f-h chart"></div>
+    </nb-card-body>
+    </nb-tab>
+    <nb-tab tabTitle="Closed Trades">
+      <app-bar-chart></app-bar-chart>
+	<!-- <app-bar-chart [barData]="{closeTrades:tabbedData.closeTrades,totalInActiveTradesToday:tabbedData.totalInActiveTradesToday,totalInActiveTradesLastMonth:tabbedData.totalInActiveTradesLastMonth, totalInActiveTradesLastWeek:tabbedData.totalInActiveTradesLastWeek}"></app-bar-chart> -->
+  </nb-tab>
+  </nb-tabset>
+  <nb-tabset fullWidth="true" *ngIf="!tabbedData">
+    <nb-tab tabTitle="Active Trades">
+        <div class="summary-container mb-3">
+          <div>
+            <div class="summary-title">Active Trades</div>
+            <div class="summary-subtitle">0
+            </div>
+          </div>
+          <div>
+            <div class="summary-title">Trades Last Month</div>
+            <div class="summary-subtitle">0
+            </div>
+          </div>
+          <div>
+            <div class="summary-title">Trades Last Week</div>
+            <div class="summary-subtitle">0
+            </div>
+          </div>
+          <div>
+            <div class="summary-title">Today</div>
+            <div class="summary-subtitle">0
+            </div>
+          </div>
+        </div>
+        <button nbTooltip="Displays data on the current trades that are active in the group."  nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+    <nb-card-body class="p-0 chart-card">
+      <!-- <div class="d-flex justify-content-center price-font-size" style="margin-top:35px">
+        <span class="green">$</span><span class="mr-3 white" id="btcplc">{{coinPrice | number:'.2'}}</span>
+        <span [ngClass]="(percentNumber<0)?'red':'green'"  id="btcPerc">{{percent}}
+          <i [ngClass]="(percentNumber<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" ></i>
+        </span>
+      </div>     -->
+      <div class="message-null">Data is not yet available</div>
+    </nb-card-body>
+    </nb-tab>
+    <nb-tab tabTitle="Closed Trades">
+  <!-- <app-bar-chart *ngIf="closeTrades" [barData]="{closeTrades:tabbedData.closeTrades,totalInActiveTradesToday:tabbedData.totalInActiveTradesToday,totalInActiveTradesLastMonth:tabbedData.totalInActiveTradesLastMonth, totalInActiveTradesLastWeek:tabbedData.totalInActiveTradesLastWeek}"></app-bar-chart> -->
+  <!-- <app-bar-chart *ngIf="!closeTrades"></app-bar-chart> -->
+  <!-- <app-bar-chart></app-bar-chart> -->
+  </nb-tab>
+  </nb-tabset>    
+</nb-card>

@@ -1,0 +1,156 @@
+<nb-layout class="layout-container" >
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="p-0" [nbSpinner]="allLoading || loadingSocket" nbSpinnerMessage="Gathering live data...">
+
+    <nb-tabset fullWidth="true">
+      <nb-tab tabTitle="Balance">
+	  
+      <!-- SECOND ROW -->
+      <div class="flex arrows-padding mt-4 mt-mb-5 max-height">		
+
+        <div class="col-12 col-md-6 col-lg-3">
+		  
+		  <nb-flip-card>
+		    <nb-card-front>
+		      <nb-card>
+		        <nb-card-body>
+	              <p class="color-text-3 portfolio-header">PORTFOLIO BALANCE <button nbTooltip="Displays your portfolio holdings and their real time value." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+	              <h3 class="card-text-1 portBalance" id="pbc">${{balance.value | number:'.2'}}</h3>
+				  <p class="flex-arrow mb-arrow" 
+				  [ngClass]="(balance.percent<0)?'red':'green'" 
+				  id="pbpc">{{balance.percent}}% PAST 24H<i 
+				  [ngClass]="(balance.percent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" 
+				  ></i></p>
+		        </nb-card-body>
+		      </nb-card>
+		    </nb-card-front>
+		    <nb-card-back>
+			  <nb-card>			  
+			        <nb-card-body class="nb-card-body-p0">
+					<p class="p0-header color-text-3 portfolio-header">PORTFOLIO SPLIT <button nbTooltip="Displays your live portfolio balance's profit at current prices compared to how much you purchased it for." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+			          <app-balancechart class="padding-graph flex flex-vertical col-12 test-div2" style="overflow-x: hidden;"></app-balancechart>
+			        </nb-card-body>
+			      </nb-card>
+		    </nb-card-back>
+		  </nb-flip-card>    
+		  
+  	  </div>		      
+		  
+        <div class="col-12 col-md-6 col-lg-3">		  
+  		  <nb-flip-card>
+  		    <nb-card-front>
+  		      <nb-card>
+  		        <nb-card-body>
+  	              <p class="color-text-3 portfolio-header">PROFIT/LOSS <button nbTooltip="Displays your live portfolio balance's profit at current prices compared to how much you purchased it for." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+  	              <h3 class="card-text-1" id="tmcc">${{profit | number: '1.2-2'}}</h3>
+  	              <p class="flex-arrow mb-profit" [ngClass]="profitColor" id="tmcpc"> {{profitPercent | number: '1.2-2'}}% PAST 24H <i [class]="profitArrow"></i></p>
+  		        </nb-card-body>
+  		      </nb-card>
+  		    </nb-card-front>
+  		    <nb-card-back>
+  			  <nb-card>			  
+  			        <nb-card-body class="nb-card-body-p0">
+  					<p class="p0-header color-text-3 portfolio-header">PROFIT/LOSS <button nbTooltip="Displays your live portfolio balance's profit at current prices compared to how much you purchased it for." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+  			          <app-flipchartprofit class="flex flex-vertical" style="overflow-x: hidden;"></app-flipchartprofit>
+  			        </nb-card-body>
+  			      </nb-card>
+  		    </nb-card-back>
+  		  </nb-flip-card>
+		  
+  	  </div>
+
+        <div class="col-12 col-md-6 col-lg-3">	  
+  		  <nb-flip-card>
+  		    <nb-card-front>
+  		      <nb-card>
+  		        <nb-card-body>
+  	              <p class="color-text-3 portfolio-header">HISTORY - HIGH <button nbTooltip="Displays your portfolio's historical high since the first date you first entered coins in your balance." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+  	              <h3 class="card-text-1">${{allTimeHigh.value | number:'.2'}}</h3>
+  	              <p class="green mb-date">{{allTimeHigh.date |date: 'MMM d, y'}}</p>
+  		        </nb-card-body>
+  		      </nb-card>
+  		    </nb-card-front>
+  		    <nb-card-back>
+  			  <nb-card>			  
+	  		        <nb-card-body>
+	  	              <p class="color-text-3 portfolio-header">HISTORY - LOW <button nbTooltip="Displays your portfolio's historical low since the first date you first entered coins in your balance." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+	  	              <h3 class="card-text-1">${{allTimeLow.value | number:'.2'}}</h3>
+	  	              <p class="green mb-date">{{allTimeLow.date |date: 'MMM d, y'}}</p>
+	  		        </nb-card-body>
+  			      </nb-card>
+  		    </nb-card-back>
+  		  </nb-flip-card>
+  	  </div>
+
+        <div class="col-12 col-md-6 col-lg-3">		  
+  		  <nb-flip-card>
+  		    <nb-card-front>
+  		      <nb-card class="p-0">
+  		        <nb-card-body>
+  	              <p class="color-text-3 performer-margin portfolio-header">PERFORMERS <button nbTooltip="Displays your portfolio's top performing coins as ranked by 24 hour percent change." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></p>
+  	              <div class="flex-vertical text-center no-data-center" >
+					  <span *ngIf="topPerformers.length==0" class="col-12">
+						No data is available
+					  </span>
+					  <span class="col-4" *ngFor="let item of topPerformers">
+						  <img class="coin-image-performers" src="./assets/Coins/{{item.coinName | lowercase}}.png">
+						  <div class="text-center mt-2 mt-md-3 percent-font margin-medium"
+						  [ngClass]="(item.changePercent<0)?'red':'green'" 
+						  >
+							  {{item.changePercent | number:'.2'}}%<i 
+							  [ngClass]="(item.changePercent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" 
+							  ></i>
+						  </div>
+					  </span>
+					  <!-- <span class="col-4">
+						  <img class="coin-image-performers" src="./assets/ethereum.svg">
+						  <div class="text-center green mt-2 mt-md-3 percent-font">
+							  2.45%<i class="nb-arrow-dropup"></i>
+						  </div>
+					  </span>
+					  <span class="col-4">
+						  <img class="coin-image-performers" src="./assets/ripple.svg">
+						  <div class="text-center green mt-2 mt-md-3 percent-font">
+							  1.85%<i class="nb-arrow-dropup"></i>
+						  </div>
+					  </span>-->
+				  </div>  	              
+  		        </nb-card-body>
+  		      </nb-card>
+  		    </nb-card-front>
+  		    <nb-card-back>
+  			  <nb-card>			  
+  					<nb-card-body>
+					<p class="color-text-3 portfolio-header">PERFORMERS</p>
+					<app-performerschart class="flex flex-vertical"></app-performerschart>
+  					</nb-card-body>
+  			      </nb-card>
+  		    </nb-card-back>
+  		  </nb-flip-card>
+
+        </div>
+
+      </div>
+	  
+			<app-balance [balance]="{marquee:marquee, portfolio:baseData}"></app-balance>
+      </nb-tab>
+      <nb-tab tabTitle="Split">
+         <app-split></app-split>
+      </nb-tab>
+      <nb-tab tabTitle="Watchlist">
+         <app-wachlist [watchList]="{marquee:marquee, watchList:watchList}"></app-wachlist>
+      </nb-tab>
+      <nb-tab tabTitle="History">
+         <app-history></app-history>
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+
+  <nb-layout-footer class="footer-main">
+    &copy; 2021 Powered by WZRD Group
+  </nb-layout-footer>
+
+</nb-layout>

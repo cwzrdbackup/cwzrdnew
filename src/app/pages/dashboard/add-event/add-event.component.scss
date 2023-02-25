@@ -1,0 +1,18 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/cosmic';
+
+@include nb-install-component {
+    .input-bg-3 {
+		background-color: nb-theme(circle-bg);
+	}
+}
+.card-position{
+    @media only screen and (max-width: 600px)
+    {
+        position: absolute;
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%);
+    }
+}
+

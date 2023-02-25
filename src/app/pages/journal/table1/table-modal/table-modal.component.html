@@ -1,0 +1,62 @@
+    <nb-card>
+        <nb-card-header>
+            Add Log
+        </nb-card-header>
+        <nb-card-body class="d-flex flex-column" [formGroup]="journalForm">
+
+            <angular2-multiselect (onClose)="dropdownClosed('pair')"  formControlName="pair" [data]="pairList" [settings]="pairDropdownSettings"
+                (onSelect)="onItemSelect($event, 'pair')" (onDeSelectAll)="onDeSelectAll($event, 'pair')">
+            </angular2-multiselect>
+            <p *ngIf="journalForm.controls.pair.touched && journalForm.controls.pair.invalid" class="error">
+                <span class="errorMessage">{{showError(journalForm.controls.pair)}}</span>
+            </p>
+
+            <div>
+                <input class="calendar" nbInput [nbDatepicker]="opened2" placeholder="Set Opened"
+                    formControlName="opened" tabindex="-1">
+                <nb-datepicker #opened2></nb-datepicker>
+                <p *ngIf="journalForm.controls.opened.touched && journalForm.controls.opened.invalid" class="error">
+                    <span class="errorMessage">{{showError(journalForm.controls.opened)}}</span>
+                </p>
+            </div>
+
+            <div>
+                <input class="calendar" nbInput [nbDatepicker]="closed2" placeholder="Set Closed"
+                    formControlName="closed" tabindex="-1">
+                <nb-datepicker #closed2></nb-datepicker>
+                <p *ngIf="journalForm.controls.closed.touched && journalForm.controls.closed.invalid" class="error">
+                    <span class="errorMessage">{{showError(journalForm.controls.closed)}}</span>
+                </p>
+            </div>
+
+            <angular2-multiselect (onClose)="dropdownClosed('position')" formControlName="position" [data]="positionList" [settings]="positionDropdownSettings"
+                (onSelect)="onItemSelect($event, 'position')" (onDeSelectAll)="onDeSelectAll($event, 'position')">
+            </angular2-multiselect>
+            <p *ngIf="journalForm.controls.position.touched && journalForm.controls.position.invalid" class="error">
+                <span class="errorMessage">{{showError(journalForm.controls.position)}}</span>
+            </p>
+
+
+            <input type="number" min="-1000000" tabindex="-1" placeholder="Set Contract/Lot size" nbInput
+                formControlName="contract">
+            <p *ngIf="journalForm.controls.contract.touched && journalForm.controls.contract.invalid" class="error">
+                <span class="errorMessage">{{showError(journalForm.controls.contract)}}</span>
+            </p>
+
+            <input type="number" min="-1000000" tabindex="-1" placeholder="Set Pip Gain/Loss" nbInput
+                formControlName="pip">
+            <p *ngIf="journalForm.controls.pip.touched && journalForm.controls.pip.invalid" class="error">
+                <span class="errorMessage">{{showError(journalForm.controls.pip)}}</span>
+            </p>
+
+            <input type="number" min="-1000000" tabindex="-1" placeholder="Set Profit/Loss" nbInput
+                formControlName="profitLoss">
+            <p *ngIf="journalForm.controls.profitLoss.touched && journalForm.controls.profitLoss.invalid" class="error">
+                <span class="errorMessage">{{showError(journalForm.controls.profitLoss)}}</span>
+            </p>
+
+            <button nbButton (click)="add()" [disabled]="journalForm.status === 'INVALID'" status="success"
+                class="testButton">ADD</button>
+
+        </nb-card-body>
+    </nb-card>

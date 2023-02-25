@@ -1,0 +1,41 @@
+<nb-card class="p-0 newShadow">  
+  <nb-card-body [nbSpinner]="loading" nbSpinnerMessage="" nbSpinnerStatus="success" class="p-0">
+    <!-- <pdf-viewer *ngIf="!loading" [src]="pdfData" [show-all]="true"></pdf-viewer> -->
+    <!-- <pdf-viewer *ngIf="!loading" class="prieview-pdf" [src]="pdfData" [show-all]="true"></pdf-viewer> -->
+      <pdf-viewer *ngIf="!loading"
+                  class="prieview-pdf"
+                  [src]="pdfData"
+                  [render-text]="true"
+                  [show-all]="true"
+                  [autoresize]="true" [original-size]="false">
+      ></pdf-viewer>
+    <svg
+      (click)="downloadPdf()"
+      fill="#fff" class="link downloadSvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      viewBox="0 0 24 24">
+      <path
+        d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+      <path fill="none" d="M0 0h24v24H0z" /></svg>
+      <i (click)="deleteDocument()" class="fas fa-trash-alt delete-icon link"></i>
+      <div class="closeBtnModal" (click)="closeModal()">
+          <i class="control-icon nb-close"></i>
+      </div>
+  </nb-card-body>
+</nb-card>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content alert-modal-content">
+          <div class="modal-body text-center">
+              <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="pt-5 pb-5">
+                  <div>
+                      {{alertModalMessage}}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

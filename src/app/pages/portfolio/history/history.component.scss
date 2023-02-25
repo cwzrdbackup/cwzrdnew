@@ -1,0 +1,25 @@
+.chart {
+    height: 100% !important;
+  }
+  .chart > div,
+  .chart canvas {
+    height: 100% !important;
+  }
+  .info {
+    padding: 16px 16px 8px;
+    border-radius: 8px;
+    background: #914fef;
+  }
+  .nbButtonIcon {
+    background: transparent;
+    border: none;
+    color: rgb(209, 209, 255);
+    padding: 0;
+  }
+  .tooltip-align {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 15px 15px 0 0;
+    justify-content: flex-end;
+}

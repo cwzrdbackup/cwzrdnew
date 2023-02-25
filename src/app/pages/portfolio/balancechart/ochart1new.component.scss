@@ -1,0 +1,198 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	::ng-deep {
+		nb-tabset .tabset {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+		.primary-tooltip {
+			max-width: 600px;
+		}
+		nb-select button {
+			max-width: unset !important;
+			text-align: center;
+		}
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+		}
+		nb-card-header {
+			border-bottom: 1px solid nb-theme(line-color);	
+		}
+	.color-light-2 {
+		color: nb-theme(color-light-2);
+	}
+	.pibl-coin {
+		color: nb-theme(color-fg-text-3);
+	}
+	::ng-deep nb-reveal-card .second-card-container {
+		height: 200px !important;
+		width: 50% !important;
+	}
+	}
+}
+.f-h {
+    height: calc(100% - 1.5rem)!important;
+    min-height: 480px;
+    .crd {
+        height: 100%;
+    }
+}
+.chart {
+	//left: calc(50% - 40px);	
+	//left: 50%;
+	//transform: translate(-50%, 0);
+}
+.pibl-subtitle {
+	font-size: 3.9vw;
+}
+@media (min-width: 768px) {
+	
+	.pibl-subtitle {
+		font-size: 2.7vw;
+	}
+}
+@media (min-width: 992px) {
+	
+	.pibl-subtitle {
+		font-size: 1rem;
+	}
+}
+@media (min-width: 1200px) {
+	
+	.pibl-subtitle {
+		font-size: 1rem;
+	}
+}
+.color-light-2 {
+	font-weight: 700;
+}
+.selectedCoin {
+	font-size: 1rem;
+	margin-top: 1px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.5vmin;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.5vmin;
+	}
+}
+.nb-close {
+	font-size: 18px;
+	//margin-right: 2vmin;
+	//margin-right: 1vmin;
+	@include media-breakpoint-up(xl) {
+		margin-right: 0;
+	}
+}
+.pibl-coin {
+	margin-top: 1px;
+}
+.flex-arrow {
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 14px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 12px;
+	}
+}
+.pibl-coin {
+	font-size: 1rem;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.5vmin;
+	}
+}
+.pibl-title {
+	font-size: 1.35rem;
+	@include media-breakpoint-up(md) {
+		font-size: 2.5vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.65vmin;
+	}
+}
+.balance-item-price {
+	@include media-breakpoint-up(md) {
+		font-size: 2.5vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.65vmin;
+	}
+}
+.balance-item-percent {
+	margin-top: 2px;
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 2vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.25vmin;
+	}
+}
+.flex-arrow {
+	@include media-breakpoint-up(md) {
+		font-size: 2vmin;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 1.25vmin;
+	}
+}
+.balance-items-container {
+	margin-top: -18px;
+}
+.balance-items-container {
+	padding-left: 5px;
+	@include media-breakpoint-up(md) {
+		padding-left: 5px;
+	}
+	@include media-breakpoint-up(lg) {
+		padding-left: 5px;
+	}
+}

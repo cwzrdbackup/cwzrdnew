@@ -1,0 +1,269 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap');
+</style>
+
+<nb-layout>
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="p-0">
+	
+    <!-- FIRST ROW -->
+    <nb-card class="mx-3 mt-3 mb-3 mt-md-3 mb-md-3">
+      <nb-card-body class="flex justify-content-start justify-content-md-around justify-content-xl-between pt-0 pb-0">
+	    <iframe src="/assets/assets/html/widget1.html" frameborder="0" style="width: 100%; height: 60px;"></iframe>
+      </nb-card-body>
+    </nb-card>
+
+    <!-- SECOND ROW -->
+    <div class="flex arrows-padding">		
+
+      <div class="col-12 col-md-6 col-lg-3">
+		  
+		  <nb-flip-card>
+		    <nb-card-front>
+		      <nb-card class="mb-3 mb-md-3">
+		        <nb-card-body>
+	              <p class="row-1-c-title">{{getData(0, 'title')}}</p>
+	              <h3 class="trader-text" id="pbc">${{getData(0, 'value') | number: '1.2-2'}}</h3>
+	              <p class="flex-arrow" [ngStyle]="{'color': getData(0, 'color')}" id="pbpc">{{getData(0, 'percent') | number: '1.2-2'}}% PAST 24H<i [class]="getData(0, 'arrow')"></i></p>
+		        </nb-card-body>
+		      </nb-card>
+		    </nb-card-front>
+		    <nb-card-back>
+			  <nb-card class="mb-3 mb-md-3">			  
+			        <nb-card-body class="nb-card-body-p0">
+					<p class="row-1-c-title p0-header">PORTFOLIO SPLIT</p>
+			          <app-ochart1new class="flex flex-vertical col-12 test-div2" style="overflow-x: hidden; max-width: 100%;"></app-ochart1new>
+			        </nb-card-body>
+			      </nb-card>
+		    </nb-card-back>
+		  </nb-flip-card>    
+		  
+	  </div>		      
+		  
+      <div class="col-12 col-md-6 col-lg-3">		  
+		  <nb-flip-card>
+		    <nb-card-front>
+		      <nb-card class="mb-3 mb-md-3">
+		        <nb-card-body *ngIf="TotalMarketCap" class="pb-total-market-cap" [nbSpinner]="loadingSocket">
+	              <p class="row-1-c-title">TOTAL MARKET CAP</p>
+	              <h3 class="trader-text" id="tmcc">${{TotalMarketCap.value | number: '1.2-2'}}B</h3>
+	              <p class="flex-arrow" [ngStyle]="{'color': TotalMarketCap.color}" id="tmcpc"> {{TotalMarketCap.percent | number: '1.2-4'}}% PAST 24H<i [class]="TotalMarketCap.arrow"></i></p>
+		        </nb-card-body>
+		      </nb-card>
+		    </nb-card-front>
+		    <nb-card-back>
+			  <nb-card *ngIf="TotalMarketCapArr" class="mb-3 mb-md-3 pb-chart" [nbSpinner]="loadingSocket">			  
+			        <nb-card-body class="nb-card-body-p0">
+					<p class="row-1-c-title p0-header">TOTAL MARKET CAP</p>
+			          <app-flipchart2m [TotalMarketCap]="{arr:TotalMarketCapArr,obj:TotalMarketCap}"  class="p-0 flex flex-vertical col-12" style="overflow-x: hidden;"></app-flipchart2m>
+			        </nb-card-body>
+			      </nb-card>
+		    </nb-card-back>
+		  </nb-flip-card>
+		  
+	  </div>
+
+      <div class="col-12 col-md-6 col-lg-3">	  
+		  <nb-flip-card>
+		    <nb-card-front>
+		      <nb-card class="mb-3 mb-md-3">
+		        <nb-card-body>
+	              <p class="row-1-c-title">Total Volume</p>
+	              <h3 class="trader-text" id="tvc">${{TotalVolume.value | number: '1.2-2'}}B</h3>
+	              <p class="flex-arrow" [ngStyle]="{'color': getData(2, 'color')}" id="tvpc">{{getData(2, 'percent') | number: '1.2-2'}}% PAST 24H<i [class]="getData(2, 'arrow')"></i></p>
+		        </nb-card-body>
+		      </nb-card>
+		    </nb-card-front>
+		    <nb-card-back>
+			  <nb-card class="mb-2 mb-md-3">			  
+			        <nb-card-body class="nb-card-body-p0">
+					<p class="row-1-c-title p0-header">TOTAL VOLUME</p>
+			          <app-flipchart3m class="p-0 flex flex-vertical col-12" style="overflow-x: hidden;"></app-flipchart3m>
+			        </nb-card-body>
+			      </nb-card>
+		    </nb-card-back>
+		  </nb-flip-card>
+	  </div>
+
+      <div class="col-12 col-md-6 col-lg-3">		  
+		  <nb-flip-card>
+		    <nb-card-front>
+		      <nb-card class="mb-3 mb-md-3">
+		        <nb-card-body>
+	              <p class="row-1-c-title">Market Dominance</p>
+	              <h3 class="trader-text" id="mdc">{{MarketDominance.BTCDominance}}</h3>
+	              <p class="flex-arrow"  [ngStyle]="{'color': MarketDominance.color}" id="mdpc">{{MarketDominance.percent}} PAST 24H<i [class]="MarketDominance.arrow"></i></p>
+		        </nb-card-body>
+		      </nb-card>
+		    </nb-card-front>
+		    <nb-card-back>
+			  <nb-card class="mb-3 mb-md-3">			  
+					<nb-card-body class="nb-card-body-p0" id="triangle-width">
+										<p class="row-1-c-title p0-header">MARKET DOMINANCE</p>
+								          <div class="market-dominance-bar">						  
+											  <div class="md-bar-outer flex">
+												  <div class="md-bar-triangle" [ngStyle]="{'left': MarketDominance.BTCDominance}"></div>
+											  	<div class="md-bar-left" [ngStyle]="{'width': MarketDominance.BTCDominance}">
+													<div class="md-bar-text">														
+														{{MarketDominance.BTCDominance}}
+													</div>
+													<div class="barSubTitle">
+														Bitcoin
+													</div>
+												</div>
+											  	<div class="md-bar-right" [ngStyle]="{'width':MarketDominance.otherCoins}">
+													<div class="md-bar-text">
+														{{MarketDominance.otherCoins}}
+													</div>
+													<div class="barSubTitle" style="right: 0 !important">
+														Alt coins
+													</div>
+												</div>
+											  </div>
+										  </div>
+									  </nb-card-body>
+			      </nb-card>
+		    </nb-card-back>
+		  </nb-flip-card>
+
+      </div>
+
+    </div>
+
+    <!-- THIRD ROW -->
+    <div class="flex">
+
+      <div class="col-12 col-xl-6 class flex p-0">
+
+        <div class="col-12 col-md-6 mb-3 mb-xl-0">
+			
+          <app-chart1m class="trader-Chart1m"></app-chart1m>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3 mb-xl-0">
+          <app-chart2m class="trader-Chart2m"></app-chart2m>
+        </div>
+		
+        <div class="col-12 mt--3 mt-md-0 mb-3 mb-xl-0" style="height: 360px;">
+		  <!-- <app-table1></app-table1> -->
+		  <nb-card class="f-h" style="overflow: hidden;" [nbSpinner]="liveTradeLoading">
+			<nb-card-header class="p-2">
+			  <div class="flex" style="justify-content: space-between; align-items: center;">
+		  
+				<div class="col-6">
+				  Live Trades
+				</div>
+		  
+				<nb-select selected="BTC" class="button-width p-0 text-right transparent"
+				(selectedChange)="changeLiveTrades($event)"
+				>
+				  <nb-option value="BTC">BTC</nb-option>
+				  <nb-option value="XRP">XRP</nb-option>
+				  <nb-option value="ETH">ETH</nb-option>
+				  <nb-option value="LBC">LTC</nb-option>
+				</nb-select>
+			  </div>
+		  
+			</nb-card-header>
+			<nb-card-body id="table-live-trades" class="p-1 p-md-3">    
+			
+			<div class="flex py-3 flex-row" *ngFor="let row of liveTrade">
+			
+		  
+			<span class="col-19 flex-vertical" style="line-height: 0;"><span class="coinImage">
+				<img class="coinImg" src="../../../assets/{{row.Coin}}.svg"/></span><span class="row-coin">{{ row.Coin }}</span></span>
+			<span class="col-19" [ngClass]="{'green': row.Type === 'BUY', 'red': row.Type !== 'BUY' }">
+			  <span [ngClass]="{'nb-arrow-dropup': row.Type === 'BUY', 'nb-arrow-dropdown': row.Type !== 'BUY' }"></span>
+			  <span>{{ row.Type }}</span>
+			</span>	
+			  <span class="col-19">{{ row.Price }}</span>
+			  <span class="col-19">{{ row.Market }}</span>
+			  <span class="col-24">a few seconds ago</span> 
+			</div>
+			  
+			</nb-card-body>
+		  </nb-card>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-xl-6 p-0">
+        <div class="col-12 f-h">
+          <app-chart3m></app-chart3m>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOURTH ROW -->
+    <div class="flex">
+
+      <div class="col-12 col-lg-6">
+        <app-chart4new class="chart4selector"></app-chart4new>
+      </div>
+
+
+      <div class="col-12 col-lg-6">
+        <app-chart5></app-chart5>
+      </div>
+
+    </div>
+	
+	
+
+
+    <!-- FIFTH ROW -->
+    <div class="flex">
+
+      <div class="col-12 col-xl-8 mb-3">
+        <app-table2></app-table2>
+      </div>
+
+      <div class="col-12 col-xl-4 p-0 flex">
+
+        <div class="col-12 col-md-6 col-xl-12">
+          <nb-card class="mb-3">
+            <nb-card-header>
+              Crypto Conversion
+            </nb-card-header>
+            <nb-card-body id="cont-sum-fields">
+              <div class="flex mb-4" id="inputVal">
+                <nb-select selected="BTC" class="conversion col-4 p-0" id="selectedCoin">
+                  <nb-option value="BTC">BTC</nb-option>
+                  <nb-option value="ETH">ETH</nb-option>
+                  <nb-option value="GAME">GAME</nb-option>
+                  <nb-option value="LBC">LBC</nb-option>
+                </nb-select>
+                <input type="number" class="col-8 conversion-input" id="count-sum" fieldSize="large" nbInput>
+              </div>
+
+              <div class="flex" id="resultCalc">
+                <nb-select selected="ETH" class="conversion col-4 p-0" id="selectedCurrency">
+                  <nb-option value="BTC">USD</nb-option>
+                  <nb-option value="ETH">GBP</nb-option>
+                  <nb-option value="GAME">EUR</nb-option>
+                  <nb-option value="LBC">KRW</nb-option>
+                </nb-select>
+                <input type="number" class="col-8 conversion-input2" id="totalPrice" fieldSize="large" nbInput disabled>
+              </div>
+            </nb-card-body>
+          </nb-card>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-12">
+          <app-chart6></app-chart6>
+        </div>
+
+      </div>
+
+    </div>
+
+  </nb-layout-column>
+
+  <nb-layout-footer class="footer-main">
+    &copy; 2019 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+</nb-layout>

@@ -1,0 +1,50 @@
+<nb-reveal-card style="width: 100%" [showToggleButton]="toogle" [revealed]="revealed"
+[nbSpinner]="loading" *ngIf="balance"
+>
+  <nb-card-front class="crd">
+    <nb-card class="pie-card">      
+      <nb-card-body class="p-0 flex-vertical" style="overflow-x: hidden; overflow: visible;">
+        <div class="default-view-balance col-6 px-0" style="padding-left: 6px !important">
+          <div class="portfolio-inner-back-labels">
+          <div class="pibl-coin">Balance</div>
+          <div class="pibl-title color-light-2">${{balance.value | number:'.2'}}</div>
+          <p class="flex-arrow" 
+          [ngClass]="(balance.percent<0)?'red':'green'" 
+          id="pbpc">{{balance.percent}}%<i [class]="balance.arrow"></i></p>
+        </div>
+        </div>
+        <div echarts [options]="chartOption1" [merge]="dataOptions" class="chart col-7 col-xl-6" (chartClick)="clicked($event)" style="height: 80px"></div>
+        <div class="col-0 col-xl-3"></div>
+      </nb-card-body>
+	  	  
+    </nb-card>
+  </nb-card-front>
+  
+  
+  <nb-card-back class="crd card-half-balance" style=""
+ 
+  >
+    <nb-card style="border-radius: 0;box-shadow: none;" class="pie-card" >
+      <nb-card-header class="d-flex justify-content-between align-items-center" style="padding: .38rem 0;padding-left: 5px; border-bottom: none; height: 58px; overflow: hidden; font-size: 10px; margin-top: 1px;">
+        <div>
+          <span class="selectedCoin">{{selectedCoin}}</span>
+        </div>
+		<div>
+		</div>
+        <i class="nb-close link p-0" size="large" (click)="off()"></i>
+      </nb-card-header>
+      <nb-card-body class="p-0" style="overflow-x: visible; overflow: visible; height: 90px">
+	  <div class="balance-items-container">
+        <!-- <div class="purple balance-item-price">${{selectedPrice}}</div> -->
+    <!-- <div class="green balance-item-percent">{{selectedPercent}}%<span class="nb-arrow-dropup green"></span></div> -->
+    <div class="purple balance-item-price">${{selectedPrice | number:'.2'}}</div>
+    <div class="balance-item-percent" 
+    [ngClass]="(selectedPercent<0)?'red':'green'" 
+    id="pbpc">{{selectedPercent}}%<i 
+    [ngClass]="(selectedPercent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" 
+    ></i></div>
+	</div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

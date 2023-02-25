@@ -1,0 +1,57 @@
+<nb-action class="header-link whiteColor cap notification" *ngIf="isLargeScreen">
+  <i class="fal fa-bell notificationSymbol" aria-hidden="true">
+    <div class="notificationNumber">{{notificationCount}}</div>
+  </i>
+  <div class="notification-overlay" *ngIf="notificationCount > 0"></div>
+  <div class="notification-arrow-up" *ngIf="notificationCount > 0"></div>
+  <div class="item" *ngIf="notificationCount > 0"></div>
+  <nb-card class="notification-content" style="display: none;" *ngIf="notificationCount > 0">
+    <nb-card-header class="nb-notification-header flex-vertical">
+      <div class="notificationHeaderLeft">Notifications</div>
+      <div class="notificationHeaderRight" (click)="readAllNotificationClick()"><a class="header-link">Mark all read</a>
+      </div>
+    </nb-card-header>
+    <nb-card-body class="p-0 notification-body">
+      <div *ngFor="let notification of notifications" class="my-1 center-noti">
+        <div class="col-12 p-0">
+          <div [className]="'notificationRoundContainer center-noti battleofwizards-notification-' + notification.type">
+            <div class="notificationInnerContainer">
+              <div class="flex-vertical">
+                <div class="col-3 text-center pr-0">
+                  <img class="notificationIcon" src="{{notification.image}}" />
+                </div>
+                <div class="col-9">
+                  <div class="notificationTitle">
+                    {{notification.title}}
+                  </div>
+                  <div class="notificationDescription">
+                    {{notification.message}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notificationTime">
+              {{moment(notification.dateCreated).fromNow()}}
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti4.png" /></p>
+      <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti5.png" /></p>
+      <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti6.png" /></p>
+      <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti7.png" /></p>
+      <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti3.png" /></p>
+      <p class="notificationRow"><img class="notificationsBar" src="../../../assets/noti4.png" /></p> -->
+    </nb-card-body>
+    <nb-card-footer class="text-center nb-notification-footer">
+      <a class="header-link-hover p-0 see-all-size" [routerLink]="['/notifications']">See all notifications</a>
+    </nb-card-footer>
+  </nb-card>
+</nb-action>
+
+<nb-action *ngIf="!isLargeScreen">
+  <div class="noti-text" [routerLink]="['/notifications']">
+    Notifications
+    <div class="notificationNumberMobile">{{notificationCount}}</div>
+  </div>
+</nb-action>

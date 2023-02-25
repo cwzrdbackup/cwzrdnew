@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-header class="d-flex justify-content-between">
+    Edit Event
+    <i class="nb-trash link" style="font-size: 1.5rem" (click)="delete()"></i>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="p-3"> 
+      <small *ngIf="!canEdit" class="d-block text-danger mb-3">You can't Edit this event due to the <br> event date is
+        passed !</small>
+      <input nbInput [nbDatepicker]="datepicker" placeholder="Set date" [(ngModel)]="editdate" [disabled]="!canEdit"
+        tabindex="-1">
+      <nb-datepicker #datepicker [min]="todayDate"></nb-datepicker>
+    </div>
+    <div class="p-3">
+      <input type="text" nbInput placeholder="Set event" [(ngModel)]="event" [disabled]="!canEdit" tabindex="-1">
+    </div>
+    <div class="p-3">
+      <button nbButton outline status="primary" size="xsmall" class="f-w" (click)="save()"
+        [disabled]="!canEdit">SAVE</button>
+    </div>
+  </nb-card-body>
+</nb-card>

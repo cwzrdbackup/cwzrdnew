@@ -1,0 +1,108 @@
+<nb-card style="overflow:hidden;">
+  <nb-card-header>
+    Market Cap
+    <button nbTooltip="The table displays live information about the top 100 coins (by market cap)." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+  </nb-card-header>
+  <nb-card-body class="table-overflow">
+
+    <table style="max-width: 100%; border-radius: 8px; width: 100%;" class="table-content">
+      <thead>
+        <tr>
+          <td class="link" *ngFor="let head of tableHead; let i = index;"
+            (click)="filter(i)">
+            <div class="d-flex justify-content-between">
+              <span class="align-self-center">{{head}}</span>
+              <span class="d-flex flex-column fit align-items-center col-4 p-0">
+                <span class="nb-chevron-up"></span>
+                <span class="nb-chevron-down"></span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dbData; let i = index;" [className]="i % 2 !== 0 ? 'dark-row' : ''">
+          <ng-container *ngIf="i>=start && i<=end">
+
+            <td>{{i+1}}</td>
+            <td>
+              <div class="">
+                <div class="coin-row1 flex-vertical">
+                  <img class="table2-img" src="./assets/Coins/{{data.type | lowercase}}.png"
+                    appImgFallback="./assets/Coins/default.png" />
+                  <div class="">
+                    <!-- <div class="table-coin-name">{{data.FullName}} {{dbData.length}}</div>           -->
+                    <div class="table-coin-symbol">{{data.type}}</div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="text-center min-120">$ {{data.price | number: '1.2-4'}}</td>
+            <td class="text-center">$ {{data.marketCap | shortNumber}}</td>
+            <td class="text-center">$ {{data.volume | shortNumber}}</td>
+            <td class="text-center">{{data.supply | shortNumber}}</td>
+            <td class="text-center min-100">
+              <p class="flex-arrow justify-content-center" [ngClass]="(data.percentNumber<0)?'red':'green'" id="tmcpc">
+                {{data.percent}} <i [ngClass]="(data.percentNumber<0)?'nb-arrow-dropdown':'nb-arrow-dropup'"></i></p>
+            </td>
+          </ng-container>
+        </tr>
+
+
+      </tbody>
+      <tr>
+        <td colspan="8" class="p-0">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex">
+              <span class="align-self-center mr-1 mr-md-3">Coins per page</span>
+              <nb-select selected="5" (selectedChange)="changeRowSize($event)" class="transparent font-p-select">
+                <nb-option value="5">5</nb-option>
+                <nb-option value="10">10</nb-option>
+                <nb-option value="25">25</nb-option>
+                <nb-option value="50">50</nb-option>
+              </nb-select>
+            </div>
+            <div class="d-flex">
+              <span *ngIf="activePage==1" class="link align-self-center"><i class="nb-arrow-dropleft"
+                  style="opacity:0.7" style="vertical-align: middle;"></i> Back </span>
+              <span *ngIf="activePage>1" class="link align-self-center" (click)="gotoBack()"><i
+                  class="nb-arrow-dropleft" style="vertical-align: middle;"></i> Back
+              </span>
+              <span class="mx-2 align-self-center">{{start+1}} - {{end+1}} of 100</span>
+              <span *ngIf="activePage==totalPages" class="link align-self-center" style="opacity: 0.7;">Next <i
+                  class="nb-arrow-dropright" style="vertical-align: middle;"></i></span>
+
+              <span *ngIf="activePage==1 || activePage<totalPages" class="link align-self-center"
+                (click)="gotoNext()">Next <i class="nb-arrow-dropright" style="vertical-align: middle;"></i></span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </nb-card-body>
+</nb-card>
+
+
+<!--
+
+        <tr *ngFor="let body of tableBody; let i = index" [ngClass]="{'dark-row': i % 2 === 0}">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="{{ body.coinIcon }}"/>
+					<div class="">
+					<div class="table-coin-name">{{ body.name }}</div>          
+	                <div class="table-coin-symbol">{{ body.abb }}</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center">${{btcPrice[btcPrice.length-1]}}</td>
+          <td class="text-center">{{ body.market }}B</td>
+          <td class="text-center">{{ body.volume }}B</td>
+          <td class="text-center">{{ body.supply }}B</td>
+          <td class="text-center" [ngClass]="{'green': body.change > 0, 'red': body.change < 0}">{{ body.change }}%</td>
+        </tr>
+-->

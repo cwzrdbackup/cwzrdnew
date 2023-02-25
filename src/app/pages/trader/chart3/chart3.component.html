@@ -1,0 +1,36 @@
+<nb-card class="f-h">
+  <nb-card-header class="p-2">
+    <div class="flex" style="justify-content: space-between">
+
+      <nb-select selected="BTC" class="col-4 col-md-2 p-0 transparent" (selectedChange)="change($event)">
+        <nb-option value="BTC">BTC</nb-option>
+        <nb-option value="ETH">ETH</nb-option>
+        <nb-option value="GAME">GAME</nb-option>
+        <nb-option value="LBC">LBC</nb-option>
+      </nb-select>
+	  
+      <nb-select selected="DAY" class="col-4 col-md-2 p-0 text-right transparent">
+        <nb-option value="MINUTE" class="option">MINUTE</nb-option>
+        <nb-option value="DAY" class="option">DAY</nb-option>
+        <nb-option value="WEEK" class="option">WEEK</nb-option>
+        <nb-option value="MONTH" class="option">MONTH</nb-option>
+      </nb-select>
+    </div>
+
+  </nb-card-header>
+  <nb-tabset fullWidth="true">
+    <nb-tab tabTitle="Line">
+    <nb-card-body class="p-0 chart-card">
+      <div class="d-flex justify-content-center" style="margin-top:35px">
+        <span class="green">$</span><span class="mr-3 white">{{data.value}}</span>
+        <span class="green">{{data.percent}}%
+          <i class="green nb-arrow-dropup"></i>
+        </span>
+      </div>    
+      <div echarts [options]="chartOption" class="f-h chart"></div>
+    </nb-card-body>
+    </nb-tab>
+    <nb-tab tabTitle="Candlestick">
+    </nb-tab>
+  </nb-tabset>  
+</nb-card>

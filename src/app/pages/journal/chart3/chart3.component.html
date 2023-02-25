@@ -1,0 +1,11 @@
+
+      <nb-card>
+        <nb-card-header class="d-flex justify-content-between align-items-center">
+          <span class="journal-header">SUCCESS RATE <button nbTooltip="Displays your live portfolio balance. The percent is calculated using the current balance and the closing balance of the last 24 hours." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></span>
+        </nb-card-header>
+        <nb-card-body>
+        <div class="h-100 d-flex align-items-center justify-content-center" [nbSpinner]="!inputData" [nbSpinnerMessage]="''">
+        </div>
+          <div echarts [options]="chartOption" class="chart"></div>
+        </nb-card-body>
+      </nb-card>

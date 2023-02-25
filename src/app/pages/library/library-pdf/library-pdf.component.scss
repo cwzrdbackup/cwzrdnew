@@ -1,0 +1,389 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+  .card-bottom {
+    color: nb-theme(color-fg-text-2);
+    font-weight: 700;
+  }
+  .dark-color {
+    background-color: nb-theme(color-bg-2);
+  }
+  .dark-color:hover {
+    background-color: nb-theme(bg-color-tabset);
+  }
+  .footer-main {
+    background: nb-theme(header-bg);
+    text-align: left;
+  }
+  .profit-date {
+    color: nb-theme(traders-hub-text) !important;
+  }
+  .platformHeader {
+    background: nb-theme(header-bg);
+  }
+}
+
+.pdf-navigation {
+  color: #fff;
+  font-family: Exo, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  cursor: default;
+  padding: 10PX;
+  line-height: 1.25;
+  border-radius: .5rem;
+  background-color: #37317a;
+  display: flex;
+  border: 2px solid #342e73;
+  font-size: 16px;
+  margin: 0;
+}
+
+.pdf-navigation:hover {
+  background-color: #0dff92 !important;
+}
+
+.pdf-container {
+  width: 1170px;
+  max-width: 100%;
+}
+
+pdf-viewer {
+  overflow-x: auto;
+  position: relative;
+  max-height: 800px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+@media(max-width: 767px) {
+  .pdf-container .book-header {
+    display: block;
+  }
+  .pdf-container .book-header > div {
+    justify-content: center !important;
+    max-width: 100% !important;
+    margin: 5px 0;
+  }
+}
+
+/*
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: fit-content;
+  grid-auto-flow: dense;
+  //   div {
+  //     min-height: fit-content;
+  //   }
+}
+.gridContainer {
+//	background: url("../../../assets/library_wallpaper_2.jpg");
+	width: 100%;
+	background-position: center; !* Center the image *!
+	  background-repeat: no-repeat; !* Do not repeat the image *!
+	  background-size: cover; !* Resize the background image to cover the entire container *!
+}
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+  .bigItem {
+    grid-column: span 3; !* Spans two columns *!
+  }
+}
+
+@media (min-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+	max-width: 100%;
+	margin: 0 auto;
+  }
+  .bigItem {
+    grid-column: span 3; !* Spans two columns *!
+  }
+}
+.author {
+  font-size: 1.2rem;
+}
+.music {
+  font-size: 1rem;
+}
+.button {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2f296a;
+}
+.waveformcontainer {
+	//border-left: 2px solid #74ff91;
+	//margin-left: 40px;
+}
+.podcast-img {
+	height: 128px;
+}
+.podcast-left {
+	width: 160px;
+	text-align: center;
+}
+.img-resource {
+	width: 100%;
+	padding: 1.5rem;
+	cursor: pointer;
+}
+.chapterInformation {
+	width: 100%;
+	background-color: #000;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: #fff;
+	overflow: hidden;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 100;
+    background-image: url("../../../assets/library_wallpaper_2.jpg"); !* The image used *!
+    background-position: center; !* Center the image *!
+    background-repeat: no-repeat; !* Do not repeat the image *!
+    background-size: cover; !* Resize the background image to cover the entire container *!
+	@include media-breakpoint-up(md) {
+		height: 34vh;
+		margin-bottom: 35px;
+	}
+}
+.progressAbsolute {
+	position: absolute;
+	    bottom: 15px;
+		width: 100px;
+		    bottom: 15px;
+		    width: 150px;
+			right: 12px;
+		@include media-breakpoint-up(md) {
+			width: 250px;
+			right: 30px;
+			bottom: 25px;
+		}
+}
+.chapterInfoLeft {
+	width: 80%;
+	z-index: 100;
+	@include media-breakpoint-up(md) {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: 3vmin !important;
+		width: 50%;
+	}
+}
+.chapterInfoRight {
+	width: 50%;
+	height: 100%;
+	margin-top: auto;
+	margin: auto auto 0 auto;
+	position: relative;
+}
+.chapterImg {
+	width: 100%;
+}
+.title1 {
+	font-size: 10px;
+	text-transform: uppercase;
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+}
+.title2 {
+	font-size: 14px;
+	text-transform: uppercase;	
+	@include media-breakpoint-up(md) {
+		font-size: 3vmin;
+	}
+}
+.title3 {
+	font-size: 10px;
+	text-transform: uppercase;	
+	@include media-breakpoint-up(md) {
+		font-size: 1.7vmin;
+	}
+}
+.title4 {
+	font-size: 8px;
+//	text-transform: uppercase;	
+	width: 80%;
+	text-align: left;
+	@include media-breakpoint-up(md) {
+		font-size: 1.7vmin;
+	}
+}
+.watchContainer {	
+    border: 2px solid #fff;
+    padding: 6px 8px;
+    margin-top: auto;
+    display: block;
+    position: absolute;
+    width: 150px;
+    bottom: 15px;
+    text-align: center;
+    font-size: .75rem;
+	cursor: pointer;
+	@include media-breakpoint-up(md) {
+		width: 20%;
+		bottom: 25px;
+		max-width: 200px;
+		font-size: 18px;
+		padding: 20px 24px;
+		
+		border: 2px solid #fff;
+		padding: 10px 12px;
+	//	width: 100%;
+	//	text-align: center;
+	//	text-transform: uppercase;
+	//	font-weight: 700;
+	//	cursor: pointer;
+	//	font-size: 10px;
+		text-align: center;
+	}
+}
+.buttonPosition {
+	margin: 0 !important;
+	padding: 0 !important;
+	right: 20px;
+	position: absolute;
+		
+}
+
+.lessonTitle {
+	//color: #fff;
+	color: #3d3780;
+	z-index: 2;
+	font-size: 12px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.125rem;
+	}
+}
+.bottomContainer {
+	background: rgba(255,255,255,.6);
+	padding: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	-webkit-transition: transform .5s;
+	transition: transform .5s;	
+}
+.card-img:hover ~ .bottomContainer {
+	transform: translateY(100%);
+}
+.cardShadow {
+	transition: box-shadow .2s;
+}
+.cardShadow:hover {
+	box-shadow: 6px 6px white, -6px 6px white, -6px -6px white, 6px -6px white;	
+}
+.profit-date {	
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+.lessonTimeContainer {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.progressBar {
+	width: 130px;
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		width: auto;
+		font-size: 1.125rem;
+	}
+}
+.gradientBG {
+	width: 50%;
+	content: "";
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+    background-image: linear-gradient(to left, rgba(0,0,0,0) , rgba(0,0,0,1));	
+}
+.adjustWidthCarousel {
+	width: 100%;
+	max-width: 3000px;
+}
+.carousel-control-prev, .carousel-control-next {
+	width: 20px !important;
+}
+.carousel-control-prev:hover, .carousel-control-next:hover {
+//	background: rgba(0,0,0,.1);
+}
+.progressBar {
+    justify-content: center;
+    align-items: center;
+    display: inherit;
+	height: 3rem;
+}
+.progressBar .progress-container  {
+	height: 100% !important;
+}
+.progress-container {
+	height: 3rem !important;
+}
+.carousel {
+	padding-bottom: 50px;
+}
+.hidden {
+	opacity: 0;
+}
+.noBg {
+	background-color: transparent !important;
+}
+.nb-arrow-right, .nb-arrow-left {
+	color: #fff;
+	font-size: 20px;
+	@include media-breakpoint-up(md) {
+		font-size: 24px;
+	}	
+}
+.hideMobile {
+	display: none;
+	@include media-breakpoint-up(md) {
+		display: block;	
+	}
+}
+.hideDesktop {
+	display: block;
+	@include media-breakpoint-up(md) {
+		display: none;	
+	}
+}
+
+// for tablet
+@media  (max-width: 768px) {  
+	@media (max-height: 700px) {
+	.chapterInformation {
+		height: 46vh;
+	}
+  }
+}
+
+@media (min-width: 2880px) {
+	.chapterInformation {
+		height: 30vh;
+	}
+	.title4{
+		font-size: 1.5vmin;
+	}
+}*/

@@ -1,0 +1,143 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+@import '~@nebular/theme/styles/themes/armyCamo';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+  ::ng-deep {
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+		}
+		nb-card-header {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+		nb-card-footer {
+			border-top: 1px solid nb-theme(line-color);
+    }
+    .nb-badge.nb-badge-primary {
+      background-color: nb-theme(notes-header);
+    }
+	}
+	.button-background {
+		color: nb-theme(color-bg-2);
+	}
+	.color-text-4 {
+		color: nb-theme(traders-hub-text);
+	}
+	.color-text-3 {
+		color: nb-theme(light-text);
+	}
+	.platformHeader { 
+		background: nb-theme(header-bg);
+	}
+	.footer-main {
+		background: nb-theme(header-bg);
+		text-align: left;
+  }
+  .wzrdgroup-link {
+		color: nb-theme(light-text) !important;
+	}
+	.wzrdgroup-link:hover {
+		text-decoration: none;
+	}
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min(100%));
+  grid-template-rows: auto;
+  grid-auto-flow: dense;
+  div{
+      min-height: fit-content;
+  }
+}
+
+.bigItem {
+  grid-column: span 1; /* Spans two columns */
+  grid-row: span 1;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  }
+  .bigItem {
+    grid-column: span 2; /* Spans two columns */
+    grid-row: span 2;
+  }
+}
+.buttons {
+    text-align: center;
+}
+.buttons > button {
+    height: 36px!important;
+    width: fit-content!important;
+    text-transform: capitalize!important;
+    padding: 8px!important;
+    font-size: 0.7rem!important;
+}
+
+.buttons > button:nth-child(1) {
+    border-radius: 16px 0 0 16px!important;
+}
+.buttons > button:nth-child(2) {
+    border-radius: 0!important;
+}
+.buttons > button:nth-child(3) {
+    border-radius: 0 16px 16px 0!important;
+}
+
+.icon {
+    width: 16px;
+}
+
+nb-card img {
+//    border-radius: 8px;
+}
+.articleDate {
+	font-size: 1.25rem;
+	text-align: left;
+	@include media-breakpoint-up(md) {
+		font-size: 2.25rem;
+	}
+}

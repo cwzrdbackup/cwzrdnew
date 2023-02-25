@@ -1,0 +1,15 @@
+<router-outlet></router-outlet>
+<app-player class="footerCloud"></app-player>
+<div *ngIf="show_achievement" class="achievementGifContainer">
+    <img *ngFor="let achievement of achievements" src="https://d308fakbqebk7c.cloudfront.net/gifs_{{achievement.isDone === 0 ? 'locked' : 'unlocked'}}/{{achievement.id}}.gif" alt="">
+</div>
+<div *ngIf="show_rank">
+    <app-rank-up-animation [rankName]="rank" (closeRankUp)="closeRank($event)"></app-rank-up-animation>
+</div>
+
+<!-- <br><br>
+<p><strong>{{idleState}}</strong></p>
+<p *ngIf="lastPing"><small>Last keepalive ping <strong>{{lastPing | amTimeAgo}}</strong></small></p>
+<p>{{startDate}}</p>
+<p>{{endDate}}</p>
+<button (click)="reset()" *ngIf="timedOut">Restart</button> -->

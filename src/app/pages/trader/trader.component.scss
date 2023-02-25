@@ -1,0 +1,448 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/armyCamo';
+// @import '~@nebular/theme/styles/themes/blueCamo';
+
+@include nb-install-component {
+	.platformHeader { 
+		background: nb-theme(header-bg);
+	}
+	.footer-main {
+		background: nb-theme(header-bg);
+		text-align: left;
+		font-weight: 500;
+	}
+	.trader-text {
+		color: nb-theme(traders-hub-text);
+	}
+	.profit-date {
+		color: nb-theme(traders-hub-text);
+	}
+	.conversion-input, .conversion-input2 {
+	  caret-color: nb-theme(card-color);
+	  background-color: nb-theme(circle-bg);
+	  color: nb-theme(shade-white-1);
+	}
+	.conversion-input:focus {
+		background-color: nb-theme(circle-bg);
+		color: nb-theme(shade-white-1);
+	}
+
+	.wzrdgroup-link {
+		color: nb-theme(light-text);
+	}
+	.wzrdgroup-link:hover {
+		text-decoration: none;
+	}
+	
+	::ng-deep nb-layout {
+		.scrollable-container {
+		.layout {
+			.layout-container {         
+				.front-container {
+					min-width: 100%;
+				} 				
+				.reveal-button {
+					padding: 11px 15px;
+					@include media-breakpoint-up(md) {
+						padding: 15px 15px;
+					}
+				}
+				nb-card {
+					nb-card-header {
+						nb-select {
+							.btn-primary {
+								@include media-breakpoint-only(sm) {
+									font-size: 16px;							
+								}
+							}
+						}
+					}
+				}								
+			}
+		}
+		}
+	}
+}
+.bold {
+  * {
+    font-weight: 900 !important;
+  }
+  i {
+    font-size: 1.2em;
+  }
+}
+
+.f-h {
+  height: calc(100% - 1rem);
+}
+.demo-chart {
+  height: 120px;
+}
+
+.conversion-input, .conversion-input2 {
+  border-radius: 0 8px 8px 0;
+  padding: 0 16px;
+  text-align: right;
+  border: none;
+}
+.nb-arrow-right, .nb-arrow-left {
+	font-size: 1.25rem !important;
+}
+.nb-arrow-up, .nb-arrow-down {
+	font-size: 1.25rem;
+}
+.inline-img {
+	display: inline-block;
+}
+.back-container {
+	max-width: 100%;
+}
+.flipped .flipcard-body .back-container {
+	max-width: 100% !important;
+}
+#totalPrice {
+	text-align: right;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.trader-text {
+	font-weight: 700;
+	font-size: 2.3rem;
+//	margin-bottom: 1rem;
+}
+.barSubTitle {
+	position: absolute;
+	top: 40px;
+}
+.padding-graph {
+	padding-bottom: 30px
+}
+.nb-arrow-dropdown {
+	color: #f00f00;
+}
+#table-live-trades .flex {
+	display: flex;
+	align-items: center;
+}
+.test-div2 {
+	margin-bottom: 18px;
+	@include media-breakpoint-up(md) {
+		margin-bottom: 19px;
+	}
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 30px;
+	}
+	@include media-breakpoint-up(xl) {
+		margin-bottom: 30px;
+	}
+}
+.pb-total-market-cap {
+	@include media-breakpoint-only(md) {
+		//margin-bottom: 10px;
+	}
+}
+.pb-chart {
+
+}
+.row-1-c-title {
+	@include media-breakpoint-only(lg) {
+		font-size: .9rem;
+		//margin-bottom: 10px;
+	}
+}
+.front-container {
+	min-width: 100%;
+}
+.button-width {
+	width: 120px;
+}
+[nbButton] {
+	@include media-breakpoint-only(sm) {
+		font-size: 16px;							
+	}
+}
+.btn-primary {
+	font-size: 12px;
+}
+.flex-arrow {
+	font-size: 18px;
+	@include media-breakpoint-up(md) {
+		font-size: 20px;							
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 16px;							
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 18px;							
+	}
+}
+
+.pibl-coin {
+	font-size: 1rem;
+	margin-top: 1px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.125rem;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 12px;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 14px;
+		margin-top: -3px;
+	}
+}
+.pibl-title {
+	top: -10px;
+	margin: 3px 0 4px 0;	
+	@include media-breakpoint-up(md) {
+		margin: 2px 0 2px 0;
+	}
+}
+.pibl-subtitle {
+	font-size: 1.125rem;
+}
+.coin-price {
+	margin-top: 15px;
+}
+.default-view-pie {
+	width: 50% !important;
+	left: auto !important;
+	right: 0;
+	opacity: 1;
+	position: absolute;
+	height: 100%;	
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	font-size: 1.125rem;
+}
+.default-view-balance {
+	width: 50% !important;
+	left: 0;
+	opacity: 1;
+	position: absolute;
+	height: 100%;
+	padding-left: 5px !important;
+	@include media-breakpoint-up(md) {
+		padding-left: 5px !important;
+	}
+}
+.card-half {
+}/*
+[_nghost-c18] .second-card-container[_ngcontent-c18] nb-card-back {
+	top: 0 !important;
+	right: 0% !important;
+	transition: right 1s ease;
+}*/
+.new-pie-chart {
+	width: 50%;
+	left: 0;
+}
+.descriptor-pie {	
+	padding: 8px 4px 8px 4px;
+	margin: 0 auto;
+	margin-left: 0;
+	margin-top: 90px;
+	@include media-breakpoint-up(md) {
+		padding-left: 5px !important;
+		margin: 0 auto;
+		margin-top: 90px;
+	}
+}
+.descriptoritem:first-child {
+//	padding-top: 2rem;
+}
+.descriptoritem {
+//	padding-bottom: 2rem;
+}
+.pie-card {
+	padding: 0 !important;
+	    box-shadow: none;
+	    margin-bottom: 0 !important;
+	    border-radius: 0 !important;
+}
+i.nb-edit.edit {
+	position: absolute;
+	right: 15px;
+}
+.card-half-balance {
+}
+//changed
+.test-div .second-card-container {
+	//width: 50% !important;
+	left: auto !important;
+	right: 0;
+}
+//changed
+.test-div2 .second-card-container {
+	width: 50% !important;
+	left: 0;
+	height: 300px;
+	top: -20px !important;
+	background: transparent;
+	@include media-breakpoint-up(md) {
+		width: 44% !important;
+	}
+	@include media-breakpoint-up(lg) {
+		width: 70% !important;
+	}
+	@include media-breakpoint-up(xl) {
+		width: 44% !important;
+	}
+}
+.balance-items-container {
+    padding-left: 5px;
+    margin-top: -12px;
+	margin-bottom: 25px;
+	@include media-breakpoint-up(md) {
+		margin-top: -15px;
+	}
+	@include media-breakpoint-up(lg) {
+		margin-top: -19px;
+	}
+}
+.balance-item-price {
+	font-size: 1.35rem;
+	@include media-breakpoint-up(lg) {
+		font-size: 1.5vmin;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.6vmin;
+	}
+}
+.balance-item-percent {
+	font-size: 16px;
+	margin-top: 5px;
+	@include media-breakpoint-up(md) {
+		//font-size: 1.125rem;
+		margin-top: 6px;
+		font-size: 14px;
+	}
+	@include media-breakpoint-up(lg) {
+		//font-size: 1.125rem;
+		margin-top: 4px;
+		font-size: 11px;
+	}
+}
+.chart4selector .revealed .second-card-container {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 0;
+	height: 100%;	
+	top: 65px !important;	
+	width: 100%;
+	@include media-breakpoint-up(md) {
+		width: 50%;
+		top: 65px !important;	
+	}
+}
+.revealed .default-view-balance {
+	opacity: 0 !important;
+}
+.pibl-title {
+	font-size: 1.35rem;
+	@include media-breakpoint-up(lg) {
+		font-size: 1.5vmin;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 1.6vmin;
+	}
+}
+
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}		
+	}
+}
+
+.f-h {
+    height: calc(100%)!important;
+  }
+.coinImage {
+	width: 20px;
+}    
+
+.col-2 {
+	font-size: .5rem;
+		@include media-breakpoint-up(md) {
+			font-size: 12px;
+		}
+		@include media-breakpoint-up(lg) {
+			font-size: 14px;
+		}
+}
+.coinImg {
+	width: 15px;
+	margin-right: 10px;
+	@include media-breakpoint-up(md) {
+		width: 20px;
+	}
+}
+.coinImage {
+	margin-right: 10px;
+}
+.button-width {
+	width: 120px;
+}
+.flex-row {
+	align-items: center;
+	padding: 0 1vmin;
+	font-size: 10px;
+	@include media-breakpoint-up(md) {
+		padding: 0 1vmin;
+		font-size: 1rem;
+	}
+	@include media-breakpoint-up(lg) {
+		padding: 0 2vmin;
+		font-size: 1rem;
+	}
+	@include media-breakpoint-up(xl) {
+		padding: 0 3vmin;
+		font-size: 1rem;
+	}
+}
+.col-33 {
+	width: 33.33%;
+}
+.col-19 {
+	width: 18%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col-24 {
+	width: 28%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row-coin {
+	line-height: 0;
+}

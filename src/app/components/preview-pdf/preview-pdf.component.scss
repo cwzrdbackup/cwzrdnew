@@ -1,0 +1,113 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+::ng-deep pdf-viewer {
+    max-width: 93vw;
+    max-height: 90vh;
+    width: 93vw;
+    @include media-breakpoint-up(md) {
+        height: 90vh;
+    }
+}
+.prieview-pdf {
+    max-width: 64vh;
+    display: block;
+}
+::ng-deep .ng2-pdf-viewer-container{
+     overflow: hidden !important;
+}
+// .newShadow {
+//     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.6);
+//     min-width: 50vw;
+//     max-width: 96vw;
+//     height: 90vh;
+//     position: relative;
+// }
+
+.closeBtnModal {
+    cursor: pointer;
+    position: absolute;
+    color: white;
+    text-align: right;
+    font-size: 25px;
+    top: -30px;
+    right: 0;
+    font-weight: 700;
+    @include media-breakpoint-up(md) {
+    font-size: 40px;
+    top: -40px;
+    right: -5px;
+    }
+}
+.control-icon {
+    font-weight: 700;
+}
+
+.downloadSvg, .delete-icon {
+    height: 18px;
+    position: absolute;
+    top: 2%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+
+    @include media-breakpoint-up(md) {
+        height: 24px;
+    }
+}
+.downloadSvg {
+    @include media-breakpoint-down(sm) {
+        top: calc(2% + 4.5px);
+        right: 7%;
+        height: 30px;
+    }
+    right: 4%;
+}
+.delete-icon{
+    right: 0%;
+    padding: 4.5px;
+}
+.prieview-pdf {
+        max-width: 64vh;
+        display: block;
+    }
+    ::ng-deep .ng2-pdf-viewer-container .pdfViewer .page canvas {
+        max-height: 90vh !important;
+        max-width: 64vh !important;
+    
+    }
+    ::ng-deep .ng2-pdf-viewer-container{
+        overflow: hidden !important;
+    }
+     
+
+::ng-deep .ng2-pdf-viewer-container .pdfViewer .page .textLayer {
+    //background-image:url('https://d308fakbqebk7c.cloudfront.net/Notes_Templates.jpg');
+    background-repeat: repeat;
+    background-size:295mm 210mm;
+    opacity: 0.4;
+
+ }
+ ::ng-deep .ng2-pdf-viewer-container .pdfViewer .page:not(:first-child) {
+    canvas {
+        padding: 80px 0px 25px 0px;
+    }
+}    
+// ::ng-deep .ng2-pdf-viewer-container .pdfViewer .page:last-child {
+//     //display: table-column !important;
+// }
+nb-card-body {
+    overflow: visible;
+}
+nb-card {
+    width: 349px;
+    height: 493px;
+    @include media-breakpoint-up(md) {
+    height: 90vh;
+    width: 64vh;
+    }
+}
+canvas {
+    border-radius: 0 !important;
+}

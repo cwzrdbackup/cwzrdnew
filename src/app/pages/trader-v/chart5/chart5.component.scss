@@ -1,0 +1,55 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+// @import '~@nebular/theme/styles/themes/armyCamo';
+// @import '~@nebular/theme/styles/themes/blueCamo';
+
+@include nb-install-component {
+	.zoom {
+	    button {	        
+	        background-color: nb-theme(circle-bg);
+	    }
+	}
+}
+.f-h {
+    height: calc(100% - 1rem)!important;
+    min-height: 360px;
+    @include media-breakpoint-up(md) {
+        min-height: 560px;
+    }        
+}
+
+.zoom {
+    position: absolute;
+    top: calc(95% - 95px);
+    right: 3%;
+    z-index: 1000;
+    button {
+        border: none!important;
+        font-size: 1.5rem;
+        padding: 8px 16px!important;
+    }
+}
+.zoom button:active {
+    opacity: 0.8;
+}
+.zoom button:first-child {
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 4px;
+}
+.zoom button:last-child {
+    border-radius: 0 0 8px 8px;
+}
+.map-height {
+	height: calc(100% - 0px);
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}

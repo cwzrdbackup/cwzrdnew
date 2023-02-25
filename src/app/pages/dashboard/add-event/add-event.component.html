@@ -1,0 +1,23 @@
+<nb-card class="card-position">
+  <nb-card-header class="d-flex justify-content-between">
+    Add Event
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="eventForm">
+      <div class="px-3">
+        <input nbInput [nbDatepicker]="datepicker" placeholder="Set date" formControlName="date" tabindex="-1" class="input-bg-3">
+        <nb-datepicker #datepicker [min]="minDate"></nb-datepicker>
+      </div>
+      <div class="p-3"> 
+        <input type="text" nbInput placeholder="Set event" formControlName="event" tabindex="-1" class="input-bg-3">
+      </div>
+      <div class="p-3">
+        <button nbButton outline status="primary" size="xsmall" class="f-w" (click)="add()" tabindex="1"
+          [disabled]="eventForm.invalid">ADD</button>
+      </div>
+      <div class="px-3">
+        <button nbButton outline status="danger" size="xsmall" class="f-w" (click)="reset()">Cancel</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

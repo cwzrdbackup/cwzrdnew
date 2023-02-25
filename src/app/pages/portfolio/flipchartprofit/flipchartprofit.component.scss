@@ -1,0 +1,24 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+.chart {
+    height: 76px;
+    @include media-breakpoint-up(md) {
+        height: 76px;
+    }
+    @include media-breakpoint-up(lg) {
+        height: 90px;
+    }
+}
+
+.f-h {
+    height: calc(100% - 1.5rem);
+  }
+  
+  canvas{
+	  border-radius: 0 !important;
+  }
+  .fix-margin {
+      margin-bottom: 12px;
+  }

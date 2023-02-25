@@ -1,0 +1,102 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+nb-card {
+    box-shadow: none;
+    background: none;
+
+    nb-card-body {
+        svg, i {
+            background: none;
+        }
+    }
+}
+
+.newShadow {
+    min-width: 50vw;
+    max-width: 96vw;
+    height: 90vh;
+    position: relative;
+}
+
+.closeBtnModal {
+    cursor: pointer;
+    position: absolute;
+    color: white;
+    text-align: right;
+    font-size: 25px;
+    top: -30px;
+    right: 0;
+}
+
+
+.downloadSvg, .delete-icon {
+    height: 18px;
+    position: absolute;
+    top: 3%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+
+    @include media-breakpoint-up(md) {
+        height: 24px;
+    }
+}
+
+.delete-icon {
+    right: 7%;
+    top: 3.4%;
+    @media (min-width: 1600px) {
+        right: 9%;
+    }
+    @media (min-width: 1800px) {
+        right: 13%;
+    }
+    @media (min-width: 2000px) {
+        right: 16%;
+    }
+    @media (min-width: 2200px) {
+        right: 21%;
+    }
+    @media (min-width: 2400px) {
+        right: 25%;
+    }
+    @media (min-width: 2600px) {
+        right: 29%;
+    }
+    @media (min-width: 2800px) {
+        right: 33%;
+    }
+    @media (min-width: 3100px) {
+        right: 38%;
+    }
+}
+
+.downloadSvg {
+    right: 4%;
+    @media (min-width: 1600px) {
+        right: 6%;
+    }
+    @media (min-width: 1800px) {
+        right: 10%;
+    }
+    @media (min-width: 2000px) {
+        right: 14%;
+    }
+    @media (min-width: 2200px) {
+        right: 18%;
+    }
+    @media (min-width: 2400px) {
+        right: 22%;
+    }
+    @media (min-width: 2600px) {
+        right: 26%;
+    }
+    @media (min-width: 2800px) {
+        right: 30%;
+    }
+    @media (min-width: 3100px) {
+        right: 35%;
+    }
+}

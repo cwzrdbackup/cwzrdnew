@@ -1,0 +1,305 @@
+<nb-layout class="layout-container">
+
+  <nb-layout-header class="flex flexCenter platformHeader">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="p-0">
+		
+    <div class="chapterInformation">
+  	  <div class="gradientBG"></div>
+  	  <div class="chapterInfoLeft p-3 p-md-4 p-lg-4">
+  		  <div class="title2 mb-2 mb-md-3 mb-lg-4">WZRD Library</div>
+  		  <div class="title3 mb-2 mb-md-3 mb-lg-4">{{testData.length}} books</div>
+  		  <div class="title4 mb-3 mb-md-4 mb-lg-5">Welcome to the WZRD Library. Home to a collection of 9 books that will guide you through every stage of the process to becoming a WZRD. At your disposal you’ll find the main course book the ‘Enchanted Spells & Secrets’, the largest of the collection, exceeding 31,500 words expanding into the inner workings of the subconscious mind and then working you up towards mastering the Cryptocurrency Market in its entirety. Your main course book is complimented with a collection of a checklist, cheat sheet, glossary and write-ups decoding psychology and trading.</div>
+  		  <!--<div class="watchContainer">Read</div>-->
+	  </div>
+	  <!--<div class="chapterInfoRight">
+		  <div class="progressAbsolute">
+		        <nb-progress-bar [value]="_percent" class="progressBar">{{_percent}}</nb-progress-bar>
+		  </div>
+	  </div>-->
+  </div>		
+	
+			<div class="container slider-pw adjustWidthCarousel hideMobile">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">    
+					<ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					  </ol>        
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">								
+				        <div class="carousel-item first-c active">       
+						  <div class="gridContainer pt-5">
+						      <div class="grid">
+
+						        <div *ngFor="let cast of testData1; let i = index" class="px-3">
+        				          
+		  
+						  		  <div class="flex-vertical">			  
+						            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+						  			<img class="img-resource" src="{{cast.resource}}"/>
+						  			</nb-card-body>
+						  	  	  </div>          
+		
+
+						        </div>
+
+						      </div>
+						  </div>
+
+				        </div>
+						<div class="carousel-item">
+							<div class="gridContainer pt-5">
+							    <div class="grid">
+
+							      <div *ngFor="let cast of testData2; let i = index" [ngClass]="{
+		  'hidden': i === 4
+		}" class="px-3">
+        
+		  
+									  <div class="flex-vertical">			  
+							          	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+										<img class="img-resource" src="{{cast.resource}}"/>
+										</nb-card-body>
+								  	  </div>          
+
+
+							      </div>
+
+							    </div>
+							</div>
+						</div>				
+			            </div>
+						<a class="carousel-control-prev d-none" href="#carousel-example-generic" role="button" data-slide="prev">				    
+							<i class="nb-arrow-left"></i>
+						    <span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next d-none" href="#carousel-example-generic" role="button" data-slide="next">
+						    <i class="nb-arrow-right"></i>
+						    <span class="sr-only">Next</span>
+						  </a>
+			        </div>        
+				</div>
+		
+		
+					<div class="container slider-pw adjustWidthCarousel hideDesktop">
+						<div id="carousel-example-generic-m" class="carousel slide" data-ride="carousel">    
+							<ol class="carousel-indicators">
+							    <li data-target="#carousel-example-generic-m" data-slide-to="0" class="active"></li>
+							    <li data-target="#carousel-example-generic-m" data-slide-to="1"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="2"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="3"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="4"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="5"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="6"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="7"></li>
+								<li data-target="#carousel-example-generic-m" data-slide-to="8"></li>
+							  </ol>        
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner" role="listbox">								
+						        <div class="carousel-item first-c active">       
+								  <div class="gridContainer">
+								      <div class="grid">
+
+								        <div *ngFor="let cast of testDatam1; let i = index" class="px-3">
+        				          
+		  
+								  		  <div class="flex-vertical">			  
+								            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+								  			<img class="img-resource" src="{{cast.resource}}"/>
+								  			</nb-card-body>
+								  	  	  </div>          
+		
+
+								        </div>
+
+								      </div>
+								  </div>
+
+						        </div>
+								<div class="carousel-item">
+									<div class="gridContainer">
+									    <div class="grid">
+
+									      <div *ngFor="let cast of testDatam2; let i = index" class="px-3">
+        
+		  
+											  <div class="flex-vertical">			  
+									          	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+												<img class="img-resource" src="{{cast.resource}}"/>
+												</nb-card-body>
+										  	  </div>          
+
+
+									      </div>
+
+									    </div>
+									</div>
+								</div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam3; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam4; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam5; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam6; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam7; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam8; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>
+							        <div class="carousel-item">       
+									  <div class="gridContainer">
+									      <div class="grid">
+
+									        <div *ngFor="let cast of testDatam9; let i = index" class="px-3">
+        				          
+		  
+									  		  <div class="flex-vertical">			  
+									            	<nb-card-body class="p-0" routerLink="{{ cast.routerLink }}">
+									  			<img class="img-resource" src="{{cast.resource}}"/>
+									  			</nb-card-body>
+									  	  	  </div>          
+		
+
+									        </div>
+
+									      </div>
+									  </div>
+
+							        </div>			
+					            </div>
+								<a class="carousel-control-prev d-none" href="#carousel-example-generic-m" role="button" data-slide="prev">				    
+									<i class="nb-arrow-left"></i>
+								    <span class="sr-only">Previous</span>
+								  </a>
+								  <a class="carousel-control-next d-none" href="#carousel-example-generic-m" role="button" data-slide="next">
+								    <i class="nb-arrow-right"></i>
+								    <span class="sr-only">Next</span>
+								  </a>
+					        </div>        
+						</div>
+		
+
+		  </nb-layout-column>
+
+		  <nb-layout-footer class="footer-main">
+		    &copy; 2020 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+		  </nb-layout-footer>
+
+		</nb-layout>

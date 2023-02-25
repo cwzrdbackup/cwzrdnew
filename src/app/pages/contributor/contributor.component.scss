@@ -1,0 +1,464 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+@import '~@nebular/theme/styles/themes/armyCamo';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+	::ng-deep {
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+		}
+		nb-card-header {
+			border-bottom: 1px solid nb-theme(line-color);	
+		}
+		.bottomContainer, .lessonTitle {
+			color: nb-theme(card-color) !important;
+			font-weight: 700;
+		}
+		.progress-container {
+			background: nb-theme(page-bg);
+		}
+		.progress-value {
+			background: nb-theme(notes-header);
+		}
+	}
+	.card-bottom {
+		color: nb-theme(card-color);
+		font-weight: 700;
+	}
+
+	.dark-color {
+		background-color: nb-theme(color-bg-2);
+	}
+
+	.dark-color:hover {
+		background-color: nb-theme(bg-color-tabset);
+	}
+
+	.footer-main {
+		background: nb-theme(header-bg);
+		text-align: left;
+	}
+
+	.profit-date {
+		color: nb-theme(traders-hub-text) !important;
+	}
+
+	.platformHeader {
+		background: nb-theme(header-bg);
+	}
+	.wzrdgroup-link {
+		color: nb-theme(light-text) !important;
+	}
+	.wzrdgroup-link:hover {
+		text-decoration: none;
+	}
+	::ng-deep .progress-container .progress-value {
+		font-size: 9px !important;
+		@include media-breakpoint-up(md) {
+			font-size: 1vmin !important;
+		}
+	}	
+}
+
+.overlayLock {
+  display: flex;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.overlayLock:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.card-img:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.card-img {
+	filter: none;
+}
+
+.transparent {
+	background-color: transparent;
+}
+
+.dark-blue {
+	background-color: #3c3780;
+}
+
+.adjust-header {
+	position: absolute;
+	right: 20px;
+	font-size: 1.125rem;
+	font-weight: 700;
+}
+
+.nb-theme-cosmic .progress-value.success {
+	background-color: #0dff92;
+}
+
+.card-bottom {
+	font-weight: 700;
+}
+
+.card-img:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.card-img {
+	filter: none;
+	transition: box-shadow .5s;
+}
+
+.transparent {
+	background-color: transparent;
+}
+
+.adjust-header {
+	position: absolute;
+	right: 20px;
+	font-size: 1.125rem;
+	font-weight: 700;
+}
+
+.nb-theme-cosmic .progress-value.success {
+	background-color: #0dff92;
+}
+
+.nb-theme-cosmic .progress-value {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lessonTimeContainer {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.chapterInformation {
+	width: 100%;
+	background-color: #000;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: #fff;
+	overflow: hidden;
+	margin-bottom: 15px;
+	position: relative;
+	background-image: url("https://d308fakbqebk7c.cloudfront.net/image_heroes/library_wallpaper.jpg");
+	/* The image used */
+	background-position: center;
+	/* Center the image */
+	background-repeat: no-repeat;
+	/* Do not repeat the image */
+	background-size: cover;
+
+	/* Resize the background image to cover the entire container */
+	@include media-breakpoint-up(md) {
+		height: 40vh;
+		margin-bottom: 1.5vh;
+	}
+}
+
+.progressAbsolute {
+	position: absolute;
+	bottom: 15px;
+	width: 100px;
+	bottom: 15px;
+	width: 150px;
+	right: 12px;
+
+	@include media-breakpoint-up(md) {
+		width: 17vw;
+		right: 2.2vw;
+		bottom: 2.7vh;
+	}
+
+	::ng-deep nb-progress-bar {
+		.progress-container {
+			height: 30px;
+			@include media-breakpoint-up(md) {
+				height: 2.4vh;
+			}
+			//position: relative;
+
+			.progress-value {
+				width: 15%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1vmin;
+			}
+		}
+	}
+}
+
+.chapterInfoLeft {
+	width: 90%;
+	z-index: 100;
+
+	@include media-breakpoint-up(md) {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 3vmin !important;
+		width: 60%;
+	}
+}
+
+.chapterInfoRight {
+	width: 40%;
+	height: 100%;
+	margin-top: auto;
+	margin: auto auto 0 auto;
+	position: relative;
+}
+
+.chapterImg {
+	width: 100%;
+}
+
+.title1 {
+	font-size: 10px;
+	text-transform: uppercase;
+
+	@include media-breakpoint-up(md) {
+		font-size: 1.5vmin;
+	}
+}
+
+.title2 {
+	font-size: 17px;
+	text-transform: uppercase;
+
+	@include media-breakpoint-up(md) {
+		font-size: 3vmin;
+	}
+}
+
+.title3 {
+	font-size: 13px;
+	text-transform: uppercase;
+
+	@include media-breakpoint-up(md) {
+		font-size: 1.7vmin;
+	}
+}
+
+.title4 {
+	font-size: 11px;
+	//	text-transform: uppercase;
+	width: 100%;
+	text-align: left;
+
+	@include media-breakpoint-up(md) {
+		font-size: 1.7vmin;
+		width: 80%;
+	}
+}
+
+.watchContainer {
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 6px 8px;
+	margin-top: auto;
+	display: block;
+	position: absolute;
+	width: 150px;
+	width: 30%;
+	bottom: 15px;
+	text-align: center;
+	padding: 0.8vh 1.3vw;
+	font-size: 11px;
+	cursor: pointer;
+
+	@include media-breakpoint-up(md) {
+		width: 20%;
+		bottom: 2vh;
+		max-width: 10vw;
+		font-size: 1.5vmin;
+		padding: 0.8vh 1.3vw;
+
+		border: 2px solid #fff;
+		//	width: 100%;
+		//	text-align: center;
+		//	text-transform: uppercase;
+		//	font-weight: 700;
+		//	cursor: pointer;
+		//	font-size: 10px;
+		text-align: center;
+	}
+}
+
+.watchContainer:hover {
+	color: #fff;
+	text-decoration: none;
+	opacity: .8;
+	border: 2px solid rgba(255, 255, 255, .9);
+}
+
+.buttonPosition {
+	margin: 0 !important;
+	padding: 0 !important;
+	right: 20px;
+	position: absolute;
+
+}
+
+.lessonTitle {
+	//color: #fff;
+	z-index: 2;
+	font-size: 12px;
+
+	@include media-breakpoint-up(md) {
+		font-size: 1.1vmin;
+	}
+}
+
+.chapter-card {
+	@include media-breakpoint-up(md) {
+		-webkit-box-flex: 0;
+		flex: 0 0 33%;
+		max-width: 33%;
+	}
+
+	@media (min-width: 1440px) {
+		-webkit-box-flex: 0;
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+}
+
+.bottomContainer {
+	background: rgba(255, 255, 255, .6);
+	padding: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	-webkit-transition: transform .5s;
+	transition: transform .5s;
+	cursor: pointer;
+}
+
+.card-img:hover~.bottomContainer {
+	transform: translateY(100%);
+}
+
+.cardShadow {
+	transition: box-shadow .2s;
+}
+
+.cardShadow:hover {
+	box-shadow: 6px 6px white, -6px 6px white, -6px -6px white, 6px -6px white;
+}
+
+.profit-date {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.lessonTimeContainer {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.progressBar {
+	width: 130px;
+	font-size: 10px;
+
+	@include media-breakpoint-up(md) {
+		width: auto;
+		font-size: 1.125rem;
+	}
+}
+
+.gradientBG {
+	width: 50%;
+	content: "";
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.hidden {
+	display: none;
+}
+@media (min-width: 2880px) {
+	.title4{
+		font-size: 1.5vmin;
+	}
+	.watchContainer{
+		font-size: 1.2vmin;
+	}
+}
+.percentageNumber {
+//	position: absolute;
+//	left: 50%;
+//	transform: translate(-50%,0);
+}
+.percentUnderTen {
+	position: absolute;
+	left: 8px;
+}

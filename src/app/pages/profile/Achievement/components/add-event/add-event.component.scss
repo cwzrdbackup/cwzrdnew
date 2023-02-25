@@ -1,0 +1,118 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.book-icon {
+		width: 1.5rem;
+	}
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.book-icon {
+		width: 20px;
+	}
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.book-icon {
+		width: 20px;
+	}
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.book-icon {
+		width: 20px;
+	}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	.book-icon {
+		width: 20px;
+	}
+}
+.book-header {
+	padding: .5rem 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.book-icon {
+	text-align: center;
+}
+.book-arrow-container {
+	display: inline-flex;
+	align-items: center;
+	margin-left: 10px;
+}
+.book-bookmark-container {
+	margin-right: 10px;
+
+}
+.book-tableofcontents-container {
+	display: inline-flex;
+	align-items: center;
+
+}
+.book-maximize-container {
+
+}
+.nb-arrow-right, .nb-arrow-left {
+	font-size: 1.125rem;
+}
+.link {
+	line-height: 1rem;
+}
+.input-current-page {
+	display: inline-block;
+	background-color: #2f286b;
+	width: 50px;
+	margin-left: -35px;
+	text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff !important; 
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #fff !important;
+}
+.bookMax {
+	width: 98vmax;
+	max-width: 98vw;
+	overflow-y: hidden;
+}
+.book-size {
+	width: 98vmax;
+	max-width: 98vw;
+	overflow-y: hidden;
+}
+.page {
+	width: 98vmax;
+}
+.cdk-overlay-container {
+	position: absolute;
+	z-index: 99999;
+}
+.scrollable-container {
+	z-index: -1000;
+}
+.cdk-overlay-pane {
+	overflow: scroll;	
+}
+#cdk-overlay-0 {
+	overflow: scroll;	
+}

@@ -1,0 +1,516 @@
+<nb-layout class="layout-container">
+
+	<nb-layout-header class="flex flexCenter platformHeader">
+		<app-header></app-header>
+	</nb-layout-header>
+
+	<nb-layout-column  class="px-3 px-md-5">
+		<nb-card class="f-w book-size book-alignment">	
+			<nb-tabset fullWidth="true">			
+			  <nb-tab class="tabsetText p-0 px-md-3 px-lg-5" tabTitle="BITMEX">
+				  <i class="fal fa-info-circle information-popup-btn" (click)='informationDisplay()'></i>
+				  <nb-card-body class="flex p-2 p-md-3 mt-3">					
+					<div class="col-12 col-md-6 pr-md-3 pr-lg-5">
+						<div class="calculator-title mb-3">TRADING PAIR
+						<button nbTooltip="Which trading pair do you want to trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+						</div>  
+						<nb-select [selected]="selected" (selectedChange)="select($event)" placeholder="TRADING PAIR" class="mb-3">
+							<nb-option value="XBTUSD">XBTUSD</nb-option>
+							<nb-option value="ETHUSD">ETHUSD</nb-option>
+							<nb-option value="ADABTC">ADABTC</nb-option>
+							<nb-option value="BCHBTC">BCHBTC</nb-option>
+							<nb-option value="EOSBTC">EOSBTC</nb-option>
+							<nb-option value="LTCBTC">LTCBTC</nb-option>
+							<nb-option value="TRXBTC">TRXBTC</nb-option>
+							<nb-option value="XRPBTC">XRPBTC</nb-option>
+						</nb-select>
+						<div class="calculator-title mb-3">TYPE OF TRADE</div>
+						<div class="flex mb-3 justify-content-center sizing-buttons">
+							<button status="success" id="buy" (click)="buyFlag($event)" nbButton class="mr-3 sizing-btn buy-btn">BUY</button>
+							<button status="danger" id="sell" (click)="sellFlag($event)" nbButton class="sizing-btn sell-btn">SELL</button>
+						</div>
+						<div class="calculator-title mb-3">ACCOUNT BALANCE <button nbTooltip="What is your total account balance?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input type="number" id="accountBalance" #accountBalance nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">ENTRY PRICE <button nbTooltip="At what price are you planning to open a trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="entry-price-icon" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="entryPrice" #entryPrice nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">STOP LOSS PRICE <button nbTooltip="At what price are you going to cut your losses?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="stop-price-icon" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="stopLossPrice" #stopLossPrice nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">TARGET PRICE <button nbTooltip="At what price are you planning to take a profit?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="target-price-icon" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="targetPrice" #targetPrice nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="What percent of your whole account are you risking on this trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fas fa-percent"></i></div>
+								<input step=".01" type="number" id="riskLimit" #riskLimit nbInput placeholder="0"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>							
+						<div class="sizing-buttons flex justify-content-center mb-4 mb-md-1"><button type="submit" (click) = 'calculate(accountBalance.value, entryPrice.value, stopLossPrice.value, targetPrice.value, riskLimit.value)' nbButton class="submit-btn">CALCULATE</button></div>						
+					</div>
+					<div class="mobile-line mb-3"></div>
+					<div class="col-12 col-md-6 pl-md-3 pl-lg-5">
+						<div class="calculator-title mb-3">QUANTITY <button nbTooltip="The suggested amount of contracts you need to buy/sell." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+							<input disabled type="text" id="quantity" nbInput placeholder="0" value="{{quantityAns | number:'1.0-0'}}"
+							class="col-12 col-md-12 input-bg-3 light-color-2 input-md input-rectangle mb-3">						
+						<div class="calculator-title mb-3">POTENTIAL WIN <button nbTooltip="The amount you will make if your trade reaches the target." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialValue" nbInput placeholder="0" value="{{potentialWinAnswer | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">POTENTIAL LOSS <button nbTooltip="The amount you will lose if your trade reaches stop loss." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialLoss" nbInput placeholder="0" value="{{potentialLossAnswer | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="It checks the risk you are taking on a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+							<input disabled type="text" id="riskLimitResult" nbInput placeholder="0" value="{{riskLimitAns}}"
+							class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+							<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-sixth" id="low-1">
+										Low
+									</div>
+									<div class="orange-bar one-sixth" id="good-1">
+										Good
+									</div>
+									<div class="green-bar one-sixth" id="ideal-1">
+										Ideal
+									</div>
+									<div class="yellow-bar one-sixth" id="good-1-2">
+										Good
+									</div>
+									<div class="orange-bar one-sixth" id="risky-1">
+										Risky
+									</div>
+									<div class="red-bar one-sixth" id="very-risky-1">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">RISK REWARD <button nbTooltip="It checks the risk reward for the trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0:0" value="{{riskRewardAns}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-fifth" id="red-2">
+										Bad
+									</div>
+									<div class="orange-bar one-fifth" id="orange-2">
+										Good
+									</div>
+									<div class="green-bar one-fifth" id="green-2">
+										Ideal
+									</div>
+									<div class="orange-bar one-fifth" id="orange-2-2">
+										High
+									</div>
+									<div class="red-bar one-fifth" id="red-2-2">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">LEVERAGE <button nbTooltip="It checks the required leverage on a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0" value="{{leverageAns}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">									
+									<div class="green-bar one-quarter" id="green-3">
+										Ideal
+									</div>
+									<div class="yellow-bar one-quarter" id="yellow-3">
+										Good
+									</div>
+									<div class="orange-bar one-quarter" id="orange-3">
+										Risky
+									</div>
+									<div class="red-bar one-quarter" id="red-3">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</nb-card-body>
+			  </nb-tab>
+			  <nb-tab class="tabsetText p-0 px-md-3 px-lg-5" tabTitle="NON-LEVERAGE">	
+				<i class="fal fa-info-circle information-popup-btn" (click)='informationDisplay()'></i> 
+				<nb-card-body class="flex p-2 p-md-3 mt-3">
+					<div class="col-12 col-md-6 pr-md-3 pr-lg-5">
+						<div class="calculator-title mb-3">TRADING PAIR
+						<button nbTooltip="Which trading pair do you want to trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+						</div>  
+						<nb-select [selected]="selected" (selectedChange)="selectN($event)" placeholder="TRADING PAIR" class="mb-3">
+							<nb-option value="USDPAIR">USD PAIR</nb-option>
+							<nb-option value="BTCPAIR">BTC PAIR</nb-option>							
+						</nb-select>
+						<div class="calculator-title mb-3">TYPE OF TRADE</div>
+						<div class="flex mb-3 justify-content-center sizing-buttons">
+							<button status="success" id="buy" (click)="buyFlag($event)" nbButton class="mr-3 sizing-btn buy-btn">BUY</button>
+							<button status="danger" id="sell" (click)="sellFlag($event)" nbButton class="sizing-btn sell-btn">SELL</button>
+						</div>
+						<div class="calculator-title mb-3">ACCOUNT BALANCE <button nbTooltip="What is your total account balance?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input type="number" id="accountBalance" #accountBalanceNL nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">ENTRY PRICE <button nbTooltip="At what price are you planning to open a trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="entry-price-icon-NL" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="entryPrice" #entryPriceNL nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">STOP LOSS PRICE <button nbTooltip="At what price are you going to cut your losses?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="stop-price-icon-NL" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="stopLossPrice" #stopLossPriceNL nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">TARGET PRICE <button nbTooltip="At what price are you planning to take a profit?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="target-price-icon-NL" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="targetPrice" #targetPriceNL nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="What percent of your whole account are you risking on this trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fas fa-percent"></i></div>
+								<input step=".01" type="number" id="riskLimit" #riskLimitNL nbInput placeholder="0"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>	
+						
+						<div class="sizing-buttons flex justify-content-center mb-4 mb-md-1"><button type="submit" (click) = 'calculateNL(accountBalanceNL.value, entryPriceNL.value, stopLossPriceNL.value, targetPriceNL.value, riskLimitNL.value)' nbButton class="submit-btn">CALCULATE</button></div>						
+					</div>
+					<div class="mobile-line mb-3"></div>
+					<div class="col-12 col-md-6 pl-md-3 pl-lg-5">
+						<div class="calculator-title mb-3">QUANTITY <button nbTooltip="BUY ORDER: The suggested amount of margin (money) you need to open a trade. SELL ORDER: The suggested amount of coins you need to open a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+							<input disabled type="text" id="quantity" nbInput placeholder="0" value="{{quantityAnsNL | number:'1.0-0'}}"
+							class="col-12 col-md-12 input-bg-3 light-color-2 input-md input-rectangle mb-3">						
+						<div class="calculator-title mb-3">POTENTIAL WIN <button nbTooltip="The amount you will make if your trade reaches the target." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialValue" nbInput placeholder="0" value="{{potentialWinAnswerNL | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">POTENTIAL LOSS <button nbTooltip="The amount you will lose if your trade reaches stop loss." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialLoss" nbInput placeholder="0" value="{{potentialLossAnswerNL | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="It checks the risk you are taking on a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+							<input disabled type="text" id="riskLimitResult" nbInput placeholder="0" value="{{riskLimitAnsNL}}"
+							class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+							<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-sixth" id="lowNL-1">
+										Low
+									</div>
+									<div class="orange-bar one-sixth" id="goodNL-1">
+										Good
+									</div>
+									<div class="green-bar one-sixth" id="idealNL-1">
+										Ideal
+									</div>
+									<div class="yellow-bar one-sixth" id="goodNL-1-2">
+										Good
+									</div>
+									<div class="orange-bar one-sixth" id="riskyNL-1">
+										Risky
+									</div>
+									<div class="red-bar one-sixth" id="very-riskyNL-1">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">RISK REWARD <button nbTooltip="It checks the risk reward for the trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0:0" value="{{riskRewardAnsNL}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-fifth" id="redNL-2">
+										Bad
+									</div>
+									<div class="orange-bar one-fifth" id="orangeNL-2">
+										Good
+									</div>
+									<div class="green-bar one-fifth" id="greenNL-2">
+										Ideal
+									</div>
+									<div class="orange-bar one-fifth" id="orangeNL-2-2">
+										High
+									</div>
+									<div class="red-bar one-fifth" id="redNL-2-2">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">LEVERAGE <button nbTooltip="NOT REQUIRED." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0" value="{{leverageAnsNL}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">									
+									<div class="green-bar one-quarter" id="greenNL-3">
+										Ideal
+									</div>
+									<div class="yellow-bar one-quarter" id="yellowNL-3">
+										Good
+									</div>
+									<div class="orange-bar one-quarter" id="orangeNL-3">
+										Risky
+									</div>
+									<div class="red-bar one-quarter" id="redNL-3">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</nb-card-body>
+			  </nb-tab>
+			  <nb-tab class="tabsetText p-0 px-md-3 px-lg-5" tabTitle="BITFINEX">	  
+				<i class="fal fa-info-circle information-popup-btn" (click)='informationDisplay()'></i>  
+				<nb-card-body class="flex p-2 p-md-3 mt-3">
+					<div class="col-12 col-md-6 pr-md-3 pr-lg-5">
+						<div class="calculator-title mb-3">TYPE <button nbTooltip="What trade type are you entering?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>  
+						<nb-select placeholder="TYPE" [selected]="selected" (selectedChange)="selectBL($event)" class="mb-3">
+							<nb-option value="LEVERAGE">LEVERAGE</nb-option>
+							<nb-option value="NON-LEVERAGE">NON-LEVERAGE</nb-option>
+						</nb-select>
+						<div class="calculator-title mb-3">TRADING PAIR
+						<button nbTooltip="Which trading pair do you want to trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+						</div>  
+						<nb-select [selected]="selected" (selectedChange)="selectB($event)" placeholder="TRADING PAIR" class="mb-3">
+							<nb-option value="USDPAIR">USD PAIR</nb-option>
+							<nb-option value="BTCPAIR">BTC PAIR</nb-option>							
+						</nb-select>
+						<div class="calculator-title mb-3">TYPE OF TRADE</div>
+						<div class="flex mb-3 justify-content-center sizing-buttons">
+							<button status="success" id="buy" (click)="buyFlag($event)" nbButton class="mr-3 sizing-btn buy-btn">BUY</button>
+							<button status="danger" id="sell" (click)="sellFlag($event)" nbButton class="sizing-btn sell-btn">SELL</button>
+						</div>
+						<div class="calculator-title mb-3">ACCOUNT BALANCE <button nbTooltip="What is your total account balance?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input type="number" id="accountBalance" #accountBalanceB nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">ENTRY PRICE <button nbTooltip="At what price are you planning to open a trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="entry-price-icon-B" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="entryPrice" #entryPriceB nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">STOP LOSS PRICE <button nbTooltip="At what price are you going to cut your losses?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="stop-price-icon-B" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="stopLossPrice" #stopLossPriceB nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">TARGET PRICE <button nbTooltip="At what price are you planning to take a profit?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i id="target-price-icon-B" class="fas fa-dollar-sign"></i></div>
+								<input type="number" id="targetPrice" #targetPriceB nbInput placeholder="0.00"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="What percent of your whole account are you risking on this trade?" nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>						
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fas fa-percent"></i></div>
+								<input step=".01" type="number" id="riskLimit" #riskLimitB nbInput placeholder="0"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>	
+						<div class="sizing-buttons flex justify-content-center mb-4 mb-md-1"><button type="submit" (click) = 'calculateB(accountBalanceB.value, entryPriceB.value, stopLossPriceB.value, targetPriceB.value, riskLimitB.value)' nbButton class="submit-btn">CALCULATE</button></div>
+					</div>
+					<div class="mobile-line mb-3"></div>
+					<div class="col-12 col-md-6 pl-md-3 pl-lg-5">
+						<div class="calculator-title mb-3">QUANTITY <button nbTooltip="BUY ORDER: The suggested amount of margin (money) you need to open a trade. SELL ORDER: The suggested amount of coins you need to open a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+							<input disabled type="text" id="quantity" nbInput placeholder="0" value="{{quantityAnsB | number:'1.0-0'}}"
+							class="col-12 col-md-12 input-bg-3 light-color-2 input-md input-rectangle mb-3">						
+						<div class="calculator-title mb-3">POTENTIAL WIN <button nbTooltip="The amount you will make if your trade reaches the target." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialValue" nbInput placeholder="0" value="{{potentialWinAnswerB | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						<div class="calculator-title mb-3">POTENTIAL LOSS <button nbTooltip="The amount you will lose if your trade reaches stop loss." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex input-height mb-3">
+								<div class="col-1 p-0 icon-height-container"><i class="fab fa-btc"></i></div>
+								<input disabled type="text" id="potentialLoss" nbInput placeholder="0" value="{{potentialLossAnswerB | number:'1.5-5'}}"
+								class="col-11 col-md-11 input-bg-3 light-color-2 input-md input-rectangle">
+						</div>
+						
+						<div class="calculator-title mb-3">RISK LIMIT <button nbTooltip="It checks the risk you are taking on a trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+							<input disabled type="text" id="riskLimitResult" nbInput placeholder="0" value="{{riskLimitAnsB}}"
+							class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+							<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-sixth" id="lowB-1">
+										Low
+									</div>
+									<div class="orange-bar one-sixth" id="goodB-1">
+										Good
+									</div>
+									<div class="green-bar one-sixth" id="idealB-1">
+										Ideal
+									</div>
+									<div class="yellow-bar one-sixth" id="goodB-1-2">
+										Good
+									</div>
+									<div class="orange-bar one-sixth" id="riskyB-1">
+										Risky
+									</div>
+									<div class="red-bar one-sixth" id="very-riskyB-1">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">RISK REWARD <button nbTooltip="It checks the risk reward for the trade." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0:0" value="{{riskRewardAnsB}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">
+									<div class="red-bar one-fifth" id="redB-2">
+										Bad
+									</div>
+									<div class="orange-bar one-fifth" id="orangeB-2">
+										Good
+									</div>
+									<div class="green-bar one-fifth" id="greenB-2">
+										Ideal
+									</div>
+									<div class="orange-bar one-fifth" id="orangeB-2-2">
+										High
+									</div>
+									<div class="red-bar one-fifth" id="redB-2-2">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-title mb-3">LEVERAGE <button nbTooltip="NOT REQUIRED." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>
+						<div class="flex">
+						<input disabled type="text" id="" nbInput placeholder="0" value="{{leverageAnsB}}"
+						class="col-4 col-md-4 input-bg-3 light-color-2 input-md input-rectangle mb-3">
+						<div class="col-8 col-md-8 pr-0">
+								<div class="gauge-bar">									
+									<div class="green-bar one-quarter" id="greenB-3">
+										Ideal
+									</div>
+									<div class="yellow-bar one-quarter" id="yellowB-3">
+										Good
+									</div>
+									<div class="orange-bar one-quarter" id="orangeB-3">
+										Risky
+									</div>
+									<div class="red-bar one-quarter" id="redB-3">
+										Very Risky
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nb-card-body>
+			  </nb-tab>			  		  
+			</nb-tabset>
+		  </nb-card>
+	</nb-layout-column>
+
+	<nb-layout-footer class="footer-main">
+		&copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+	</nb-layout-footer>
+
+</nb-layout>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content alert-modal-content">
+            <div class="modal-body text-center">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="pt-5 pb-5">
+                    <div>
+                        {{alertModalMessage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="alertModalInfo" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content alert-modal-content">
+				<div class="modal-body text-center">
+					<button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div class="pt-3 pb-3">
+						<div class="calc-text">
+								<div class="text-center mb-3 text-uppercase">How to use the WZRD calculator?</div>
+								<br>
+								<br>
+								<div class="mb-3">
+										Step 1: Choose the Exchange Type
+										<br>
+										You can choose between Bitmex, Bitfinex and Non-Leverage exchanges.
+								</div>										
+								<div class="mb-3">
+										Step 2: Choose the trading pair
+								</div>							
+								<div class="mb-3">
+										Step 3: Choose a trade type. If on Bitfinex, also choose whether you'll be using leverage or not.
+								</div>			
+								<div class="mb-3">
+										Step 4: Enter the account balance
+										<br>
+										Account balances in this calculator are computed using Bitcoin.
+								</div>				
+								<div class="mb-3">
+										Step 5: Enter entry, target and stop loss price
+								</div>							
+								<div class="mb-3">
+										Step 6: Enter the risk limit
+								</div>							
+								<div>
+										Step 7: Click the Calculate button
+										<br>
+										The results will include the quantity (suggested position size for Bitmex and suggested amount of margin or coins for the other exchange types), potential win, potential loss, risk-reward checker, risk limit checker, and the leverage checker. Please note that you will have to account for exchange fees and the possibility of slippage.
+								</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

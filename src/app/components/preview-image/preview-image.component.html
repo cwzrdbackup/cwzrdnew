@@ -1,0 +1,8 @@
+<nb-card class="p-0 newShadow" [nbSpinner]="isLoading">
+<div class="closeBtnModal" (click)="closeModal()">
+	<i class="control-icon nb-close"></i>
+</div>
+  <nb-card-body class="p-0">
+    <img *ngIf="imgSrc !== null" [ngClass]="{'hide-body' : isLoading}" src="{{imgSrc}}" alt="" (load)="loadingComplete()">
+  </nb-card-body>
+</nb-card>

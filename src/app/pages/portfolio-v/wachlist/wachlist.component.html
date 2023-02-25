@@ -1,0 +1,38 @@
+<div class="d-flex flex-wrap" style="overflow: auto;">
+
+  <div class="col-12 text-right p-3">
+    <i class="nb-plus link plus" (click)="addWachlist()"></i>
+  </div>
+
+  <div *ngFor="let item of testData" class="px-3 col-12 col-md-6">
+    <nb-card style="height: fit-content">
+
+      <nb-card-body>
+        <div class="grid">
+
+          <span class="justify-content-start">
+            <span class="logo mr-2"></span>
+            {{ item.name }}
+          </span>
+
+          <span class="justify-content-center">
+            <h5 [class]="item.color + ' ' + 'm-0'">
+              ${{ item.value | number: '1.2-2'}}
+            </h5>
+          </span>
+
+          <span class="justify-content-end">
+            <div class="text-center">
+              {{ item.percent }}%
+              <i class="ml-1" [class]="item.arrow + ' ' + item.color"></i>
+              <br>
+              <span style="font-size: 0.7rem" class="mt-1">24 Hour change</span>
+            </div>
+          </span>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<nb-layout>
+  <nb-layout-header class="flex flexCenter">    
+	<app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="p-0">
+
+    <nb-tabset fullWidth="true">
+      <nb-tab tabTitle="Balance">
+         <app-balance></app-balance>
+      </nb-tab>
+      <nb-tab tabTitle="Split">
+         <app-split></app-split>
+      </nb-tab>
+      <nb-tab tabTitle="Watchlist">
+         <app-wachlist></app-wachlist>
+      </nb-tab>
+      <nb-tab tabTitle="History">
+         <app-history></app-history>
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+      &copy; 2019 Powered by <a target="_blank" class="wzrdgroup-link" href="https://wzrdgroup.com">WZRD Group</a>
+    </nb-layout-footer>
+  </nb-layout>

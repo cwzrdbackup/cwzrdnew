@@ -1,0 +1,55 @@
+<nb-reveal-card class="f-h test-div" [showToggleButton]="toogle" [revealed]="revealed">
+  <nb-card-front class="crd">
+    <nb-card>
+	  <nb-card-header class="p-2" style="z-index:999999">
+	    <div class="flex" style="justify-content: space-between; align-items: center;">
+
+	      <div class="col-5">
+	        Market Performance
+	      </div>
+
+	      <nb-select selected="BTC" class="col-4 col-md-2 p-0 text-right transparent">
+	        <nb-option value="BTC">BTC</nb-option>
+	        <nb-option value="ETH">XRP</nb-option>
+	        <nb-option value="GAME">ETH</nb-option>
+	        <nb-option value="LBC">LTC</nb-option>
+	      </nb-select>
+	    </div>
+
+	  </nb-card-header>
+      <nb-card-body class="p-0" style="overflow-x: hidden;">
+        <div echarts [options]="chartOption1" class="f-h chart new-pie-chart" (chartClick)="clicked($event)"></div>
+      </nb-card-body>
+	  
+	  <div class="default-view-pie">
+
+<div class="descriptor-pie">
+	        <div class="descriptoritem">Cryptocurrencies: 2237 <span class="green">0.00</span><i class="nb-arrow-dropup green"></i></div>
+			<div class="descriptoritem">Markets: 18882 <span class="green">0.00</span><i class="nb-arrow-dropup green"></i></div>
+			<div class="descriptoritem">Market Cap: $272,245,948,608<i class="nb-arrow-dropup green"></i></div>
+			<div class="descriptoritem">24h Vol: $67,278,993,022<i class="nb-arrow-dropup green"></i></div>
+			<div class="descriptoritem">BTC Dominance: 56.4%</div>						
+</div>
+	  </div>
+    </nb-card>
+  </nb-card-front>
+  
+  
+  <nb-card-back class="crd card-half">
+    <nb-card class="market-half-card" style="border-radius: 0;box-shadow: none;">
+      <nb-card-header class="d-flex justify-content-between align-items-center" style="padding: .38rem 1.25rem">
+        <div>          
+          <span>{{selectedCoin}}</span>
+        </div>
+        <i class="nb-close link p-3" size="large" (click)="revealed = false"></i>
+      </nb-card-header>
+      <nb-card-body style="overflow-x: visible; overflow: visible;">
+	  <div class="p-0 market-info-header">
+	  	<span class="green exo-font">$</span><span style="padding-right: 1.125rem; padding-top: 1.125rem;">{{selectedPrice}}</span>
+	  	<span [ngClass]="{'red': selectedPercent === '-2.43', 'green': selectedPercent !== '-2.43' }">{{selectedPercent}}<span [ngClass]="{'nb-arrow-dropdown': selectedPercent === '-2.43', 'nb-arrow-dropup': selectedPercent !== '-2.43' }"></span></span>	  
+  	  </div>
+        <div echarts [options]="chartOption2" class="f-h chart"></div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

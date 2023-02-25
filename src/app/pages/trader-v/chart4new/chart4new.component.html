@@ -1,0 +1,83 @@
+<nb-reveal-card class="f-h-c test-div" [showToggleButton]="toogle" [revealed]="revealed" style="border-radius: .5rem">
+  <nb-card-front class="crd">
+    <nb-card class="mb-3 h-100">
+	  <nb-card-header class="p-2 headerBg" style="z-index:999999">
+	    <div class="flex" style="justify-content: space-between; align-items: center;">
+
+	      <div class="col-8">
+			Market Performance
+			<button nbTooltip="Displays important figures of the whole market. The bar chart displays the market cap of the top 6 coins (by market cap). Clicking on the individual sections of the pie chart or selecting a coin from the dropdown displays live information about the coin that was selected." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+	      </div>
+
+	      <nb-select [selected]="selected" (selectedChange)="select($event)" class="button-width p-0 text-right transparent">
+			<nb-option value="TOTAL">TOTAL</nb-option>
+			<nb-option *ngFor="let e of selectData" value="{{e.value}}"> {{ e.title }} </nb-option>
+	        <!-- <nb-option value="Bitcoin">BTC</nb-option>
+	        <nb-option value="Ethereum">ETH</nb-option>
+	        <nb-option value="Ripple">XRP</nb-option>
+	        <nb-option value="Litecoin">LTC</nb-option>
+			<nb-option value="Bitcoin Cash">BCH</nb-option>
+			<nb-option value="Binance Coin">BNB</nb-option> -->
+	      </nb-select>
+	    </div>
+
+	  </nb-card-header>
+      <nb-card-body class="p-0" style="overflow-x: hidden;">
+        <div echarts [options]="chartOption1" [merge]="dataOptions1" class="f-h-c chart new-pie-chart" (chartClick)="clicked($event)"></div>
+      </nb-card-body>
+	  
+	  <div class="default-view-pie">
+
+<div class="descriptor-pie">
+
+	        <div class="descriptoritem mb-1">Cryptocurrencies</div>
+			<div class="valuesUnder mb-2 mb-md-4">{{totalCoins | number:'1.0':'en-GB'}} <span class="green mpGreen"> 0.00%</span><i class="nb-arrow-dropup green mpGreen"></i></div>
+			
+			<div class="descriptoritem mb-1">Markets</div>
+			<div class="valuesUnder mb-2 mb-md-4">{{totalMarkets | number:'1.0':'en-GB'}} <span class="green mpGreen"> 0.00%</span><i class="nb-arrow-dropup green mpGreen"></i></div>
+			
+			<div class="descriptoritem mb-1">Market Cap</div>
+			<div class="valuesUnder mb-2 mb-md-4"><span class="green"
+				>$</span>{{totalMarketCap.value | shortNumber}}<span 
+				[ngClass]="(totalMarketCap.percent<0)?'red mpGreen':'green mpGreen'" 
+				> {{totalMarketCap.percent | number: '1.2-2'}}%</span><i class="nb-arrow-dropup"
+				[ngClass]="(totalMarketCap.percent<0)?'nb-arrow-dropdown red mpGreen':'nb-arrow-dropup green mpGreen'" 
+				></i></div>
+			
+			<div class="descriptoritem mb-1">24h Vol</div>
+			<div class="valuesUnder mb-2 mb-md-4" *ngIf="totalVolume"><span class="green"
+				>$</span>{{totalVolume.value  | shortNumber}}<span 
+				[ngClass]="(totalVolume.percentNumber<0)?'red mpGreen':'green mpGreen'" 
+				> {{totalVolume.percentNumber | number: '1.2-2'}}%</span><i class="arrow-padding"
+				[ngClass]="(totalVolume.percentNumber<0)?'nb-arrow-dropdown red mpGreen':'nb-arrow-dropup green mpGreen'" 
+				></i></div>
+			
+			<div class="descriptoritem mb-1">BTC Dominance</div>
+			<div class="valuesUnder mb-2 mb-md-4"><span class="green"
+				>$</span>{{MarketDominance.BTCDominance}}<span 
+				[ngClass]="(MarketDominance.percentNumber<0)?'red mpGreen':'green mpGreen'" 
+				> {{MarketDominance.percent}}</span><i class="arrow-padding"
+				[ngClass]="(MarketDominance.percentNumber<0)?'nb-arrow-dropdown red mpGreen':'nb-arrow-dropup green mpGreen'" 
+				></i></div>								
+</div>
+	  </div>
+    </nb-card>
+  </nb-card-front>
+  
+  
+  <nb-card-back class="crd card-half">
+    <nb-card class="market-half-card" style="border-radius: 0;box-shadow: none;">
+      <nb-card-body class="card-body-bar" style="overflow-x: visible; overflow: visible;">	  
+	  {{selectedCoin}}
+	  <div class="p-0 market-info-header">
+	  	<span class="green exo-font">$</span><span class="price-percent-space">{{selectedPrice | number: '1.2-2'}}</span>
+	  	<span [ngClass]="(selectedPercent<0)?'red':'green'">{{selectedPercent}}
+			  <!-- <span [ngClass]="{'nb-arrow-dropdown': selectedPercent === '-2.43', 'nb-arrow-dropup': selectedPercent !== '-2.43' }"></span> -->
+			  <i [ngClass]="(selectedPercent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'"></i>
+			</span>
+		</div>
+		<div echarts #chart2 [options]="chartOption2" [merge]="dataOptions2" class="f-h-c chart"></div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

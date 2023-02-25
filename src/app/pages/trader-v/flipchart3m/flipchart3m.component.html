@@ -1,0 +1,15 @@
+
+	
+	
+	  <div class="p-0 col-12">
+	    <div class="flex">
+	      <div class="col-12 pl-3" id="fc3tvpc">
+			<p class="flex-arrow" 
+			[ngClass]="(TotalVolume.percent<0)?'red':'green'"
+			id="pbpc">{{TotalVolume.percent}}%<i 
+			[ngClass]="(TotalVolume.percent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'"
+			></i></p>
+	      </div>	      
+	    </div>
+	    <div echarts [options]="chartOption" [merge]="dataOptions" class="chart"></div>
+	  </div>

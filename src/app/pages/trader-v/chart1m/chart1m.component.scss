@@ -1,0 +1,53 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+.chart {
+    height: 140px;
+}
+
+.f-h {
+    height: calc(100% - 1.5rem);
+  }
+
+.chart-card {
+    font-size: 13px;
+    @include media-breakpoint-up(md) {
+        font-size: .75rem;
+    }  
+    @include media-breakpoint-up(lg) {
+        font-size: .75rem;
+    }    
+    @include media-breakpoint-up(xl) {
+        font-size: .88vw;
+    }    
+    @media screen and (min-width: 1500px) {
+		font-size: 14px;
+	}
+}
+nb-reveal-card {
+    height: 255px;
+}
+nb-card-front, nb-card-back {
+    //display: flex;
+    height: 100%;
+}
+nb-card {
+    height: 100%
+}
+.align-price {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+}
+nb-card-header {
+    padding-left: 1.25rem;
+    padding-top: 1.25rem;
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}

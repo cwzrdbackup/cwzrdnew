@@ -1,0 +1,18 @@
+
+	
+	
+	  <div class="p-0 col-12">
+	    <div class="flex">
+	      <div class="col-6 pl-4" id="fc2pc">
+			<p class="flex-arrow" 
+			[ngClass]="(TotalMarketCap.obj.percent<0)?'red':'green'" 
+			id="pbpc">{{TotalMarketCap.obj.percent | number: '1.2-4'}}% <i 
+			[ngClass]="(TotalMarketCap.obj.percent<0)?'nb-arrow-dropdown':'nb-arrow-dropup'" 
+			></i></p>
+	      </div>	      
+	    </div>
+	    <div echarts [options]="chartOption" [merge]="dataOptions" class="chart"></div>
+	  </div>
+
+
+ 

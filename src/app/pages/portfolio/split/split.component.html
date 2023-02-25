@@ -1,0 +1,7 @@
+<div class="p-3" style="height: calc(100vh - 210px)">
+    <nb-card class="f-h m-0 d-flex flex-column justify-content-center">
+        <div class="tooltip-align"><button nbTooltip="The pie chart displays your portfolio's holdings by as a percentage the current value represents of your whole portfolio." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></div>        
+        <div echarts [options]="chartOption" class="chart pie-height"></div>
+        
+    </nb-card>
+</div>

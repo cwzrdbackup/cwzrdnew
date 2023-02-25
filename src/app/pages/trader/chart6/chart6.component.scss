@@ -1,0 +1,46 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	.trader-text {
+		color: nb-theme(traders-hub-text);
+	}
+	::ng-deep nb-layout {
+		.scrollable-container {
+			.layout {
+				.layout-container {
+					[nbButton].btn-primary {
+						font-size: 16px !important;
+					}
+				}
+			}
+		}
+	}
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}
+			}		
+}
+
+.f-h {
+  height: calc(100% - 1.5rem) !important;
+}
+.chart {
+    min-height: 400px;
+}
+.button-width {
+  width: 100px;
+}

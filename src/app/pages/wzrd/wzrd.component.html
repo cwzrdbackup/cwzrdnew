@@ -1,0 +1,42 @@
+<nb-layout class="layout-container">
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+    <nb-layout-column class="p-0" [nbSpinner]="loading" nbSpinnerStatus="success">
+
+        <div class="chapterInformation">
+            <div class="gradientBG"></div>
+            <div class="chapterInfoLeft p-3 p-md-5">
+                <div class="title2 mb-2 mb-md-4">WZRD Wednesdays</div>
+                <div class="title3 mb-2 mb-md-4">{{videoData?.data.length}} episodes | Market Analysis | 2020</div>
+                <div class="title4 mb-3 mb-md-5">Airing every Wednesday at 8pm, WZRD Wednesdays combines the latest fundamentals, technicals and everything else crypto
+                    into content-packed weekly episodes. Every week the market is broken down from top to bottom whilst covering the long term, medium term and inter-day
+                    outlooks for a whole-rounded viewpoint of the market. Combine the analysis with the guidelines you’re taught to make trading easier than ever.
+                </div>
+                <div *ngIf="videoData?.data[0]" class="watchContainer" [routerLink]="'/WZRD-wednesdays/' + videoData?.data[0]?.uri.split('/videos/')[1]">Watch</div>
+                <div *ngIf="!videoData?.data[0]" class="watchContainer">Watch</div>
+            </div>
+        </div>
+        <div class="px-3 px-md-5">
+            <div class="flex" style="margin: 0 -16px 20px -16px">
+                <div *ngFor="let video of videoData?.data; let i = index" class="col-12 col-md-4 col-lg-3 px-3 pt-3">
+                    <nb-card style="position:relative; overflow: hidden" class="cardShadow">
+                        <img src="../../../assets/WZRD_wednesday/{{videoData?.total - i}}.jpg" alt="image" class="card-img"
+                             [routerLink]="'./'+ video?.uri.split('/videos/')[1]">
+                        <div class="bottomContainer">
+                            <div class="lessonTitle">{{(video?.name.substring(video?.name.indexOf("|") + 1)).trim()}}</div>
+                        </div>
+                    </nb-card>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div style="text-align:center; margin:10px auto;" *ngIf="showButton">
+            <button nbButton (click)="loadNext()" class="btn btn-success">Load More</button>
+          </div>
+        -->
+    </nb-layout-column>
+    <nb-layout-footer class="footer-main" [ngClass]="{'hide': loading}">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+</nb-layout>

@@ -1,0 +1,245 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+
+@import "~@nebular/theme/styles/theming";
+@import "~@nebular/theme/styles/themes/default";
+@import "~@nebular/theme/styles/themes/cosmic";
+@import "~@nebular/theme/styles/themes/corporate";
+@import '~@nebular/theme/styles/themes/armyCamo';
+
+@import '~@nebular/theme/styles/themes/Far_Above';
+@import '~@nebular/theme/styles/themes/Vortex';
+@import '~@nebular/theme/styles/themes/Fireball';
+@import '~@nebular/theme/styles/themes/Hex_World';
+@import '~@nebular/theme/styles/themes/Formula_of_Life';
+@import '~@nebular/theme/styles/themes/Connection';
+@import '~@nebular/theme/styles/themes/Enchanted_Dream';
+@import '~@nebular/theme/styles/themes/Infinity';
+@import '~@nebular/theme/styles/themes/Pirate';
+@import '~@nebular/theme/styles/themes/Tron';
+@import '~@nebular/theme/styles/themes/Uncovering_Secrets';
+@import '~@nebular/theme/styles/themes/United_Colours';
+@import '~@nebular/theme/styles/themes/Palm_Trees';
+@import '~@nebular/theme/styles/themes/Analyst';
+@import '~@nebular/theme/styles/themes/Voltage';
+@import '~@nebular/theme/styles/themes/Overload';
+@import '~@nebular/theme/styles/themes/Smiley';
+@import '~@nebular/theme/styles/themes/Internal_Traces';
+@import '~@nebular/theme/styles/themes/Isolated';
+@import '~@nebular/theme/styles/themes/Land_of_Promises';
+@import '~@nebular/theme/styles/themes/Towers_of_Wizardry';
+@import '~@nebular/theme/styles/themes/Planets';
+@import '~@nebular/theme/styles/themes/Bloodline';
+@import '~@nebular/theme/styles/themes/Ghost_Town';
+@import '~@nebular/theme/styles/themes/Meteor';
+@import '~@nebular/theme/styles/themes/Purging';
+@import '~@nebular/theme/styles/themes/Predator';
+@import '~@nebular/theme/styles/themes/Lava';
+@import '~@nebular/theme/styles/themes/Witches';
+@import '~@nebular/theme/styles/themes/Candy';
+@import '~@nebular/theme/styles/themes/Mother_Nature';
+@import '~@nebular/theme/styles/themes/Mystic';
+
+@include nb-install-component {
+  ::ng-deep {
+		nb-card {
+			background: nb-theme(card-color);
+			box-shadow: nb-theme(shadow);
+			color: nb-theme(light-text);
+    }
+    nb-tabset .tabset {
+      border-bottom: 1px solid nb-theme(notification-header);
+    }
+		nb-card-header {
+			border-bottom: 1px solid nb-theme(line-color);
+		}
+		nb-card-footer {
+			border-top: 1px solid nb-theme(line-color);
+    }
+    .nb-badge.nb-badge-primary {
+      background-color: nb-theme(notes-header);
+    }
+    .summary-container {
+      background-color: nb-theme(trader-chart-side);
+      border-bottom: 1px solid nb-theme(notification-header);
+    }
+    thead td {
+      background-color: nb-theme(notes-header) !important;
+      border-right: 2px solid nb-theme(card-color);
+    }
+    .dark-row {
+      background-color: nb-theme(page-bg);
+    }  
+    td {
+      border-right: 2px solid nb-theme(card-color);
+    }
+    .nb-chevron-up,
+    .nb-chevron-down {
+      color: nb-theme(card-color);
+    }
+    .nbButtonIcon {
+      color: #fff;
+    }
+    .primary-tooltip {
+      background-color: nb-theme(notes-header);
+    }
+    .arrow {
+      border-bottom-color: nb-theme(notes-header) !important;
+    }
+	}
+  ::ng-deep .primary-tooltip {
+		max-width: 600px;
+	}
+  .input-current-page {
+    background-color: nb-theme(color-bg-3);
+  }
+  .fa-expand,
+  .fa-list-ul,
+  .nb-arrow-left,
+  .nb-arrow-right {
+    color: nb-theme(color-light-2);
+  }
+  .fa-list-ul:hover,
+  .nb-arrow-left:hover,
+  .nb-arrow-right:hover,
+  .fa-expand:hover,
+  .fa-compress:hover {
+    color: nb-theme(bg-color-tabset);
+  }
+  .footer-main {
+    background: nb-theme(header-bg);
+    text-align: left;
+  }
+  .platformHeader {
+    background: nb-theme(header-bg);
+  }
+	.wzrdgroup-link {
+		color: nb-theme(light-text) !important;
+	}
+	.wzrdgroup-link:hover {
+		text-decoration: none;
+	}
+}
+
+.width {
+    width: 100%;
+}
+@media (min-width: 756px) {
+    .width {
+        width: 50%;
+    }
+}
+
+@media (min-width: 756px) {
+    .width {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1366px) {
+    .width{
+        width: 25%;
+    }
+}
+[nb-card-header].d-flex.justify-content-between.align-items-center {
+	text-transform: uppercase;
+}
+.nb-theme-cosmic [nb-card-header] {
+	text-transform: uppercase !important;
+}
+.justify-content-between span {
+	text-transform: uppercase !important;
+}
+nb-card-header.d-flex.justify-content-between.align-items-center {
+	text-transform: uppercase !important;
+}
+.front {
+	font-size: 2rem;
+} 
+.nb-theme-cosmic [nb-card-body] {
+	padding: 0;
+}
+.h-100 {
+	margin-top: -1.15rem;
+}
+.journal-header {
+	font-size: 1rem;
+}
+.market-dominance-bar {
+	height: 160px;
+	margin-bottom: 0;
+}
+.bubbletest {
+	padding: 15px;
+}
+.caution_images >img{
+  width: 35%;
+  display: inline-block;
+}
+
+.data_box p{
+  width: 80%;
+  display: inline-block;
+}
+.data_box{
+  height: 160px;
+  text-align: center;
+  width: 100%;
+}
+.md-bar-outer {
+  height: 5rem;
+}
+
+.md-bar-triangle {
+  bottom: 100%;
+}
+
+
+.complete-border {
+  border-radius: .5rem ;
+}
+
+.text-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  .right-text {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}
+.market-dominance-bar {
+  height: calc(300px + 1rem);
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}
+
+.trade-week-height {
+  height: calc(100% - 1.5rem);
+}
+.week-row {
+  display: flex;
+  padding: 12px 0;
+}
+.week-row span:first-child {
+  width: 48%;
+}
+.week-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+.message-null {
+  height: calc(100% - 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

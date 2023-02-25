@@ -1,0 +1,14 @@
+
+	
+	
+	  <div class="p-0 col-12">
+	    <div class="flex">
+	      <div class="col-6 pl-4" id="fc2pc">
+	        <p class="flex-arrow" [ngStyle]="{'color': TotalMarketCap.obj.color}" id="pbpc">{{TotalMarketCap.obj.percent | number: '1.2-4'}}% <i [class]="TotalMarketCap.obj.arrow"></i></p>
+	      </div>	      
+	    </div>
+	    <div echarts [options]="chartOption" class="chart"></div>
+	  </div>
+
+
+ 

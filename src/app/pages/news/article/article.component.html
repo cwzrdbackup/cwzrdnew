@@ -1,0 +1,226 @@
+<nb-layout>
+
+  <nb-layout-header class="flex flexCenter platformHeader">
+    <app-header></app-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="px-3 pt-2 pb-3 px-md-5 py-md-3">
+
+    <div class="d-flex" style="flex-wrap: wrap;">
+
+      <div class="pt-3 col-12 px-0 pb-3 mb-2">
+        <nb-badge text="Crypto news"></nb-badge>
+      </div>
+
+        <div class="col-12 p-0">
+            <div class="col-12 col-lg-8 p-0 pb-3">          
+            <div class="flex-vertical newsTitleM"><i class="fal fa-long-arrow-left" routerLink="/news"></i><h1 class="newsTitle mb-0">{{article.title}}</h1></div>
+            <div class="d-flex justify-content-end p-0 col-12 flexAlign">
+              <div class="flexColumn p-0 mr-auto col-8">
+              
+              <p class="postedDate" style="margin-right: auto">Posted on {{article.published_at | date:'mediumDate'}}</p>
+                </div>
+              
+              <div class="socials">                  
+                <div class="d-flex justify-content-center align-content-center share link" *ngFor="let item of shareButtonsDisplay">
+                  <img [src]="'../../../../assets/' + item.image + '.svg'" alt="icon" shareButton="{{item.shareName}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="col-12 col-lg-8 p-0 pb-4" [nbSpinner]="loadingAnArticle"  >
+        <nb-card class="mb-5" [ngClass]="{'min-height': loadingAnArticle}">
+          <nb-card-body>
+            <img *ngIf="article && article.image && article.image.src" src="{{article.image.src}}" alt="image" class="f-w">
+          </nb-card-body>
+        </nb-card>
+        <p *ngIf="article && article.body_html" [innerHTML]="article.body_html">
+        </p>
+        <div class="my-3 my-md-5"></div>
+        <!-- <div class="d-flex justify-content-end my-3 my-md-5">
+            <button nbButton status="primary" size="xsmall">Next article</button>
+        </div> -->
+
+        <nb-card class="f-w mx-md-0 mb-0" status="primary">
+          <nb-card-header class="d-flex flex-vertical justify-content-between px-3 py-1"><span
+              class="notes-title">{{totalComments}} Comments</span>
+            <div class="d-flex justify-content-between align-items-center">
+              <nb-select placeholder="Sort by" class="text-right transparent order fontWeightBtn"
+                [formControl]="selectedItemFormControl" (selectedChange)="changeOrderBy($event)">
+                <nb-option value="default" class="option">Newest</nb-option>
+                <nb-option value="likes" class="option">Popular</nb-option>
+
+              </nb-select>
+            </div>
+          </nb-card-header>
+          <nb-card-body style="max-height: 640px">
+            <div class="py-0">
+
+              <div class="mb-3 col-12 px-0">
+                <div class="p-0 flex-grow-1">
+                  <form (ngSubmit)="addComment()" [formGroup]="commentForm">
+                    <div class="flex align-items-center mb-3">
+                      <nb-user name="" size="large" class="p-0 py-2" [picture]="avtarImg"></nb-user>
+                      <div class="flex-grow-1">
+                        <textarea formControlName="comment" type="text" placeholder="Leave a comment..." nbInput
+                          class="f-w leaveComment"></textarea>
+                      </div>
+                    </div>
+                    <div class="addCommentBtn mt-n2">
+                      <button nbButton class="mb-3 mr-1 cancelBtn" type="reset">Cancel</button>
+                      <button nbButton class="mb-3 mr-0 commentBtn" type="submit">Comment</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div *ngFor="let comment of episodeComments" class="mainCommentContainer mb-3">
+
+                <nb-user class="mb-1 commentContainer" [name]="comment.user" size="large" [title]="comment.comment"
+                  [picture]="comment.profileImg">
+                </nb-user>
+                <div class="likeReplyRow pb-2 mb-2">
+                  <span
+                    style="margin-right: 1rem; margin-top: 1.25px; font-size: 1rem">{{comment.totalLikes}}</span><span
+                    class="like-Btn" (click)="likeComment(comment)"><i class="fa fa-thumbs-up"></i></span>
+                  <i [class]="'fas fa-reply openReply replyBtn' + i" (click)="reply(comment)"></i>
+                </div>
+
+
+                <div class="replyContainer" style="margin-left:70px;">
+                  <div style="clear:both;"></div>
+                  <div *ngIf="comment.id===replyId" style="margin-top:10px;margin-left:20px;">
+
+
+
+
+                    <form (ngSubmit)="addReply(comment)" [formGroup]="comment.replyForm">
+                      <textarea formControlName="reply" type="text" placeholder="Leave a reply..." nbInput
+                        class="f-w mb-3"></textarea>
+                      <button type="submit" nbButton class="replyBtnSpace mt-n2">Reply</button>
+                    </form>
+                  </div>
+                  <div class="replyBox mb-2" *ngFor="let reply of comment.replies">
+                    <nb-user style="margin-bottom:0px;" class="mb-2" [name]="reply.name" size="large"
+                      [picture]="reply.profileImg" [title]="reply.reply">
+
+                    </nb-user>
+                    <div style="margin-left:70px;" class="mb-2">
+                      <span>{{reply.likes}} <span style="margin-left: 1rem; font-size: 1rem" class="like-Btn"
+                          (click)="likeReply(comment,reply)"><i class="fa fa-thumbs-up"></i></span></span>
+
+                      <div style="clear:both;"></div>
+
+
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+        <!-- <div class="d-flex justify-content-end my-5">
+          <button nbButton status="primary" size="xsmall">Next article</button>
+        </div> -->
+
+        <!-- <div class="py-3" style="border-top: 1px solid white;" [nbSpinner]="cload">
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span>{{comments.length}} Comments</span>
+           
+          </div>
+
+          <div class="mb-5 flex align-items-center">
+            <nb-user name="{{name}}" size="large" class="col-12 col-md-2 p-0 py-3"></nb-user>
+            <div class="col-12 col-md-10 p-0 py-3">
+           
+              <form (ngSubmit)="addComment()" [formGroup]="commentForm">
+                  <textarea
+              formControlName="comment"
+              type="text" placeholder="Make a comment..." nbInput class="f-w"></textarea>
+              <button class="btn btn-success"
+              type="submit"
+              >Add Comment</button>
+              </form>
+            </div>
+          </div>
+
+          <nb-user class="mb-4" *ngFor="let comment of comments" [name]="comment.author" size="large"
+            [title]="comment.body">
+          </nb-user>
+        </div> -->
+
+
+        <!-- </ng-container> -->
+      </div>
+
+      <div class="col-12 col-lg-4 p-0 pl-lg-3">
+
+        <nb-card>
+          <nb-card-header [nbSpinner]= "loadingLatestNews">
+            Latest News
+          </nb-card-header>
+          <nb-list >
+            <nb-list-item *ngFor="let item of filteredArticles.slice(0, 5);">
+              <nb-badge text="Crypto news" class="small"></nb-badge>
+              <br>
+              <br>
+              <!-- <h5 class="link">{{ item.title }}</h5> -->
+              <h5 class=link><a [routerLink]="'/news/' + item.id" (click)="updateNewsContent(item.id)">{{ item.title }}</a></h5>
+              <p class="color-text-4">{{item.published_at | date:'mediumDate'}}</p>
+            </nb-list-item>
+          </nb-list>
+        </nb-card>
+
+        <nb-card>
+          <nb-card-header>
+            Subscribe for live updates
+          </nb-card-header>
+          <nb-card-body>
+            <p>Get the latest cryptocurrency news and updates delivered directly to your mailbox</p>
+            <div class="flex mb-4">
+              <input required #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" type="email" class="col-8 input subscription-input" fieldSize="small" nbInput name="email" [(ngModel)]="data.email">
+              <button nbButton status="primary" size="small" class="col-4 p-0 sub" (click)="mailChimp()">Subscribe</button>
+              <label class="error" for="email" *ngIf="email.errors && (email.touched)">
+                  <p [hidden]="!email.errors.required">Required<p></p>
+              <p [hidden]="!email.errors.pattern">Please enter valid email format<p>
+              </label>
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+      </div>
+
+    </div>
+
+  </nb-layout-column>
+
+  <nb-layout-footer class="footer-main">
+    &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+  </nb-layout-footer>
+
+</nb-layout>
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content alert-modal-content">
+          <div class="modal-body text-center">
+              <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="pt-5 pb-5">
+                  <div>
+                      {{alertModalMessage}}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

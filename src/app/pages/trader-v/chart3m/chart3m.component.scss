@@ -1,0 +1,46 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	::ng-deep nb-card {
+				nb-card-header {
+					nb-select {
+						.btn-primary {
+							font-size: 16px;
+							@include media-breakpoint-up(md) {
+								font-size: 1.125rem;
+							}
+						}
+					}
+				}		
+	}
+}
+
+.f-h {
+  height: 100%!important;
+  min-height: 430px;
+}
+.button-width {
+	width: 120px;
+}
+
+.price-font-size {
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 20px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 20px;
+	}
+}
+.nbButtonIcon {
+	background: transparent;
+	border: none;
+	color: rgb(209, 209, 255);
+	padding: 0;
+}

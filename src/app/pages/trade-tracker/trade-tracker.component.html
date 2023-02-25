@@ -1,0 +1,103 @@
+<nb-layout class="layout-container">
+        <nb-layout-header class="flex flexCenter platformHeader">
+            <app-header></app-header>
+        </nb-layout-header>
+
+       
+    <nb-layout-column class="p-0 pt-3">
+
+
+        <!-- <div class="bubbletest"><img src="../assets/WizMe - Notification Test.png"/></div> -->
+
+        <div class="px-3">            
+            <app-tabbed-chart ></app-tabbed-chart>
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-center">            
+            <div class="px-3 width">
+                <nb-card class="trade-week-height">
+                    <nb-card-header>Top Traded Pairs <button nbTooltip="Displays a chart of the pairs we've traded the most in our group." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></nb-card-header>
+                    <!-- <div class="message-null" *ngIf="!closeTrades">Data is not yet available</div> -->
+                    <app-chart1 class="pt-3" ></app-chart1>
+                </nb-card>                
+            </div>
+
+            <div class="px-3 width">
+                <nb-card class="trade-week-height">
+                    <nb-card-header>Most Profitable Pairs <button nbTooltip="Displays a chart of the pairs that have been the most profitable for us in the group." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></nb-card-header>
+                    <app-chart2 class="pt-3"></app-chart2>
+                    <!-- <div class="message-null">Data is not yet available</div> -->
+                </nb-card>
+            </div>
+            <!-- <div class="px-3 width">
+                <nb-card>
+                    <nb-card-header>Success Rate <button nbTooltip="Displays your live portfolio balance. The percent is calculated using the current balance and the closing balance of the last 24 hours." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></nb-card-header>
+                    <div class="market-dominance-bar pt-3" *ngIf="isLoaded">
+                            <div class="md-bar-outer flex">
+                                <div *ngIf=" (_success > 0 ) && ( _loss > 0 ) " class="md-bar-triangle" [style.left.%]="_success"></div>
+                                <div class="md-bar md-bar-left" [ngClass]="{'complete-border': !(_loss > 0)}" [style.width.%]="_success">
+                                    <div *ngIf="_success > 0" class="md-bar-text left-text">
+                                       
+                                    </div>
+                                </div>
+                                <div class="md-bar md-bar-right" [ngClass]="{'complete-border': !(_success > 0)}" [style.width.%]="_loss">
+                                    <div  *ngIf="_loss > 0" class="md-bar-text  right-text" id="right-percent-inner">
+                                       
+                                    </div>
+                                </div>
+                                <div class="text-container">
+                                   <span *ngIf="_success > 0" > {{_success}}%</span>
+
+                                    <span class="right-text" *ngIf="_loss > 0" > {{_loss}}% </span>
+                                </div>
+                            </div>
+                    </div>
+                </nb-card>                
+            </div> -->
+            <div class="px-3 width">
+                <nb-card class="trade-week-height">
+                    <nb-card-header>Total Pips Gained <button nbTooltip="Displays a chart of total pips gained in the past week." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></nb-card-header>
+                    <app-chart4 class="pt-3"></app-chart4>
+                    <!-- <div class="message-null">Awaiting closed trades</div> -->
+                </nb-card>
+            </div>
+            <div class="px-3 width">
+            <nb-card class="trade-week-height">
+                <nb-card-header>Trade of the Week <button nbTooltip="The trade that resulted in the highest gain this week will be summarized here." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></nb-card-header>
+                <nb-card-body class="week-container">
+                    <div class="week-row">
+                        <span>Pair: </span><span>TBD</span>
+                    </div>
+                    <div class="week-row">
+                        <span>Total Pips Gained: </span><span class="green">TBD</span>
+                    </div>
+                    <div class="week-row">
+                        <span>Date Opened: </span><span>TBD</span>
+                    </div>
+                    <div class="week-row">
+                        <span>Date Closed: </span><span>TBD</span>
+                    </div>
+                    <div class="week-row">
+                        <span>Trade ID: </span><span>TBD</span>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+            </div>
+        </div>
+
+        <div class="px-3">                
+            <trader-tracker-table1 [tableBody]="_tableData" (journalLogDeleted) ="journalDeleted()" ></trader-tracker-table1>
+        </div>        
+        <div class="px-3">
+            <trader-tracker-table2 [tableBody]="_tableData" (journalLogDeleted) ="journalDeleted()" ></trader-tracker-table2>
+        </div>
+
+    </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group
+            
+        </a>
+    </nb-layout-footer>
+
+</nb-layout>

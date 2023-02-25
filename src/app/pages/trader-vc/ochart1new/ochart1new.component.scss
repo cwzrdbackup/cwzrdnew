@@ -1,0 +1,85 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import '~@nebular/theme/styles/themes/corporate';
+
+@include nb-install-component {
+	.color-light-2 {
+		color: nb-theme(color-light-2);
+	}
+	.pibl-coin {
+		color: nb-theme(color-fg-text-3);
+	}
+}
+.f-h {
+    height: calc(100% - 1.5rem)!important;
+    min-height: 480px;
+    .crd {
+        height: 100%;
+    }
+}
+.chart {
+	//left: calc(50% - 40px);	
+	//left: 50%;
+	//transform: translate(-50%, 0);
+}
+.pibl-subtitle {
+	font-size: 3.9vw;
+}
+@media (min-width: 768px) {
+	
+	.pibl-subtitle {
+		font-size: 2.7vw;
+	}
+}
+@media (min-width: 992px) {
+	
+	.pibl-subtitle {
+		font-size: 1rem;
+	}
+}
+@media (min-width: 1200px) {
+	
+	.pibl-subtitle {
+		font-size: 1rem;
+	}
+}
+.color-light-2 {
+	font-weight: 700;
+}
+.selectedCoin {
+	font-size: 1rem;
+	margin-top: 1px;
+	@include media-breakpoint-up(md) {
+		font-size: 1.125rem;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 12px;
+	}
+	@include media-breakpoint-up(xl) {
+		font-size: 14px;
+	}
+}
+.nb-close {
+	font-size: 18px;
+	//margin-right: 2vmin;
+	margin-right: 6vmin;
+	@include media-breakpoint-up(xl) {
+		margin-right: 0;
+	}
+}
+.pibl-coin {
+	margin-top: 1px;
+}
+.flex-arrow {
+	font-size: 16px;
+	@include media-breakpoint-up(md) {
+		font-size: 14px;
+	}
+	@include media-breakpoint-up(lg) {
+		font-size: 12px;
+	}
+}

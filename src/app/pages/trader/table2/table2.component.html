@@ -1,0 +1,170 @@
+<nb-card class="f-h" style="overflow: hidden;">
+  <nb-card-header>
+    Market Cap
+  </nb-card-header>
+  <nb-card-body class="table-overflow">
+
+    <table style="max-width: 100%; border-radius: 8px; width: 100%;" class="table-content">
+      <thead>
+        <tr>
+          <td class="link" *ngFor="let head of tableHead; let i = index;"
+            [ngStyle]="{'width': i === tableHead.length - 1 ? '180px':''}" (click)="filter(i)">
+            <div class="d-flex justify-content-between">
+              <span class="align-self-center">{{head}}</span>
+              <span class="d-flex flex-column fit align-items-center col-4 p-0">
+                <span class="nb-chevron-up"></span>
+                <span class="nb-chevron-down"></span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>        		
+        <tr>
+          <td>1</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="./assets/Coins/Bitcoin.svg"/>
+					<div class="">
+					<div class="table-coin-name">Bitcoin</div>          
+	                <div class="table-coin-symbol">BTC</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center min-120">${{getData(0, 'value') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(0, 'marketCap') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(0, 'volume') | number: '1.2-2'}}</td>
+          <td class="text-center">18,020,312</td>
+          <td class="text-center min-100"><p class="flex-arrow justify-content-center" [ngStyle]="{'color': getData(0, 'color')}" id="tmcpc"> {{getData(0, 'percent') | number: '1.2-2'}}% <i [class]="getData(0, 'arrow')"></i></p></td>
+        </tr>
+		
+        <tr class="dark-row">
+          <td>2</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="./assets/Coins/ethereum.svg">
+					<div class="">
+					<div class="table-coin-name">Ethereum</div>          
+	                <div class="table-coin-symbol">ETH</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center min-120">${{getData(1, 'value') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(1, 'marketCap') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(1, 'volume') | number: '1.2-2'}}</td>
+          <td class="text-center">108,360,175.3</td>
+          <td class="text-center min-100"><p class="flex-arrow justify-content-center" [ngStyle]="{'color': getData(1, 'color')}" id="tmcpc"> {{getData(1, 'percent') | number: '1.2-2'}}% <i [class]="getData(1, 'arrow')"></i></p></td>
+        </tr>
+		
+        <tr>
+          <td>3</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="./assets/Coins/ripple.svg"/>
+					<div class="">
+					<div class="table-coin-name">Ripple</div>          
+	                <div class="table-coin-symbol">XRP</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center min-120">${{getData(2, 'value') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(2, 'marketCap') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(2, 'volume') | number: '1.2-2'}}</td>
+          <td class="text-center">43,248,091,671</td>
+          <td class="text-center min-100"><p class="flex-arrow justify-content-center" [ngStyle]="{'color': getData(2, 'color')}" id="tmcpc"> {{getData(2, 'percent') | number: '1.2-2'}}% <i [class]="getData(2, 'arrow')"></i></p></td>
+        </tr>
+		
+        <tr class="dark-row">
+          <td>4</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="./assets/Coins/eos.svg"/>
+					<div class="">
+					<div class="table-coin-name">Eos</div>          
+	                <div class="table-coin-symbol">EOS</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center min-120">${{getData(3, 'value') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(3, 'marketCap') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(3, 'volume') | number: '1.2-2'}}</td>
+          <td class="text-center">938,096,603</td>
+          <td class="text-center min-100"><p class="flex-arrow justify-content-center" [ngStyle]="{'color': getData(3, 'color')}" id="tmcpc"> {{getData(3, 'percent') | number: '1.2-2'}}% <i [class]="getData(3, 'arrow')"></i></p></td>
+        </tr>
+		
+        <tr>
+          <td>5</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="./assets/Coins/bitcoincash.svg">
+					<div class="">
+					<div class="table-coin-name">Bitcoin Cash</div>          
+	                <div class="table-coin-symbol">BCH</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center min-120">${{getData(4, 'value') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(4, 'marketCap') | number: '1.2-2'}}</td>
+          <td class="text-center">${{getData(4, 'volume') | number: '1.2-2'}}</td>
+          <td class="text-center">18,086,125</td>
+          <td class="text-center min-100"><p class="flex-arrow justify-content-center" [ngStyle]="{'color': getData(4, 'color')}" id="tmcpc"> {{getData(4, 'percent') | number: '1.2-2'}}% <i [class]="getData(4, 'arrow')"></i></p></td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="8" class="p-0">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex">
+              <span class="align-self-center mr-3">Coins per page</span>
+              <nb-select selected="5" class="transparent font-p-select">
+                <nb-option value="5">5</nb-option>
+                <nb-option value="10">10</nb-option>
+                <nb-option value="25">25</nb-option>
+                <nb-option value="50">50</nb-option>
+              </nb-select>
+            </div>
+            <div class="d-flex">
+              <span class="mr-3 align-self-center">1-5 of 100</span>
+              <span class="link align-self-center">Next <i class="nb-arrow-dropright"
+                  style="vertical-align: middle;"></i></span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </nb-card-body>
+</nb-card>
+
+
+<!--
+
+        <tr *ngFor="let body of tableBody; let i = index" [ngClass]="{'dark-row': i % 2 === 0}">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <div class="">
+				<div class="coin-row1 flex-vertical">
+					<img class="table2-img" src="{{ body.coinIcon }}"/>
+					<div class="">
+					<div class="table-coin-name">{{ body.name }}</div>          
+	                <div class="table-coin-symbol">{{ body.abb }}</div>
+				</div>
+				</div>    
+            </div>
+          </td>
+          <td class="text-center">${{btcPrice[btcPrice.length-1]}}</td>
+          <td class="text-center">{{ body.market }}B</td>
+          <td class="text-center">{{ body.volume }}B</td>
+          <td class="text-center">{{ body.supply }}B</td>
+          <td class="text-center" [ngClass]="{'green': body.change > 0, 'red': body.change < 0}">{{ body.change }}%</td>
+        </tr>
+-->

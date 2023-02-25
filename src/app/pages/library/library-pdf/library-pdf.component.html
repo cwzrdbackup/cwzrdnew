@@ -1,0 +1,68 @@
+<nb-layout class="layout-container">
+
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+
+    <nb-layout-column class="p-0">
+
+        <div class="pdf-container mx-auto">
+            <nb-card class="m-3">
+                <nb-card-header class="flex book-header px-0">
+                    <div class="col-3 col-3 text-right d-flex align-items-center justify-content-start">
+                        <button class="pdf-navigation prev" (click)="zoomOut()" style="border-radius: 6px 0 0 6px; padding: 12px 10px;">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <span style="background-color: #37317a; border: 2px solid #342e73; color: #ffffff; padding: 10px; font-size: 16px;">{{ zoom }}</span>
+                        <button class="pdf-navigation prev" (click)="zoomIn()" style="border-radius: 0 6px 6px 0; padding: 12px 10px;">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <div class="col-6 text-center flex-align-center">
+                        <!--&nbsp; <span>{{ page }} / {{ totalPages }}</span> &nbsp;-->
+                        <input class="input-index" nbInput placeholder="Index" required type="number" min="0" [max]="totalPages" step="1" [(ngModel)]="page"
+                               (change)="goToPageIndex($event)" (keyup)="goToPageIndex($event)" [value]="page">
+                        <!--&nbsp; <span> / {{ totalPages }}</span> &nbsp;-->
+                        &nbsp; <span>{{ page }} / {{ totalPages }}</span> &nbsp;
+                    </div>
+                    <div class="col-3 text-right d-flex align-items-center justify-content-end">
+                        <button class="pdf-navigation prev" (click)="goToFirstPage()" [disabled]="page === 1" style="border-radius: 6px 0 0 6px; padding: 12px 10px;">
+                            <i class="fa fa-angle-double-left"></i>
+                        </button>
+
+                        <button class="pdf-navigation prev" (click)="prevPage()" [disabled]="page === 1" style="border-radius: 0;">
+                            Previous
+                        </button>
+                        <button class="pdf-navigation next" (click)="nextPage()" [disabled]="page === totalPages" style="border-radius: 0;">
+                            Next
+                        </button>
+                        <button class="pdf-navigation next" (click)="goToLastPage()" [disabled]="page === totalPages" style="border-radius: 0 6px 6px 0;  padding: 12px 10px;">
+                            <i class="fa fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                </nb-card-header>
+                <nb-card-body class="flex justify-content-center pt-0 pb-0">
+                    <!--<pdf-viewer [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'" style="display: block;"-->
+                    <!--<pdf-viewer [src]="'http://localhost:4200/assets/file-example_PDF_1MB.pdf'" style="display: block;"-->
+                    <pdf-viewer [src]="'http://localhost:4200/assets/sample-pdf.pdf'" style="display: block; "
+                                [render-text]="true"
+                                [show-all]="false"
+                                (page-rendered)="pageRendered($event)"
+                                (text-layer-rendered)="textLayerRendered($event)"
+                                [page]="page"
+                                [zoom]="zoom"
+                                (after-load-complete)="afterLoadComplete($event)"
+                                [autoresize]="true" [original-size]="false">
+                        <!--[fit-to-page]="fitToPage"--><!--[autoresize]="autoresize"-->
+                    </pdf-viewer>
+                </nb-card-body>
+            </nb-card>
+        </div>
+
+    </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+        &copy; 2019 Powered by WZRD Group
+    </nb-layout-footer>
+
+</nb-layout>

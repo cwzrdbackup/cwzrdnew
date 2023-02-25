@@ -1,0 +1,72 @@
+<nb-card class="f-h">
+  <nb-card-header class="d-flex justify-content-space-between align-items-center">
+    <span class="journal-header">Trader's Log <button nbTooltip="Displays your live portfolio balance. The percent is calculated using the current balance and the closing balance of the last 24 hours." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button></span>
+    <svg fill="#fff" class="link" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" style="margin-left: auto !important" (click)="downloadExcel()">
+            <path
+              d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
+            <path fill="none" d="M0 0h24v24H0z" /></svg>
+    <i class="nb-plus link add-btn" (click)="add()"></i>
+      <!--<nb-action class="whiteColor dropdown short-long-dropdown">
+          <span class="dropbtn"><i class="nb-plus link"></i></span>
+          <div class="dropdown-overlay"></div>
+          <div class="dropdown-arrow-up"></div>
+          <div class="dropdown-content">
+              <nb-action class="link whiteColor" (click)="add('Short')">Short</nb-action>
+              <nb-action class="link whiteColor text-center" (click)="add('Long')">Long</nb-action>
+          </div>
+      </nb-action>-->
+  </nb-card-header>
+  <nb-card-body class="mr-3 mr-md-0">
+
+    <table class="w-100">
+      <thead>
+        <tr>
+          <td class="link" *ngFor="let head of tableHead; let i = index;"
+            [ngStyle]="{'width': i === tableHead.length - 2 ? '180px':''}" (click)="filter(i)"
+            [ngClass]="{'delete-header': i === (tableHead.length - 1)}" >
+            <div class="d-flex justify-content-between">
+              <span class="align-self-center">{{head}}</span>
+              <span class="d-flex flex-column fit align-items-center col-4 p-0" [ngClass]="{'hide-arrows': i === (tableHead.length - 1) || i === 0}">
+                <span class="nb-chevron-up"></span>
+                <span class="nb-chevron-down"></span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let body of tableBody; let i = index" [ngClass]="{'dark-row': i % 2 === 0}">
+          <td>{{ i + 1 }}</td>
+          <td>{{ body?.pair }}</td>
+          <td>{{ body?.openDate}}</td>
+          <td>{{ body?.closeDate}}</td>
+          <td>{{ body?.position }}</td>
+          <td>{{ body?.contract }}</td>
+          <td [ngClass]="{'green': body?.pip > 0, 'red': body?.pip < 0}">{{ body?.pip > 0 && '+' + body?.pip || body?.pip}}</td>
+          <td [ngClass]="{'green': body?.profitLoss > 0, 'red': body?.profitLoss < 0}">
+			  {{ body?.profitLoss > 0 && '+' + body?.profitLoss || body?.profitLoss}}
+      </td>		  
+      <td  > <i (click)="open(deleteDialog, i)" class="fas fa-trash-alt delete-icon link"></i></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </nb-card-body>
+</nb-card>
+
+<ng-template #deleteDialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header class="d-flex, justify-content-between">Delete Journal Log</nb-card-header>
+    <nb-card-body class="confirm-dialoge">
+      <div class="px-3">
+        <span> Are you sure you want to delete Journal Log</span>
+      </div>
+      <div class="p-6 button-container">
+        <button nbButton outline status="primary" size="xsmall" class="f-w" (click)="ref.close('yes')" tabindex="1"
+          >Delete</button>
+        <button nbButton outline status="danger" size="xsmall" class="f-w" (click)="ref.close('no')">Cancel</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</ng-template>

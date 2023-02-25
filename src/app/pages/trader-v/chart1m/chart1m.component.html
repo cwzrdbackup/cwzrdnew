@@ -1,0 +1,32 @@
+<nb-reveal-card style="border-radius: 8px;">
+  <nb-card-front>
+	<nb-card class="mb-0">
+	  <nb-card-header>
+	    Profit <button nbTooltip="The line chart displays your portfolio's profit in real time. The numbers above the chart display the total profit of the last week compared to the week before." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+	  </nb-card-header>
+	  <nb-card-body class="p-0 chart-card">
+	    <div class="flex pt-1 pb-3 align-price">
+	      <div class="col-6" *ngFor="let item of profitHistory; let i = index;">
+	        <div class="profit-date">{{item.startDate}} - {{item.endDate}}</div>
+	        <span class="green exo-font">$</span>
+			<span class="white exo-font">{{item.Profit | number:'.2'}}</span>
+	      </div>
+	      <!-- <div class="col-6">
+	        <div class="profit-date">Jul 9 - Jul 16</div>
+	        <span class="green exo-font">$</span>
+			<span class="white exo-font">2315</span>
+	      </div> -->
+	    </div>
+	    <div echarts [options]="chartOption" [merge]="dataOptions" class="chart"></div>
+	  </nb-card-body>
+	</nb-card>
+  </nb-card-front>
+  <nb-card-back>
+	<nb-card class="mb-0">
+    <nb-card-header>
+      Profit <button nbTooltip="The bar chart displays your portfolio's profit during the last 7 days." nbTooltipStatus="primary" class="fal fa-question-circle ml-1 nbButtonIcon"></button>
+    </nb-card-header>
+		<app-chart8></app-chart8>
+	</nb-card>
+  </nb-card-back>
+</nb-reveal-card>

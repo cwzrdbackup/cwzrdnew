@@ -1,0 +1,21 @@
+<nb-card class="f-h" [nbSpinner]="loading">
+  <nb-card-header class="p-2">
+    <div class="flex" style="justify-content: space-between;align-items: center;">
+
+      <div class="pl-3">
+        Digital dash
+      </div>
+
+      <nb-select selected="BTC" (selectedChange)="change($event)" class="button-width p-0 text-right transparent">
+          <nb-option value="BTC">BTC</nb-option>
+          <nb-option value="XRP">XRP</nb-option>
+          <nb-option value="ETH">ETH</nb-option>
+          <nb-option value="LTC">LTC</nb-option>
+      </nb-select>
+    </div>
+
+  </nb-card-header>
+  <nb-card-body class="p-0 chart-card">
+    <div echarts [options]="chartOption" [merge]="dataOptions" class="f-h chart"></div>
+  </nb-card-body>
+</nb-card>

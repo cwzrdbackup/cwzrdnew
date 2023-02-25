@@ -1,0 +1,85 @@
+<nb-layout class="layout-container">
+    <nb-layout-header class="flex flexCenter platformHeader">
+        <app-header></app-header>
+    </nb-layout-header>
+
+    <nb-layout-column class="f-w flex flexCenter">
+        <nb-card class="questionCard col-12">
+            <div style="margin:10% auto;" *ngIf="sending">
+                <div class="spinner"></div>
+            </div>
+
+
+            <nb-card-header *ngIf="!sending" class="px-0">
+                <div class="examTitle">{{_examTitle}}</div>
+                <div class="flex mb-3">
+                    <span class="col-7 col-md-8 questionHeader mt-3">
+                        Question {{ _attemptedQuestions + '/' + _totalQuestions }}
+                    </span>
+                    <span class="col-5 col-md-4 questionHeader mt-3">
+                        Your score
+                    </span>
+                </div>
+                <div class="flex">
+                    <nb-progress-bar [value]="percent()" class="col-7 col-md-8 pr-5" status="success"></nb-progress-bar>
+                    <div class="flex col-5 col-md-4">
+                        <span class="col-6 p-0 flex flex-vertical small-text exam-result" style="color: #00d977;">
+                          <span class="nb-checkmark-circle icon questionHeader ss_icon_question"></span>
+                          <span class="questionHeader">{{ _correctAnswers }}</span>
+                        </span>
+                        <span class="col-6 p-0 flex flex-vertical small-text exam-result" style="color: #ff386a;">
+                          <span class="nb-close-circled icon questionHeader ss_icon_question"></span>
+                          <span class="questionHeader">{{ _wrongAnswers }}</span>
+                        </span>
+                    </div>
+                </div>
+            </nb-card-header>
+
+            <nb-card-body *ngIf="!sending">
+                <!-- *ngIf="!showResult; else resultTemplate" -->
+
+                <ng-container *ngIf="displayNext() && !showResult">
+                    <h4 class="questionText">{{ _currentQuestion.question }}</h4>
+                    <button *ngFor="let option of _currentQuestion.options" nbButton outline fullWidth shape="round" status="primary" class="answerContainer"
+                            (click)="answer(option.id)">{{option.text}}</button>
+
+                </ng-container>
+                <div *ngIf="showResult && displayNext()">
+                    <div style="min-height: 332px;justify-content: space-evenly;" class="d-flex flex-column align-items-center">
+                        <h3 [ngClass]="{'green': _correct.isCorrect, 'red': !_correct.isCorrect}">{{ _correct.isCorrect ? "Correct!" : "Incorrect!" }}</h3>
+                        <p *ngIf="!_correct.isCorrect">Correct Answer is</p>
+                        <p *ngIf="!_correct.isCorrect"> {{ _correct.correctAnswer.text }}</p>
+                        <button status="primary" nbButton (click)="nextQuestion()">Next Question</button>
+                    </div>
+                </div>
+                <div *ngIf="!displayNext()">
+                    <div style="min-height: 332px;justify-content: space-evenly;" class="d-flex flex-column align-items-center">
+                        <h3 *ngIf="doneQuestions == totalQuestions" [ngClass]="{'green':true}">Exam completed!</h3>
+                        <h3 *ngIf="allExamsCompleted" [ngClass]="{'green':true}">Congratulations You have completed all Exams</h3>
+                        <div class="flex-vertical">
+                            <button *ngIf="doneQuestions == totalQuestions" status="primary" class="mr-4" nbButton (click)="restartExam()">
+                                Restart Exam
+                            </button>
+                            <button *ngIf="nextExamId > 0 && !allExamsCompleted && doneQuestions == totalQuestions" [routerLink]="'/examination/'+nextExamId" status="primary" nbButton>
+                                Next Exam
+                            </button>
+                        </div>                        
+                        <h3 *ngIf="this._questionList.length <= 0 && doneQuestions !== totalQuestions" [ngClass]="{'red':true}">Questions are not available</h3>
+                    </div>
+                </div>
+
+            </nb-card-body>
+
+            <nb-card-footer class='footer'>
+                <button routerLink="/examination" status="primary" nbButton class="center-button">
+                    Go Back
+                </button>
+            </nb-card-footer>
+
+        </nb-card>
+    </nb-layout-column>
+
+    <nb-layout-footer class="footer-main">
+        &copy; 2021 Powered by <a target="_blank" class="wzrdgroup-link" href="http://wzrdgroup.com/">WZRD Group</a>
+    </nb-layout-footer>
+</nb-layout>
