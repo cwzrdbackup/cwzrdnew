@@ -59,6 +59,7 @@
     "ngx-linky": "^2.2.0",
     "ngx-pagination": "^4.1.0",
     "node-sass": "^8.0.0",
+    "python": "0.0.4",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.3",
     "socket.io-client": "^2.2.0",
